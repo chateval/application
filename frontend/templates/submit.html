@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="hero has-text-centered is-success is-small">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Submit Model
+        </h1>
+        <h2 class="subtitle">
+          Upload model information for evaluation
+        </h2>
+        <br>
+      </div>
+    </div>
+  </section>
+  
+  <div class="container">
+    <div class="columns">
+      <div class="column is-one-third"></div>
+      <div class="column is-one-third">
+        <br>
+        <!-- <form method="POST" action="/api/upload">
+          <div class="field">
+            <label class="label">Author Name</label>
+            <div class="control">
+              <input class="input" type="text">
+            </div>
+          </div>
+  
+          <div class="field">
+            <label class="label">Author Email</label>
+            <div class="control">
+              <input class="input" type="text">
+            </div>
+          </div>
+  
+          <div class="field">
+            <label class="label">Author Institution</label>
+            <div class="control">
+              <input class="input" type="text">
+            </div>
+          </div>
+  
+          <div class="field">
+            <label class="label">Chatbot Name</label>
+            <div class="control">
+              <input class="input" type="text">
+            </div>
+          </div>
+  
+          <div class="field">
+            <label class="label">Chatbot Description</label>
+            <div class="control">
+              <textarea class="textarea"></textarea>
+            </div>
+          </div>
+  
+          <div class="field">
+            <label class="label">Model Responses URL</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="tarball,s .txt, or .zip of responses to prompts">
+            </div>
+          </div>
+  
+          <div class="field">
+            <label class="label">Code URL</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="i.e. Github or Bitbucket link">
+            </div>
+          </div>
+  
+          <div class="field">
+            <label class="label">Checkpoint URL</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="a tarball or zip file containing trained model parameters">
+            </div>
+          </div>
+  
+          <div class="field">
+            <label class="label">Evaluation Dataset</label>
+            <div class="control">
+              <label class="checkbox"> <input type="checkbox"> Neural Conversational Model </label> <br>
+              <label class="checkbox"> <input type="checkbox"> DBDC </label> <br>
+            </div>
+          </div>
+  
+          <div class="field">
+            <label class="label">Comparison Datasets</label>
+            <div class="control">
+              <label class="checkbox"> <input type="checkbox"> Neural Conversational Model </label> <br>
+              <label class="checkbox"> <input type="checkbox"> OpenNMT Seq2Seq </label> <br>
+              <label class="checkbox"> <input type="checkbox"> Cakechat </label> <br>
+              <label class="checkbox"> <input type="checkbox"> Human </label>
+            </div>
+          </div>
+  
+          <div class="field">
+            <label class="label">Terms and Conditions</label>
+            <div class="control">
+              <label class="checkbox">
+                <input type="checkbox">
+                I agree to the <a href="#">terms and conditions.</a>
+              </label>
+              <br> <br>
+            </div>
+          </div>
+  
+          <input type="submit" value="Upload Model" class="button is-success">
+        </form> !-->
+
+        {{ form.as_p }}
+  
+        <br>
+      </div>
+      <div class="column is-one-third"></div>
+    </div>
+  </div>
+{% endblock %}

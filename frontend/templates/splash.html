@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="hero has-text-centered is-success is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        ChatEval
+      </h1>
+      <h2 class="subtitle">
+        A standard evaluation tool for chatbots
+      </h2>
+      <br>
+    </div>
+  </div>
+</section>
+
+<div class="container is-fluid">
+  <div class="columns">
+    <div class="column is-one-sixth"></div>
+    <div class="column is-two-thirds">
+        <br> <br>
+        <h1 class="title"> About </h1>
+        <p class=""> ChatEval is a scientific framework for evaluating chatbots. Researchers can submit their trained models to the ChatEval web interface to effortlessly receive back comparisons with baselines and prior work. Since all evaluation code is open-source, we ensure evaluation is performed in a standardized and transparent way. Additionally ChatEval has open-source baseline models and an ever growing groups public evaluation sets.</p>
+        <br>
+        <a class="button is-success is-large" href="/submit"> Submit Model for Evaluation</a>
+        <br> <br><br>
+        <h1 class="title" style="margin-bottom: 2.5rem"> Evaluation Datasets </h1>
+        <div class="columns is-multiline" style="padding-bottom:0rem; padding-top: 0rem">  
+          {% for dataset in datasets %}
+          <div class="column is-half">
+            <a href="">
+              <div class="box">
+                <article class="media">
+                  <div class="media-content">
+                    <div class="content">
+                      <p>
+                        <strong> {{dataset.name}} </strong> <br>
+                        <small> {{dataset.description}} </small>
+                        <br>
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </a>
+          </div>
+          <br>
+          {% endfor %}    
+        </div>
+
+        <h1 class="title" style="margin-bottom: 2.5rem"> Supported Baselines </h1>
+        <div class="columns is-multiline" style="padding-bottom:0rem; padding-top: 0rem">   
+          
+          {% for baseline in baselines %}
+          <div class="column is-half" >
+            <a href="">
+              <div class="box">
+                <article class="media">
+                  <div class="media-content">
+                    <div class="content">
+                      <p>
+                        <strong> {{baseline.name}} </strong> <br>
+                        <small> {{baseline.description}} </small>
+                        <br>
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </a>
+          </div>
+          {% endfor %}
+          
+        </div>
+    </div>
+    <div class="column is-one-sixth"></div>
+  </div>
+  <br>
+</div>
+{% endblock %}

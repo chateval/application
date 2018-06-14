@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="hero has-text-centered is-success is-small">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Conversations
+        </h1>
+        <h2 class="subtitle">
+          History from previously trained models
+        </h2>
+        <br>
+      </div>
+    </div>
+  </section>
+  
+  <div class="container">
+    <div class="columns">
+      <div class="column is-one-quarter">
+        <br>
+        <form method="GET" action="/conversations">
+          <div class="control" name="model">
+            <label class="label">Trained Model</label>
+            <div class="select">
+              <select name="model">
+                {% for model in models %}
+                <option>{{model.name}}</option>
+                {% endfor %} 
+              </select>
+            </div>
+          </div>
+          <br>
+          <div class="control">
+            <label class="label">Evaluation Dataset</label>
+            <div class="select">
+              <select name="dataset">
+                {% for dataset in datasets %}
+                <option>{{dataset.name}}</option>
+                {% endfor %} 
+              </select>
+            </div>
+            <br>
+          </div>
+          <br>
+          <input type="submit" value="View Automatic Evaluation" class="button is-success">
+        </form>
+      </div>    
+      <div class="column">
+        <br>
+        <div class="columns is-multiline">
+          <div class="column is-half">
+            <div class="card">
+              <div class="card-content">
+                <h2 class="text is-size-5"><strong>Prompt:</strong> What is two plus two?</h2>
+                <p class="text"><strong>CakeChat:</strong>i can't think of one</p>
+                <p class="text"><strong>NCM:</strong>uh, well, we got four.</p>
+                <p class="text"><strong>OpenNMT Seq2SeqAttn:</strong>Three.</p>
+              </div>
+            </div>
+          </div>
+          <div class="column is-half">
+            <div class="card">
+              <div class="card-content">
+                <h2 class="text is-size-5"><strong>Prompt:</strong> what is your name?</h2>
+                <p class="text"><strong>CakeChat:</strong> my name is</p>
+                <p class="text"><strong>NCM:</strong> khromov , and you ?</p>
+                <p class="text"><strong>OpenNMT Seq2SeqAttn:</strong> what .</p>
+              </div>
+            </div>
+          </div>
+          <div class="column is-half">
+            <div class="card">
+              <div class="card-content">
+                <h2 class="text is-size-5"><strong>Prompt:</strong> how old are you?</h2>
+                <p class="text"><strong>CakeChat:</strong>  i ' m 15 . you ?</p>
+                <p class="text"><strong>NCM:</strong>  i'm 17.</p>
+                <p class="text"><strong>OpenNMT Seq2SeqAttn:</strong>  I don 't know .</p>            
+              </div>
+            </div>
+          </div>
+          <div class="column is-half">
+            <div class="card">
+              <div class="card-content">
+                <h2 class="text is-size-5"><strong>Prompt:</strong> my name is david . what is my name ?</h2>
+                <p class="text"><strong>CakeChat:</strong>   my name is . . .</p>
+                <p class="text"><strong>NCM:</strong> david</p>
+                <p class="text"><strong>OpenNMT Seq2SeqAttn:</strong>   it is you</p>  
+              </div>
+            </div>
+          </div>
+            <div class="column is-half">
+            <div class="card">
+              <div class="card-content">
+                <h2 class="text is-size-5"><strong>Prompt:</strong> what is love ?</h2>
+                <p class="text"><strong>CakeChat:</strong> a girl</p>
+                <p class="text"><strong>NCM:</strong> love is beautiful.</p>
+                <p class="text"><strong>OpenNMT Seq2SeqAttn:</strong> I don 't know .</p> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <br>
+{% endblock %}

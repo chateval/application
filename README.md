@@ -14,4 +14,4 @@ A scientific framework for evaluating chatbots.
 5. Access app at [localhost:8000](localhost:8000) and admin SQL page at [localhost:8000/admin](localhost:8000/admin).
 
 ## Code Documentation
-Documentation for the codebase is available in `/docs`.
+Documentation for the codebase is available in `DOCUMENTATION.md`.

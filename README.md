@@ -2,6 +2,7 @@
 A scientific framework for evaluating chatbots.
 
 ## Dependencies
+<<<<<<< HEAD
 - [Django](https://www.djangoproject.com/)
 - [Handlebars](https://handlebarsjs.com/) (Templating engine)
 - [Bulma](https://bulma.io) (CSS framework) Database)
@@ -16,3 +17,18 @@ A scientific framework for evaluating chatbots.
 
 ## Code Documentation
 Documentation for the codebase is available in `/docs`.
+=======
+- Django
+- Bulma (CSS framework)
+- MySQL
+
+## Usage
+0. Install django using `pip install django` or `conda install django`.
+2. Edit database information in `/chateval/settings.py`.
+3. Run server migrations using `python manage.py makemigrations && python manage.py migrate`. (Note: `python3` might be required depending on your python installation)
+4. Run server using `python manage.py runserver`
+5. Access app at [localhost:8000](localhost:8000) and admin SQL page at [localhost:8000/admin](localhost:8000/admin).
+
+## Code Documentation
+Documentation for the codebase is available in `DOCUMENTATION.md`.
+>>>>>>> 60469281e19c3bb3b3128f38b4b28419ed764137

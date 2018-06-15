@@ -20,7 +20,8 @@
       <div class="column is-one-third"></div>
       <div class="column is-one-third">
         <br>
-        <!-- <form method="POST" action="/api/upload">
+        <form method="POST" action="/submit">
+          {% csrf_token %}
           <div class="field">
             <label class="label">Author Name</label>
             <div class="control">
@@ -59,7 +60,7 @@
           <div class="field">
             <label class="label">Model Responses URL</label>
             <div class="control">
-              <input class="input" type="text" placeholder="tarball,s .txt, or .zip of responses to prompts">
+              <input class="input" name="model_url" type="text" placeholder="tarball,s .txt, or .zip of responses to prompts">
             </div>
           </div>
   
@@ -107,10 +108,7 @@
           </div>
   
           <input type="submit" value="Upload Model" class="button is-success">
-        </form> !-->
-
-        {{ form.as_p }}
-  
+        </form>
         <br>
       </div>
       <div class="column is-one-third"></div>

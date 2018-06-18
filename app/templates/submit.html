@@ -58,13 +58,6 @@
           </div>
   
           <div class="field">
-            <label class="label">Model Responses URL</label>
-            <div class="control">
-              <input class="input" name="model_url" type="text" placeholder="tarball,s .txt, or .zip of responses to prompts">
-            </div>
-          </div>
-  
-          <div class="field">
             <label class="label">Code URL</label>
             <div class="control">
               <input class="input" type="text" placeholder="i.e. Github or Bitbucket link">
@@ -79,15 +72,40 @@
           </div>
   
           <div class="field">
-            <label class="label">Evaluation Dataset</label>
-            <div class="control">
-              <label class="checkbox"> <input type="checkbox"> Neural Conversational Model </label> <br>
-              <label class="checkbox"> <input type="checkbox"> DBDC </label> <br>
-            </div>
+            <label class="label">Model Responses</label>
+            
+            <div class="file">
+                <label class="file-label">
+                  <input class="file-input" type="file" name="resume">
+                  <span class="file-cta">
+                    <span class="file-icon">
+                      <i class="fas fa-upload"></i>
+                    </span>
+                    <span class="file-label">
+                      Upload Neural Conversational Model Responses
+                    </span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="file">
+                  <label class="file-label">
+                    <input class="file-input" type="file" name="resume">
+                    <span class="file-cta">
+                      <span class="file-icon">
+                        <i class="fas fa-upload"></i>
+                      </span>
+                      <span class="file-label">
+                        Upload DBDC Responses
+                      </span>
+                    </span>
+                  </label>
+                </div>
           </div>
   
           <div class="field">
             <label class="label">Comparison Datasets</label>
+
             <div class="control">
               <label class="checkbox"> <input type="checkbox"> Neural Conversational Model </label> <br>
               <label class="checkbox"> <input type="checkbox"> OpenNMT Seq2Seq </label> <br>
@@ -103,7 +121,7 @@
                 <input type="checkbox">
                 I agree to the <a href="#">terms and conditions.</a>
               </label>
-              <br> <br>
+              <br>
             </div>
           </div>
   

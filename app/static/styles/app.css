@@ -1,0 +1,51 @@
+html, body {
+  margin:0;
+  padding:0;
+  height: 100%;
+}
+
+#contains-all {
+  min-height:100%;
+  position:relative;
+}
+
+.footer {
+position: absolute;
+right: 0;
+bottom: 0;
+left: 0;
+height: 8rem;
+padding-bottom: 0rem;
+}
+
+.hero.home {
+  background-image: url(test-hero.png);
+}
+
+.hero.has-image-bg {
+  color: #fff;
+  background-position: 10%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #b8c6d0;
+}
+
+.white {
+  color: #fff;
+}
+
+#join-link {
+  color: #fff;
+}
+
+#join-link:hover {
+  color: #03A9F4;
+}
+
+.box {
+  margin-bottom: 1.5rem;
+}
+
+#body {
+  padding-bottom: 8rem;
+}

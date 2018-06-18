@@ -15,12 +15,6 @@ def conversations(request):
 
 def submit(request):
     if request.method == "POST":
-<<<<<<< HEAD
         print(request.POST.get('model_url'))    
     return render(request, 'submit.html', {})
     
-=======
-        print("posted") 
-        # load_dataset("app/datasets/ncm.txt", "NCM", "Neural Conversation Model", "lol", "lol")
-    return render(request, 'submit.html', {})
->>>>>>> 4f20223809eaff16d81ad49a77be53f63bf1f525

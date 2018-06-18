@@ -15,6 +15,7 @@ def conversations(request):
 
 def submit(request):
     if request.method == "POST":
-        print(request.POST.get('model_url'))    
+        print(request.POST.get('model_url'))   
+    print("posted") 
     return render(request, 'submit.html', {})
     

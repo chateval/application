@@ -1,1 +1,1 @@
-python3 manage.py runserver
+source env.sh && python3 manage.py runserver

@@ -28,7 +28,7 @@ and source using `source env.sh`.
 Optional shell scripts have been written in order to abstract some Django-specific commands available in `/scripts` and can be run
 by first enabling permissions (e.g. through `chmod +x`) and running the script via `./scripts/SCRIPT_NAME.sh`.
 
-- `run` (runs server on port 8000)
+- `run` (sources environment variables and runs server on port 8000)
 - `migrate` (creates and runs migrations for SQL database)
 - `admin` (creates superuser for admin usage)
 

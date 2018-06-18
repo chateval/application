@@ -77,11 +77,11 @@ WSGI_APPLICATION = 'chateval.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'sys',
-        'USER': 'root',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
-        'PORT': '3306',
+        'NAME': os.environ['DB_NAME'],
+        'USER': os.environ['DB_USER'],
+        'PASSWORD': os.environ['DB_PASSWORD'],
+        'HOST': os.environ['DB_HOST'],   # Or an IP Address that your DB is hosted on
+        'PORT': os.environ['DB_PORT'],
     }
 }
 

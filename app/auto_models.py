@@ -48,11 +48,11 @@ class EvaluationDataset(models.Model):
 
     class Meta:
         db_table = 'EvaluationDataset'
-
+        
 
 class EvaluationDatasetText(models.Model):
-    evaluationdataset = models.ForeignKey(EvaluationDataset, models.DO_NOTHING, primary_key=True)
-    prompt_id = models.BigIntegerField()
+    evaluationdataset = models.ForeignKey(EvaluationDataset, models.DO_NOTHING)
+    prompt_id = models.BigAutoField(primary_key=True)
     prompt_text = models.TextField()
     num_turns = models.IntegerField(blank=True, null=True)
 

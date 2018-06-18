@@ -1,5 +1,6 @@
 # ChatEval
-A scientific framework for evaluating chatbots.
+A scientific framework for evaluating chatbots. Scientific
+paper available [here](https://github.com/chateval/ChatEval/blob/master/paper/Chatbot_Evaluation_Demo_2018_EMNLP.pdf).
 
 ## Dependencies
 - Django

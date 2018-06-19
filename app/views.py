@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Dataset, Baseline
 from .generate_prompts import load_dataset
+from .link_responses import load_responses
 
 def splash(request):
     datasets = Dataset.objects.all()
@@ -15,7 +16,7 @@ def conversations(request):
 
 def submit(request):
     if request.method == "POST":
-        print(request.POST.get('model_url'))   
     print("posted") 
+    load_responses("datasets/ncmresponses.txt", "ncm")
     return render(request, 'submit.html', {})
     

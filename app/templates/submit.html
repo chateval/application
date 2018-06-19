@@ -20,89 +20,10 @@
       <div class="column is-one-third"></div>
       <div class="column is-one-third">
         <br>
-        <form method="POST" action="/submit">
+        <form enctype="multipart/form-data" method="POST" action="/submit">
           {% csrf_token %}
-          <div class="field">
-            <label class="label">Author Name</label>
-            <div class="control">
-              <input class="input" type="text">
-            </div>
-          </div>
-  
-          <div class="field">
-            <label class="label">Author Email</label>
-            <div class="control">
-              <input class="input" type="text">
-            </div>
-          </div>
-  
-          <div class="field">
-            <label class="label">Author Institution</label>
-            <div class="control">
-              <input class="input" type="text">
-            </div>
-          </div>
-  
-          <div class="field">
-            <label class="label">Chatbot Name</label>
-            <div class="control">
-              <input class="input" type="text">
-            </div>
-          </div>
-  
-          <div class="field">
-            <label class="label">Chatbot Description</label>
-            <div class="control">
-              <textarea class="textarea"></textarea>
-            </div>
-          </div>
-  
-          <div class="field">
-            <label class="label">Code URL</label>
-            <div class="control">
-              <input class="input" type="text" placeholder="i.e. Github or Bitbucket link">
-            </div>
-          </div>
-  
-          <div class="field">
-            <label class="label">Checkpoint URL</label>
-            <div class="control">
-              <input class="input" type="text" placeholder="a tarball or zip file containing trained model parameters">
-            </div>
-          </div>
-  
-          <div class="field">
-            <label class="label">Model Responses</label>
-            
-            <div class="file">
-                <label class="file-label">
-                  <input class="file-input" type="file" name="resume">
-                  <span class="file-cta">
-                    <span class="file-icon">
-                      <i class="fas fa-upload"></i>
-                    </span>
-                    <span class="file-label">
-                      Upload Neural Conversational Model Responses
-                    </span>
-                  </span>
-                </label>
-              </div>
-
-              <div class="file">
-                  <label class="file-label">
-                    <input class="file-input" type="file" name="resume">
-                    <span class="file-cta">
-                      <span class="file-icon">
-                        <i class="fas fa-upload"></i>
-                      </span>
-                      <span class="file-label">
-                        Upload DBDC Responses
-                      </span>
-                    </span>
-                  </label>
-                </div>
-          </div>
-  
+          {{ form }}
+          <!--
           <div class="field">
             <label class="label">Comparison Datasets</label>
 
@@ -113,7 +34,7 @@
               <label class="checkbox"> <input type="checkbox"> Human </label>
             </div>
           </div>
-  
+        -->
           <div class="field">
             <label class="label">Terms and Conditions</label>
             <div class="control">

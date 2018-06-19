@@ -6,10 +6,10 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
-
+from django.conf import settings
 
 class Author(models.Model):
-    author_id = models.BigAutoField(primary_key=True)
+    author_id = models.ForeignKey(settings.AUTH_USER_MODEL, primary_key=True, on_delete=models.CASCADE,)
     name = models.CharField(unique=True, max_length=100)
     email = models.CharField(unique=True, max_length=200)
     institution = models.TextField()

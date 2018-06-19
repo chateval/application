@@ -31,9 +31,18 @@
               <a class="navbar-item" href="/conversations">
                 Conversations
               </a>
-              <a class="navbar-item" href="/submit">
-                <strong>Submit Model</strong>
-              </a>
+              {% if user.is_authenticated %}
+                <a class="navbar-item" href="/submit">
+                  <strong>Submit Model</strong>
+                </a>              
+                <a class="navbar-item" href="/accounts/logout">
+                  <strong>Log Out</strong>
+                </a>
+                {% else %}
+                <a class="navbar-item" href="/accounts/login">
+                  <strong>Log In</strong>
+                </a>
+              {% endif %}
             </div>
           </div>
         </nav>

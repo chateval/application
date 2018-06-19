@@ -4,7 +4,7 @@ def load_dataset(path, name, long_name, source, description):
     with open(path) as f:
         data = f.read()
         prompts = data.split('\n')
-        
+        print(prompts)
         evaluation_dataset = EvaluationDataset(name=name, long_name=long_name, source=source, description=description)
         evaluation_dataset.save()
         

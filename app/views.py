@@ -16,7 +16,8 @@ def conversations(request):
 
 def submit(request):
     if request.method == "POST":
-    print("posted") 
-    load_responses("datasets/ncmresponses.txt", "ncm")
+        print("posted") 
+        #load_dataset("app/datasets/ncm.txt", "ncm", "ewgwG", "Wegwe", "wegweg")
+        load_responses("app/datasets/ncmresponses.txt", "ncm")
     return render(request, 'submit.html', {})
     

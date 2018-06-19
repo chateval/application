@@ -61,8 +61,9 @@ class EvaluationDatasetText(models.Model):
         unique_together = (('evaluationdataset', 'prompt_id'),)
 
 class ModelResponse(models.Model):
-    model = models.ForeignKey('Model', models.DO_NOTHING, primary_key=True)
-    evaluationdataset = models.ForeignKey(EvaluationDatasetText, models.DO_NOTHING, related_name='evaluationdatasets')
+    #modelresponse_id = models.BigAutoField(primary_key=True)
+    model = models.ForeignKey('Model', models.DO_NOTHING)
+    evaluationdataset = models.ForeignKey(EvaluationDataset, models.DO_NOTHING, related_name='evaluationdatasets')
     prompt = models.ForeignKey(EvaluationDatasetText, models.DO_NOTHING)
     response_text = models.TextField()
 

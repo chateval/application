@@ -7,6 +7,11 @@ paper available [here](https://github.com/chateval/ChatEval/blob/master/paper/Ch
 - Bulma (CSS framework)
 - MySQL
 
+### Pip Dependencies  
+- `django-admin`
+- `boto3`
+- `django-storages`
+
 ## Usage
 0. Install django using `pip install django` or `conda install django`.
 2. Edit database information in `/chateval/settings.py`.

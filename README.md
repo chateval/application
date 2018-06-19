@@ -23,6 +23,9 @@ export DB_USER=
 export DB_PASSWORD=
 export DB_HOST=
 export DB_PORT=
+export AWS_ACCESS_KEY_ID=
+export AWS_SECRET_ACCESS_KEY=
+export AWS_STORAGE_BUCKET_NAME=
 ```
 and source using `source env.sh`.
 

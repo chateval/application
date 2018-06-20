@@ -2,3 +2,5 @@ db.sqlite3
 .vscode
 __pycache__
 env.sh
+app/__pycache__
+chateval/__pycache__

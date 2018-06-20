@@ -10,12 +10,12 @@ html, body {
 }
 
 .footer {
-position: absolute;
-right: 0;
-bottom: 0;
-left: 0;
-height: 8rem;
-padding-bottom: 0rem;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 8rem;
+  padding-bottom: 0rem;
 }
 
 .hero.home {

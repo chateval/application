@@ -24,7 +24,7 @@ class Model(models.Model):
     author = models.ForeignKey(Author, models.DO_NOTHING)
     cp_location = models.TextField()
     pred_location = models.TextField()
-    repo_info = models.TextField()
+    repo_location = models.TextField()
     comments = models.TextField(blank=True, null=True)
 
     class Meta:

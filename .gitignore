@@ -3,3 +3,5 @@ db.sqlite3
 __pycache__
 env.sh
 venv/
+app/__pycache__
+chateval/__pycache__

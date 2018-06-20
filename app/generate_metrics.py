@@ -1,6 +1,6 @@
 from .auto_models import Metric
 
-def load_dataset(path):
+def load_metrics(path):
     with open(path) as f:
         data = f.read()
         metrics = data.split('\n')

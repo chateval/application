@@ -4,11 +4,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from .models import Dataset, Baseline
-from .auto_models import Author
+from .auto_models import Author, Model
 from .generate_prompts import load_dataset
 from .link_responses import load_responses
 from .forms import UploadModelForm, LogInForm, SignUpForm
-from chateval.settings import AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY, AWS_STORAGE_BUCKET_NAME
+from chateval.settings import AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY, AWS_STORAGE_BUCKET_NAME, AWS_STORAGE_BUCKET_LOCATION
 
 def splash(request):
     datasets = Dataset.objects.all()
@@ -23,12 +23,21 @@ def conversations(request):
 
 def submit(request):
     if request.method == "POST":
-        response_dataset = request.FILES.get('response_dataset')
-        file_path = 'models/' + response_dataset.name
-        session = boto3.session.Session(aws_access_key_id=AWS_ACCESS_KEY, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
-        s3 = session.resource('s3')
-        s3.Bucket(AWS_STORAGE_BUCKET_NAME).put_object(Key=file_path, Body=response_dataset)
-        redirect('/')
+        form = UploadModelForm(request.POST, files=request.FILES)
+        if form.is_valid():
+            response_dataset = request.FILES.get('response_dataset')
+            file_path = 'models/' + response_dataset.name
+            session = boto3.session.Session(aws_access_key_id=AWS_ACCESS_KEY, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+            s3 = session.resource('s3')
+            s3.Bucket(AWS_STORAGE_BUCKET_NAME).put_object(Key=file_path, Body=response_dataset)
+            model = Model(author=Author.objects.get(pk=request.user),
+                name=form.cleaned_data['name'],
+                description=form.cleaned_data['description'],
+                repo_location = form.cleaned_data['repo_location'],
+                cp_location=form.cleaned_data['cp_location'],
+                pred_location=AWS_STORAGE_BUCKET_LOCATION + file_path)
+            model.save()
+            redirect('splash')
     form = UploadModelForm()
     return render(request, 'submit.html', {'form': form})
 
@@ -37,8 +46,6 @@ def login_view(request):
         form = LogInForm(request.POST)
         if form.is_valid():
             user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
-            print(user)
-            print(user is not None)
             if user is not None:
                 login(request, user)
                 return redirect('/')

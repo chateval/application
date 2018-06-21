@@ -4,5 +4,4 @@ class UploadModelForm(forms.Form):
     name = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class' : 'input'}))
     description = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class' : 'input'}))
     repo_location = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class' : 'input'}))
-    cp_location = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class' : 'input'}))
-    response_dataset = forms.FileField()
+    checkpoint_location = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class' : 'input'}))

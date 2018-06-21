@@ -21,9 +21,16 @@
       <div class="column is-one-third">
         <br>
         <form enctype="multipart/form-data" method="POST" action="/submit">
+          <h2 class="subtitle"> Model Information </h2>
           {% csrf_token %}
           {{ form }}
           <br> <br>
+          <h2 class="subtitle"> Model Reponse Files </h2>
+          {% for response_file in response_files %}
+          <label class="label">{{ response_file.long_name }}</label>
+          <input class="file" type="file" name="{{ response_file.name }}" />
+          <br>
+          {% endfor %}
           <div class="field">
             <label class="label">Terms and Conditions</label>
             <div class="control">

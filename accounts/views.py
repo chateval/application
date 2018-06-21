@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
+from core.models import Author
 from .forms import LogInForm, SignUpForm
 
 def login_view(request):
@@ -25,7 +26,7 @@ def signup_view(request):
                                  first_name=form.cleaned_data['first_name'],
                                  last_name=form.cleaned_data['last_name'])
             author = Author(author_id=user,
-                            name=form.cleaned_data['first_name'] + form.cleaned_data['last_name'], 
+                            name=form.cleaned_data['first_name'] + " " + form.cleaned_data['last_name'], 
                             institution=form.cleaned_data['institution'],
                             email=form.cleaned_data['email'])
             author.save()

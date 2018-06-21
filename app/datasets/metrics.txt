@@ -1,0 +1,7 @@
+Average Length
+Average Sentence BLEU-2
+Embedding Average Score
+distinct-1
+distinct-2
+distinct-3
+distinct-4

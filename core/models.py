@@ -1,12 +1,14 @@
-# This is an auto-generated Django model module.
-# You'll have to do the following manually to clean this up:
-#   * Rearrange models' order
-#   * Make sure each model has one field with primary_key=True
-#   * Make sure each ForeignKey has `on_delete` set to the desired behavior.
-#   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
-# Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 from django.conf import settings
+from django.db.models.signals import post_save
+import requests
+
+class Baseline(models.Model):
+    name = models.CharField(max_length=200)
+    description = models.TextField()
+
+    class Meta:
+        db_table = 'Baseline'
 
 class Author(models.Model):
     author_id = models.ForeignKey(settings.AUTH_USER_MODEL, primary_key=True, on_delete=models.CASCADE,)
@@ -23,20 +25,18 @@ class Model(models.Model):
     description = models.TextField()
     author = models.ForeignKey(Author, models.DO_NOTHING)
     cp_location = models.TextField()
-    pred_location = models.TextField()
     repo_location = models.TextField()
     comments = models.TextField(blank=True, null=True)
 
     class Meta:
         db_table = 'Model'
 
-
 class Metric(models.Model):
     metric_id = models.BigAutoField(primary_key=True)
     name = models.CharField(unique=True, max_length=100)
 
     class Meta:
-        db_table = 'Metric'
+        db_table = 'Metrics'
 
 
 class EvaluationDataset(models.Model):
@@ -48,8 +48,18 @@ class EvaluationDataset(models.Model):
 
     class Meta:
         db_table = 'EvaluationDataset'
-        
 
+def save_evaluation_dataset(sender, instance, **kwargs):
+    response = requests.get(instance.source)
+    data = response.text
+    prompts = data.split('\n')
+
+    for prompt in prompts:
+        evaluation_dataset_text = EvaluationDatasetText(evaluationdataset=instance, prompt_text=prompt, num_turns=1)
+        evaluation_dataset_text.save()
+
+post_save.connect(save_evaluation_dataset, sender=EvaluationDataset)
+        
 class EvaluationDatasetText(models.Model):
     evaluationdataset = models.ForeignKey(EvaluationDataset, models.DO_NOTHING)
     prompt_id = models.BigAutoField(primary_key=True)
@@ -61,7 +71,6 @@ class EvaluationDatasetText(models.Model):
         unique_together = (('evaluationdataset', 'prompt_id'),)
 
 class ModelResponse(models.Model):
-    #modelresponse_id = models.BigAutoField(primary_key=True)
     model = models.ForeignKey('Model', models.DO_NOTHING)
     evaluationdataset = models.ForeignKey(EvaluationDataset, models.DO_NOTHING, related_name='evaluationdatasets')
     prompt = models.ForeignKey(EvaluationDatasetText, models.DO_NOTHING)
@@ -70,7 +79,6 @@ class ModelResponse(models.Model):
     class Meta:
         db_table = 'ModelResponse'
         unique_together = (('evaluationdataset', 'model', 'prompt'),)
-
 
 class AutomaticEvaluation(models.Model):
     model = models.ForeignKey('Model', models.DO_NOTHING, primary_key=True)
@@ -88,10 +96,17 @@ class HumanEvaluationsABComparison(models.Model):
     evaluationdataset = models.ForeignKey(EvaluationDatasetText, models.DO_NOTHING)
     prompt = models.ForeignKey(EvaluationDatasetText, models.DO_NOTHING, related_name='prompts')
     worker_id = models.CharField(max_length=100)
-    hit = models.CharField(db_column='HIT', max_length=100)  # Field name made lowercase.
+    hit = models.CharField(db_column='HIT', max_length=100)
     submit_datetime = models.DateTimeField()
     results_path = models.TextField()
     value = models.IntegerField()
 
     class Meta:
         db_table = 'HumanEvaluationsABComparison'
+
+class ModelSubmission(models.Model):
+    date = models.DateTimeField()
+    model = models.ForeignKey('Model', models.DO_NOTHING)
+    
+    class Meta:
+        db_table = 'ModelSubmission'

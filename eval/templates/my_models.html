@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="hero has-text-centered is-success is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Uploaded Models
+      </h1>
+      <h2 class="subtitle">
+        Author: {{ user.get_username }}
+      </h2>
+      <br>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="columns">
+    <div class="column is-one-quarter">
+      <form method="GET" action="/evaluations">
+        <div class="control" name="model">
+          <br>
+          <label class="label">Filter by:</label>
+          <div class="select">
+            <select name="model">
+              <option>filter 1</option>
+            </select>
+          </div>
+        </div>
+        <br>
+        <input type="submit" value="Refine Search" class="button is-success">
+      </form>
+    </div>    
+    <div class="column">
+      <br>
+      <div class="columns is-multiline">
+        {% for model in models %}
+        <div class="column is-half">
+          <div class="card">
+            <div class="card-content">
+              <h2 class="text is-size-5"><strong>{{ model.name }}</strong></h2>
+              <p class="text"><strong>Description:</strong> {{ model.description }} </p>
+              <p class="text"><strong>Repository:</strong> {{ model.repo_location }} </p>
+              <br>
+              <a href="/eval/run" class="button">Run Automatic Evaluation</a>
+            </div>
+          </div>
+        </div>  
+        {% endfor %}
+      </div>    
+    </div>
+  </div>
+</div>
+{% endblock %}

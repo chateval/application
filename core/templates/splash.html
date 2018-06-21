@@ -29,13 +29,13 @@
         <div class="columns is-multiline" style="padding-bottom:0rem; padding-top: 0rem">  
           {% for dataset in datasets %}
           <div class="column is-half">
-            <a href="">
+            <a href="{{dataset.source}}">
               <div class="box">
                 <article class="media">
                   <div class="media-content">
                     <div class="content">
                       <p>
-                        <strong> {{dataset.name}} </strong> <br>
+                        <strong> {{dataset.long_name}} </strong> <br>
                         <small> {{dataset.description}} </small>
                         <br>
                       </p>

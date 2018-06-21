@@ -25,10 +25,15 @@ def splash(request):
     return render(request, 'splash.html', {'datasets': datasets, 'baselines': baselines})
 
 def models(request):
-    return render(request, 'models.html', {})
+    models = Model.objects.all()
+    return render(request, 'models.html', {'models': models})
 
 def conversations(request):
-    return render(request, 'conversations.html', {})
+    models = Model.objects.all()
+    datasets = EvaluationDataset.objects.all()
+    if request.method == "POST":
+        return render(request, 'conversations.html', {'POST': True, 'models': models, 'datasets': datasets})
+    return render(request, 'conversations.html', {'POST': False, 'models': models, 'datasets': datasets})
 
 def submit(request):
     response_files = EvaluationDataset.objects.all()

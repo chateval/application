@@ -1,0 +1,2 @@
+/data2/chatbot_eval_issues/results/AMT_NCM_Test_Human1_Human2/neural_conv_model_joao_responses.txt
+/data2/chatbot_eval_issues/results/AMT_NCM_Test_Human1_Human2/neural_conv_model_eval_responses_human_2.txt

@@ -21,7 +21,7 @@ class Author(models.Model):
 
 class Model(models.Model):
     model_id = models.BigAutoField(primary_key=True)
-    name = models.CharField(unique=True, max_length=255)
+    name = models.CharField(max_length=255)
     description = models.TextField()
     author = models.ForeignKey(Author, models.DO_NOTHING)
     cp_location = models.TextField()
@@ -32,7 +32,7 @@ class Model(models.Model):
         db_table = 'Model'
     
 class ModelSubmission(models.Model):
-    submission_id = models.AutoField(primary_key=True)
+    submission_id = models.BigAutoField(primary_key=True)
     date = models.DateTimeField()
     model = models.ForeignKey('Model', models.DO_NOTHING)
     

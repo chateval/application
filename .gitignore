@@ -2,9 +2,6 @@ db.sqlite3
 .vscode
 __pycache__
 env.sh
-<<<<<<< HEAD
-=======
 venv/
->>>>>>> 08627fb6abf7bb6089748d3bfc5993dcc6ddda02
 app/__pycache__
 chateval/__pycache__

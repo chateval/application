@@ -8,7 +8,7 @@ from .models import Baseline, Author, Model, ModelSubmission, EvaluationDataset,
 from .forms import UploadModelForm
 from chateval.settings import AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY, AWS_STORAGE_BUCKET_NAME, AWS_STORAGE_BUCKET_LOCATION
 
-def load_responses(response_file, dataset, model):
+def load_responses(response_file, dataset, model, submission):
     response = requests.get(response_file)
     data = response.text
     responses = data.split('\n')
@@ -16,7 +16,7 @@ def load_responses(response_file, dataset, model):
     prompts = EvaluationDatasetText.objects.all().filter(evaluationdataset=dataset)
     
     for i in range(len(responses)):
-        model_response = ModelResponse(evaluationdataset=dataset, prompt=prompts[i], model=model, response_text=responses[i])
+        model_response = ModelResponse(model_submission=submission, evaluationdataset=dataset, prompt=prompts[i], model=model, response_text=responses[i])
         model_response.save()
 
 def splash(request):
@@ -52,12 +52,12 @@ def submit(request):
 
             for response_file in response_files:
                 if request.FILES.get(response_file.name) is not None:
-                    file_path = 'models/' + str(model_submission.id) + '-' + request.FILES.get(response_file.name).name
+                    file_path = 'models/' + str(model_submission.submission_id) + '-' + request.FILES.get(response_file.name).name
                     session = boto3.session.Session(aws_access_key_id=AWS_ACCESS_KEY, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
                     s3 = session.resource('s3')
                     s3.Bucket(AWS_STORAGE_BUCKET_NAME).put_object(Key=file_path, Body=request.FILES.get(response_file.name))
                     dataset = EvaluationDataset.objects.get(name=response_file.name)
-                    load_responses(AWS_STORAGE_BUCKET_LOCATION + file_path, dataset, model)
+                    load_responses(AWS_STORAGE_BUCKET_LOCATION + file_path, dataset, model, model_submission)
 
             return HttpResponseRedirect('/evaluation/')
     form = UploadModelForm()

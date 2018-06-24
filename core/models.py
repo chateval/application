@@ -21,7 +21,7 @@ class Author(models.Model):
 
 class Model(models.Model):
     model_id = models.BigAutoField(primary_key=True)
-    name = models.CharField(unique=True, max_length=255)
+    name = models.CharField(max_length=255)
     description = models.TextField()
     author = models.ForeignKey(Author, models.DO_NOTHING)
     cp_location = models.TextField()
@@ -30,6 +30,14 @@ class Model(models.Model):
 
     class Meta:
         db_table = 'Model'
+    
+class ModelSubmission(models.Model):
+    submission_id = models.BigAutoField(primary_key=True)
+    date = models.DateTimeField()
+    model = models.ForeignKey('Model', models.DO_NOTHING)
+    
+    class Meta:
+        db_table = 'ModelSubmission'
 
 class Metric(models.Model):
     metric_id = models.BigAutoField(primary_key=True)
@@ -75,6 +83,7 @@ class ModelResponse(models.Model):
     evaluationdataset = models.ForeignKey(EvaluationDataset, models.DO_NOTHING, related_name='evaluationdatasets')
     prompt = models.ForeignKey(EvaluationDatasetText, models.DO_NOTHING)
     response_text = models.TextField()
+    model_submission = models.ForeignKey(ModelSubmission, models.DO_NOTHING)
 
     class Meta:
         db_table = 'ModelResponse'
@@ -103,10 +112,3 @@ class HumanEvaluationsABComparison(models.Model):
 
     class Meta:
         db_table = 'HumanEvaluationsABComparison'
-
-class ModelSubmission(models.Model):
-    date = models.DateTimeField()
-    model = models.ForeignKey('Model', models.DO_NOTHING)
-    
-    class Meta:
-        db_table = 'ModelSubmission'

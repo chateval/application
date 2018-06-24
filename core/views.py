@@ -8,11 +8,22 @@ from .models import Baseline, Author, Model, ModelSubmission, EvaluationDataset,
 from .forms import UploadModelForm
 from chateval.settings import AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY, AWS_STORAGE_BUCKET_NAME, AWS_STORAGE_BUCKET_LOCATION
 
+def get_messages(model_id, evalset_id):
+    messages = list()
+    model = Model.objects.get(model_id=model_id)
+    dataset = EvaluationDataset.objects.get(evalset_id=evalset_id)
+    responses = ModelResponse.objects.filter(model=model.model_id, evaluationdataset=dataset.evalset_id)
+    for response in responses:
+        message = dict()
+        message['prompt'] = response.prompt.prompt_text
+        message['response'] = response.response_text
+        messages.append(message)
+    return messages
+
 def load_responses(response_file, dataset, model, submission):
     response = requests.get(response_file)
     data = response.text
     responses = data.split('\n')
-
     prompts = EvaluationDatasetText.objects.all().filter(evaluationdataset=dataset)
     
     for i in range(len(responses)):
@@ -24,16 +35,14 @@ def splash(request):
     baselines = Baseline.objects.all()
     return render(request, 'splash.html', {'datasets': datasets, 'baselines': baselines})
 
-def models(request):
-    models = Model.objects.all()
-    return render(request, 'models.html', {'models': models})
-
 def conversations(request):
     models = Model.objects.all()
     datasets = EvaluationDataset.objects.all()
+    messages = list()
     if request.method == "POST":
-        return render(request, 'conversations.html', {'POST': True, 'models': models, 'datasets': datasets})
-    return render(request, 'conversations.html', {'POST': False, 'models': models, 'datasets': datasets})
+        messages = get_messages(request.POST['model_id'], request.POST['evalset_id'])
+        return render(request, 'conversations.html', {'POST': True, 'messages': messages, 'models': models, 'datasets': datasets})
+    return render(request, 'conversations.html', {'POST': False, 'messages': messages, 'models': models, 'datasets': datasets})
 
 def submit(request):
     response_files = EvaluationDataset.objects.all()

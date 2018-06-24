@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect
 from .models import Baseline, Author, Model, ModelSubmission, EvaluationDataset, EvaluationDatasetText, ModelResponse
 from .forms import UploadModelForm
 from chateval.settings import AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY, AWS_STORAGE_BUCKET_NAME, AWS_STORAGE_BUCKET_LOCATION
-
+from eval.scripts.human_evaluations import upload
 def load_responses(response_file, dataset, model):
     response = requests.get(response_file)
     data = response.text
@@ -57,3 +57,7 @@ def submit(request):
             return HttpResponseRedirect('/evaluation/')
     form = UploadModelForm()
     return render(request, 'submit.html', {'form': form, 'response_files': response_files})
+
+def test(request):
+    upload()
+    return render(request, 'models.html', {})    

@@ -8,7 +8,7 @@ import pickle
 import scipy.stats
 import numpy as np
 
-from .utils import *
+import utils
 
 
 parser = argparse.ArgumentParser(description='Analyze the AMT HIT results for all of the provided HIT ids.')

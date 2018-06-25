@@ -37,8 +37,25 @@ def splash(request):
     return render(request, 'splash.html', {'datasets': datasets, 'baselines': baselines})
 
 def conversations(request):
+    
     models = Model.objects.all()
     datasets = EvaluationDataset.objects.all()
+
+    #Queries all the conversations 
+    '''
+    conversations = {}
+    for model in models:
+        conversations[model] = {}
+        for dataset in datasets:
+            conversations[model][dataset] = []
+            prompts = EvaluationDatasetText.objects.filter(evaluationdataset_id=dataset.evalset_id)
+            for prompt in prompts:
+                response = ModelResponse.objects.filter(model_id=model.model_id, evaluationdataset_id=dataset.evalset_id, prompt_id=prompt.prompt_id)
+                
+                if response != []:
+                    print(response)
+                    conversations[model][dataset].append({prompt: prompt.prompt_text, response:response[0].response_text})
+    '''
     messages = list()
     if request.method == "POST":
         messages = get_messages(request.POST['model_id'], request.POST['evalset_id'])

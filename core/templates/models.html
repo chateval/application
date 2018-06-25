@@ -25,11 +25,24 @@
             <div class="select">
               <select name="model" id="modelSelection">
                 {% for model in models %}
-                <option>{{model.name}}</option>
+                <option onclick="doSomething();">{{model.name}}</option>
                 {% endfor %} 
               </select>
             </div>
           </div>
+          <br>
+          <div class="control">
+            <label class="label">Evaluation Dataset</label>
+            <div class="select">
+              <select name="evalset_id">
+                {% for dataset in datasets %}
+                <option value="{{dataset.evalset_id}}">{{dataset.name}}</option>
+                {% endfor %} 
+              </select>
+            </div>
+            <br>
+          </div>
+          
           <br>
           <input type="submit" value="View Automatic Evaluation" class="button is-success">
         </form>
@@ -196,7 +209,6 @@
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
   <script type="text/javascript">
-    console.log("running script")
     google.charts.load('current', {packages: ['corechart', 'bar']});
     google.charts.setOnLoadCallback(drawStuff);
 
@@ -254,10 +266,16 @@
     var dataTable = google.visualization.arrayToDataTable(output);
     var chart = new google.visualization.BarChart(document.getElementById("chart_div"));
     chart.draw(dataTable, options);
-
-
-
     }
+
     
+    
+  </script>
+
+
+  <script type="text/javascript">
+    function doSomething() {
+      console.log("chose option");
+    }
   </script>
 {% endblock %}

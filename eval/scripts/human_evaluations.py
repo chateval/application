@@ -15,7 +15,7 @@ def upload():
     for line in open(os.path.abspath(os.path.join('setc_runs.csv'))).readlines()[0:1]:
         evalset,m1,m2,folder = line.strip('\n').split(',')
 
-        target_files = open(os.path.abspath(os.path.join(folder + '/order.txt'))).readlines()
+        target_files = open(os.path.abspath(os.path.join('eval/scripts/Human_Evaluations/' + folder + '/order.txt'))).readlines()
         target_files = [os.path.abspath(os.path.join(x.strip().replace('/data2/chatbot_eval_issues/results/',''))) for x in target_files]
         print('Model 1 is: ' + target_files[0], m1)                                                                                      
         print('Model 2 is: ' + target_files[1], m2)                                                                                      
@@ -45,14 +45,15 @@ def upload():
 
         process_amt_hit_responses(worker_results_list, examples_dict)
 
-        
+        print(m1 + " " + m2 + " " + evalset)
+
         #Query to get model_1, model_2, evaluationdataset_id and the prompts
         model_1 = Model.objects.all().filter(name=m1)
         model_2 = Model.objects.all().filter(name=m2)
         eset = EvaluationDataset.objects.all().filter(name=evalset) 
         prompts = EvaluationDatasetText.objects.all().filter(evaluationdataset=eset[0])
         prompts.order_by('prompt_id')
-
+        print(len(prompts))
         count = 0
 
         for (key, ex) in examples_dict.items():
@@ -63,13 +64,14 @@ def upload():
 
                 v = HumanEvaluationsABComparison(model_1=model_1[0], model_2=model_2[0], evaluationdataset=eset[0], prompt=prompts[count], worker_id=worker, hit="?", submit_datetime=datetime.now(), results_path="path?", value=vote)
                 count += 1
-                v.save()
+                #print(count)
+                #v.save()
 
                 if 1: # vote != -1:                                                                                                   
-                    print(worker + '\t' +  m1.replace(' ','_')+'-'+m2.replace(' ','_')+'-'+key + '\t' +  str(vote))
+                    #print(worker + '\t' +  m1.replace(' ','_')+'-'+m2.replace(' ','_')+'-'+key + '\t' +  str(vote))
                     data.append((worker, str(vote), m1.replace(' ','_')+'-'+m2.replace(' ','_')+'-'+key))
 
-        print(m1 + " " + m2 + " " + evalset)
+        
 
         
 

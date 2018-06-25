@@ -102,7 +102,7 @@ class AutomaticEvaluation(models.Model):
 class HumanEvaluationsABComparison(models.Model):
     model_1 = models.ForeignKey('Model', models.DO_NOTHING, db_column='model_1', related_name='model_1')
     model_2 = models.ForeignKey('Model', models.DO_NOTHING, db_column='model_2', related_name='model_2')
-    evaluationdataset = models.ForeignKey(EvaluationDatasetText, models.DO_NOTHING)
+    evaluationdataset = models.ForeignKey(EvaluationDataset, models.DO_NOTHING)
     prompt = models.ForeignKey(EvaluationDatasetText, models.DO_NOTHING, related_name='prompts')
     worker_id = models.CharField(max_length=100)
     hit = models.CharField(db_column='HIT', max_length=100)

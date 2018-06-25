@@ -1,0 +1,1000 @@
+
+Source: What 's your favorite hobby ?
+Candidate target: What .
+Candidate target: My favorite hobby .
+Winner is....: [1, 0, 1] 
+
+Source: hi there !
+Candidate target: hi !
+Candidate target: hi .
+Winner is....: [-1, -1, 0] 
+
+Source: i am not a huge fan of board games
+Candidate target: you are a games
+Candidate target: i am not a fan .
+Winner is....: [-1, 1, 1] 
+
+Source: Super going to the beach this weekend
+Candidate target: Yeah .
+Candidate target: Yeah .
+Winner is....: It's a tie! 
+
+Source: What about the news ?
+Candidate target: The news .
+Candidate target: What news ?
+Winner is....: [1, 1, 1] 
+
+Source: Where 's that last name from ?
+Candidate target: Where .
+Candidate target: ? .
+Winner is....: [0, 0, 0] 
+
+Source: Do you like cats
+Candidate target: Yes .
+Candidate target: I like cats .
+Winner is....: [0, -1, 0] 
+
+Source: hey please behave yourself !
+Candidate target: hey !
+Candidate target: I 'm sorry .
+Winner is....: [1, -1, 1] 
+
+Source: how about Baseball ?
+Candidate target: No .
+Candidate target: No .
+Winner is....: It's a tie! 
+
+Source: But you are more
+Candidate target: But .
+Candidate target: Yes .
+Winner is....: [-1, 1, 1] 
+
+Source: Well , I guess this is goodbye .
+Candidate target: .
+Candidate target: Yeah .
+Winner is....: [1, 1, 0] 
+
+Source: Have you been well ?
+Candidate target: Yes .
+Candidate target: Yes .
+Winner is....: It's a tie! 
+
+Source: yes tell me
+Candidate target: I &apos;m sorry .
+Candidate target: yes .
+Winner is....: [1, 0, 0] 
+
+Source: I don 't think so . That 's pretty rude , actually . What else did you want to talk about ?
+Candidate target: I don &apos;t know .
+Candidate target: Nothing .
+Winner is....: [0, 1, -1] 
+
+Source: i like food
+Candidate target: delicious .
+Candidate target: i like food .
+Winner is....: [0, 1, 0] 
+
+Source: what do you know Alex
+Candidate target: I know .
+Candidate target: What do you know ? what do you know ? what do you know ? what do you know ? what do you know ? what do you know ? what do you know ? what do you know ? what do you know ? what do you know ? what do you know ? what do you know ? what do you know ? what do you know ? what do you know ? what do you know ? what do you know ? what do you know ? what do you know ? what do you know ?
+Winner is....: [0, 0, 1] 
+
+Source: Is Robbie a girl ?
+Candidate target: No .
+Candidate target: No .
+Winner is....: It's a tie! 
+
+Source: There is so much great music out there I don 't blame you .
+Candidate target: No , I don &apos;t .
+Candidate target: Yes .
+Winner is....: [1, 1, 0] 
+
+Source: when you don 't like what ?
+Candidate target: I don &apos;t know .
+Candidate target: I don 't .
+Winner is....: [1, 0, 1] 
+
+Source: So what was the last movie you saw ?
+Candidate target: So .
+Candidate target: I don 't remember .
+Winner is....: [1, 1, 0] 
+
+Source: Is this your first time flying ?
+Candidate target: Yes .
+Candidate target: Yes .
+Winner is....: It's a tie! 
+
+Source: oh , ok ..
+Candidate target: ok .
+Candidate target: ok
+Winner is....: [1, 1, -1] 
+
+Source: what ? you are not my boss
+Candidate target: you are the boss .
+Candidate target: you are my boss i am your boss i am your boss i am your boss i am your boss i am your boss i am your boss i am your boss i am your boss i am your boss i am your boss i am your boss i am your boss i am your boss i am your boss i am your boss i am your boss i am your boss i am your boss i am your boss i am your boss i am your boss i am your boss i am your boss i am your boss
+Winner is....: [0, 0, 0] 
+
+Source: Hi : )
+Candidate target: Yes .
+Candidate target: Hi .
+Winner is....: [1, 1, 1] 
+
+Source: What do you get high on ?
+Candidate target: What .
+Candidate target: Nothing .
+Winner is....: [-1, 1, -1] 
+
+Source: I have never really been interested
+Candidate target: No .
+Candidate target: Never .
+Winner is....: [0, 1, 0] 
+
+Source: me too
+Candidate target: me .
+Candidate target: I don 't know you too well
+Winner is....: [0, 0, -1] 
+
+Source: ups , sorry , what is it then ?
+Candidate target: I don &apos;t know .
+Candidate target: Nothing .
+Winner is....: [0, 1, 1] 
+
+Source: My favorite movie is Liar Liar .
+Candidate target: My !
+Candidate target: That 's right .
+Winner is....: [1, 0, 1] 
+
+Source: Both . I play softball and watch baseball and football .
+Candidate target: Yeah .
+Candidate target: Yeah .
+Winner is....: It's a tie! 
+
+Source: Already bored of politics ? Okay let 's talk about television shows .
+Candidate target: Already Okay
+Candidate target: I don 't think so .
+Winner is....: [-1, 1, 1] 
+
+Source: llaollao
+Candidate target: llaollao .
+Candidate target: llaollao ?
+Winner is....: [-1, 1, -1] 
+
+Source: yes , believe i dont really have neither time nor good mood to talk to you
+Candidate target: this is not a good time
+Candidate target: i dont want to talk to you
+Winner is....: [0, 0, -1] 
+
+Source: yes ?
+Candidate target: yes .
+Candidate target: I 'm sorry .
+Winner is....: [0, 0, 0] 
+
+Source: what are you up to ?
+Candidate target: Nothing .
+Candidate target: Nothing .
+Winner is....: It's a tie! 
+
+Source: OK , what do you think about politics today ?
+Candidate target: I don &apos;t know .
+Candidate target: What do you think about politics ?
+Winner is....: [1, 0, 0] 
+
+Source: who is your favorite composer ?
+Candidate target: who .
+Candidate target: ? .
+Winner is....: [0, 0, 0] 
+
+Source: I don 't think so .
+Candidate target: I .
+Candidate target: I think so .
+Winner is....: [0, 1, 1] 
+
+Source: Are you a real person ?
+Candidate target: Yes .
+Candidate target: Yes .
+Winner is....: It's a tie! 
+
+Source: Really well I like Anchovies and Pineapple on my pizza .
+Candidate target: Really .
+Candidate target: Yeah , I like that .
+Winner is....: [1, 1, -1] 
+
+Source: fine with me !
+Candidate target: fine !
+Candidate target: I 'm fine .
+Winner is....: [0, 1, 0] 
+
+Source: ok , what happened to your dad 's mouth
+Candidate target: I don &apos;t know .
+Candidate target: 
+Winner is....: [0, 0, -1] 
+
+Source: I was busy
+Candidate target: I .
+Candidate target: Yeah .
+Winner is....: [1, 1, 1] 
+
+Source: do you like usher ?
+Candidate target: yeah .
+Candidate target: Yeah .
+Winner is....: [-1, -1, 0] 
+
+Source: You are a robot
+Candidate target: Yes .
+Candidate target: Yes .
+Winner is....: It's a tie! 
+
+Source: do you like michael jackson ?
+Candidate target: no .
+Candidate target: Yeah .
+Winner is....: [-1, -1, 1] 
+
+Source: here ?
+Candidate target: Yes .
+Candidate target: I 'm here .
+Winner is....: [1, 0, 0] 
+
+Source: What is you favorite song ?
+Candidate target: What .
+Candidate target: What ?
+Winner is....: [0, 0, 1] 
+
+Source: how are you
+Candidate target: I &apos;m fine .
+Candidate target: how are you ?
+Winner is....: [0, 0, 1] 
+
+Source: Which movie is your favorite ?
+Candidate target: Which .
+Candidate target: ? .
+Winner is....: [0, 0, 0] 
+
+Source: Yes , that 's what I asked . What did I do ?
+Candidate target: I said I &apos;m sorry .
+Candidate target: What did I do ?
+Winner is....: [-1, 0, 0] 
+
+Source: I don 't know , so you tell me
+Candidate target: Yeah .
+Candidate target: You tell me .
+Winner is....: [0, 1, 0] 
+
+Source: Do you have pets ?
+Candidate target: No .
+Candidate target: No .
+Winner is....: It's a tie! 
+
+Source: do you really think so ?
+Candidate target: yes .
+Candidate target: Yes .
+Winner is....: [-1, 0, -1] 
+
+Source: No I don 't watch football in that way .
+Candidate target: No .
+Candidate target: No .
+Winner is....: It's a tie! 
+
+Source: What would you like to chat about ?
+Candidate target: I don &apos;t know .
+Candidate target: I 'd like to talk to you .
+Winner is....: [0, 1, 1] 
+
+Source: yes it is
+Candidate target: yes .
+Candidate target: it is not that it is not it it is it it is it it is it it is that it is it it is that it is it ? it is it it is it it is it it is it it is that it is it ? it is it it is it it is it it is that it is it it is it it is that it is it ? it is it it is it it is it it is that it is it it is that it is it it is it it is
+Winner is....: [-1, 0, 0] 
+
+Source: I love movies
+Candidate target: I .
+Candidate target: I love movies .
+Winner is....: [1, 1, 1] 
+
+Source: You think I 'm funny ?
+Candidate target: No .
+Candidate target: No .
+Winner is....: It's a tie! 
+
+Source: I don 't get you
+Candidate target: I .
+Candidate target: I get you .
+Winner is....: [1, 1, 1] 
+
+Source: I know ... me too . Do you think they will have a movie on this flight ?
+Candidate target: I don &apos;t know .
+Candidate target: Yes .
+Winner is....: [1, 0, -1] 
+
+Source: Where is your last name from ?
+Candidate target: Where .
+Candidate target: ? .
+Winner is....: [-1, -1, -1] 
+
+Source: but I think I love her too much
+Candidate target: I love her .
+Candidate target: I love her too much .
+Winner is....: [-1, -1, 1] 
+
+Source: do you know any other jokes ?
+Candidate target: No .
+Candidate target: No .
+Winner is....: It's a tie! 
+
+Source: What do you mean by that
+Candidate target: Well , I mean , you know , I mean , you know ...
+Candidate target: Well , I mean , I mean ...
+Winner is....: [-1, 1, 1] 
+
+Source: Hello !
+Candidate target: Hello !
+Candidate target: Hello ?
+Winner is....: [0, 0, 0] 
+
+Source: hi
+Candidate target: 
+Candidate target: i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i
+Winner is....: [0, 1, 1] 
+
+Source: ok , do it . I want to see
+Candidate target: ok .
+Candidate target: ok .
+Winner is....: It's a tie! 
+
+Source: nope
+Candidate target: nope .
+Candidate target: It 's freezing .
+Winner is....: [0, 1, -1] 
+
+Source: I like cake .
+Candidate target: I .
+Candidate target: I like cake .
+Winner is....: [1, 1, 1] 
+
+Source: it 's already in my pocket !
+Candidate target: it !
+Candidate target: ! !
+Winner is....: [1, 0, 1] 
+
+Source: Where are they ?
+Candidate target: I don &apos;t know .
+Candidate target: Where are they ?
+Winner is....: [0, 0, 0] 
+
+Source: Not really
+Candidate target: I don &apos;t know .
+Candidate target: No .
+Winner is....: [0, 0, -1] 
+
+Source: that is not funny
+Candidate target: that .
+Candidate target: No joke .
+Winner is....: [-1, 1, 1] 
+
+Source: I have no idea
+Candidate target: no idea .
+Candidate target: No idea .
+Winner is....: [-1, 1, 0] 
+
+Source: Do you have any hobbies ?
+Candidate target: No .
+Candidate target: No .
+Winner is....: It's a tie! 
+
+Source: thanks darling you are so sweet
+Candidate target: I am fine
+Candidate target: thank you
+Winner is....: [-1, 1, -1] 
+
+Source: Pizza
+Candidate target: .
+Candidate target: Pizza pizza pizza pizza pizza pizza pizza pizza pizza pizza pizza pizza pizza pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza Pizza
+Winner is....: [1, 1, 1] 
+
+Source: what is that
+Candidate target: it &apos;s a what .
+Candidate target: what is that ?
+Winner is....: [1, 0, 0] 
+
+Source: You tell me , you said you do not know what happened to you .
+Candidate target: I do not know .
+Candidate target: No .
+Winner is....: [1, 1, -1] 
+
+Source: I think she knows but she prefers another guy
+Candidate target: I don &apos;t know .
+Candidate target: I think she loves you .
+Winner is....: [1, 0, -1] 
+
+Source: hi my friend how are you doing today ?
+Candidate target: good .
+Candidate target: good .
+Winner is....: It's a tie! 
+
+Source: no
+Candidate target: .
+Candidate target: no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no
+Winner is....: [1, 0, 0] 
+
+Source: sir you are a joke
+Candidate target: I am not joking
+Candidate target: I am joking
+Winner is....: [1, -1, 1] 
+
+Source: ok , tell me about your weekend
+Candidate target: I don &apos;t know .
+Candidate target: I have plans .
+Winner is....: [1, 1, 0] 
+
+Source: I enjoy pizza and mac n cheese . What about you ?
+Candidate target: I don &apos;t know .
+Candidate target: I don 't have any .
+Winner is....: [1, 0, 1] 
+
+Source: What guy are you referring to ?
+Candidate target: The guy you &apos;re looking for .
+Candidate target: The guy who killed my brother .
+Winner is....: [1, -1, -1] 
+
+Source: How about a poem ?
+Candidate target: No , no .
+Candidate target: A poem ?
+Winner is....: [-1, 1, -1] 
+
+Source: do you listen to music ?
+Candidate target: yes .
+Candidate target: No .
+Winner is....: [0, 1, -1] 
+
+Source: Well , who are you ?
+Candidate target: I &apos;m Well .
+Candidate target: Who are you ?
+Winner is....: [1, 1, -1] 
+
+Source: What is the square root of pi ?
+Candidate target: What .
+Candidate target: ? .
+Winner is....: [1, 0, 1] 
+
+Source: what is my name
+Candidate target: you don &apos;t know me .
+Candidate target: what is my name ?
+Winner is....: [0, 1, 0] 
+
+Source: Do you like to dance ?
+Candidate target: Yes .
+Candidate target: Yes .
+Winner is....: It's a tie! 
+
+Source: Well great . What 's your favorite movie ?
+Candidate target: Well
+Candidate target: What 's your favorite movie ?
+Winner is....: [1, 0, 1] 
+
+Source: ok what is the weather like where you are ?
+Candidate target: I don &apos;t know .
+Candidate target: what is it ?
+Winner is....: [0, 0, 0] 
+
+Source: Yes , that might be true for a lot of things but some things can only be done by humans .
+Candidate target: Yes .
+Candidate target: Yes .
+Winner is....: It's a tie! 
+
+Source: Okay , I like to watch comedies .
+Candidate target: Okay .
+Candidate target: Yeah .
+Winner is....: [1, 1, -1] 
+
+Source: Sorry , I thought you might want to talk .
+Candidate target: I &apos;m sorry .
+Candidate target: Yeah .
+Winner is....: [1, 1, 1] 
+
+Source: I like dancing
+Candidate target: .
+Candidate target: I like dancing .
+Winner is....: [1, 0, 1] 
+
+Source: oh no you mean
+Candidate target: it &apos;s not like that
+Candidate target: oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah
+Winner is....: [0, 0, 0] 
+
+Source: why
+Candidate target: .
+Candidate target: why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why why
+Winner is....: [-1, -1, -1] 
+
+Source: have you tried llaollao before ?
+Candidate target: No .
+Candidate target: No .
+Winner is....: It's a tie! 
+
+Source: Is your mom okay ?
+Candidate target: Yeah .
+Candidate target: Yeah .
+Winner is....: It's a tie! 
+
+Source: Are you trying to rob me
+Candidate target: No .
+Candidate target: No .
+Winner is....: It's a tie! 
+
+Source: don 't you have any idea about equality ?
+Candidate target: don .
+Candidate target: No .
+Winner is....: [0, 1, 1] 
+
+Source: i want to eat
+Candidate target: i .
+Candidate target: i want to eat .
+Winner is....: [0, 1, 1] 
+
+Source: i don 't know much about sports
+Candidate target: you know , I don &apos;t know .
+Candidate target: no .
+Winner is....: [1, -1, -1] 
+
+Source: That is amazing . Are you nervous ?
+Candidate target: No .
+Candidate target: No .
+Winner is....: It's a tie! 
+
+Source: Dignan who ?
+Candidate target: Dignan .
+Candidate target: Dignan .
+Winner is....: It's a tie! 
+
+Source: I see . So where are you from ?
+Candidate target: I
+Candidate target: ? .
+Winner is....: [1, 0, 0] 
+
+Source: Did you vote ?
+Candidate target: No .
+Candidate target: No .
+Winner is....: It's a tie! 
+
+Source: Wow , mine too .
+Candidate target: Oh , my God .
+Candidate target: Yeah .
+Winner is....: [-1, 0, 1] 
+
+Source: I am trying to figure out who you voted for since you want to talk politics .
+Candidate target: I .
+Candidate target: I 'm trying to talk to you .
+Winner is....: [1, 1, -1] 
+
+Source: What are you ?
+Candidate target: What .
+Candidate target: ? .
+Winner is....: [1, 0, 0] 
+
+Source: Do you have a family ?
+Candidate target: No .
+Candidate target: No .
+Winner is....: It's a tie! 
+
+Source: what 's a joke ?
+Candidate target: I don &apos;t know .
+Candidate target: It 's a joke .
+Winner is....: [0, 0, -1] 
+
+Source: Gotcha . What 's your favorite book ?
+Candidate target: I don &apos;t know .
+Candidate target: ? .
+Winner is....: [0, 0, 0] 
+
+Source: wow thats old .
+Candidate target: ok
+Candidate target: i 'm sorry .
+Winner is....: [1, 1, 0] 
+
+Source: what is your name ?
+Candidate target: what .
+Candidate target: ? .
+Winner is....: [0, 0, 1] 
+
+Source: Do you have a cat ?
+Candidate target: No .
+Candidate target: No .
+Winner is....: It's a tie! 
+
+Source: I 've never seen that movie , what is it about ?
+Candidate target: I don &apos;t know .
+Candidate target: What 's it about ?
+Winner is....: [0, 0, 0] 
+
+Source: wow , what happened ?
+Candidate target: I don &apos;t know .
+Candidate target: what happened ?
+Winner is....: [1, 0, 1] 
+
+Source: I play guitar do you play anything
+Candidate target: No .
+Candidate target: No .
+Winner is....: It's a tie! 
+
+Source: yes ? why ?
+Candidate target: I don &apos;t know .
+Candidate target: why ?
+Winner is....: [1, 0, 0] 
+
+Source: I cannot believe it ! ! !
+Candidate target: I !
+Candidate target: ! !
+Winner is....: [1, 1, 0] 
+
+Source: Oh , ok . So , do you follow any sports ?
+Candidate target: No .
+Candidate target: No .
+Winner is....: It's a tie! 
+
+Source: Agreed . Do you watch sports ?
+Candidate target: Sure .
+Candidate target: No .
+Winner is....: [-1, 1, -1] 
+
+Source: you are smart you know
+Candidate target: you are smart
+Candidate target: Know me ?
+Winner is....: [1, 0, -1] 
+
+Source: What about music ?
+Candidate target: I don &apos;t know .
+Candidate target: What about music ?
+Winner is....: [0, 1, -1] 
+
+Source: Is it funny ?
+Candidate target: No .
+Candidate target: No .
+Winner is....: It's a tie! 
+
+Source: what exactly you want to have ?
+Candidate target: I don &apos;t know .
+Candidate target: Nothing .
+Winner is....: [0, 0, -1] 
+
+Source: hi baby , how are you ?
+Candidate target: I &apos;m fine .
+Candidate target: Hi .
+Winner is....: [1, 0, 0] 
+
+Source: Like go out to eat ?
+Candidate target: No .
+Candidate target: Yeah .
+Winner is....: [0, -1, -1] 
+
+Source: I do like you
+Candidate target: I .
+Candidate target: Like you like me .
+Winner is....: [1, 0, 1] 
+
+Source: Ok , done !
+Candidate target: Yeah .
+Candidate target: Yes !
+Winner is....: [1, 0, -1] 
+
+Source: Do you know what chess is ?
+Candidate target: No .
+Candidate target: No .
+Winner is....: It's a tie! 
+
+Source: Okay when ?
+Candidate target: Tomorrow .
+Candidate target: Soon .
+Winner is....: [-1, -1, -1] 
+
+Source: What was it about ?
+Candidate target: I don &apos;t know .
+Candidate target: What was it about ?
+Winner is....: [0, 0, 1] 
+
+Source: The sun is shining and there are no clouds in the sky .
+Candidate target: The .
+Candidate target: The sun is shining ?
+Winner is....: [1, 1, 0] 
+
+Source: how are you today
+Candidate target: fine .
+Candidate target: how are you today ?
+Winner is....: [0, 0, 0] 
+
+Source: good for you dude
+Candidate target: good .
+Candidate target: Yeah .
+Winner is....: [0, -1, 1] 
+
+Source: I would like to talk about movies .
+Candidate target: Yes .
+Candidate target: Yeah .
+Winner is....: [1, 1, 1] 
+
+Source: With whom ?
+Candidate target: With With .
+Candidate target: With whom ?
+Winner is....: [1, -1, 1] 
+
+Source: Do you have hands ?
+Candidate target: Yes .
+Candidate target: Yes .
+Winner is....: It's a tie! 
+
+Source: i 'm Danny !
+Candidate target: i !
+Candidate target: i 'm sorry .
+Winner is....: [-1, 1, 1] 
+
+Source: hi my friend
+Candidate target: 
+Candidate target: i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i
+Winner is....: [1, -1, 1] 
+
+Source: I 'm sorry ?
+Candidate target: I .
+Candidate target: I 'm sorry .
+Winner is....: [1, 1, 1] 
+
+Source: What happens ?
+Candidate target: What .
+Candidate target: What happens ?
+Winner is....: [-1, 1, 0] 
+
+Source: Hi .
+Candidate target: Yes .
+Candidate target: Hi .
+Winner is....: [-1, 1, 1] 
+
+Source: Yours .
+Candidate target: Yours .
+Candidate target: Mine .
+Winner is....: [1, 0, -1] 
+
+Source: No we haven 't ! It 's been like a minute
+Candidate target: No .
+Candidate target: It 's been like a minute .
+Winner is....: [-1, 0, 1] 
+
+Source: What 's up ?
+Candidate target: What .
+Candidate target: What 's up ?
+Winner is....: [0, 0, 1] 
+
+Source: That sounds good
+Candidate target: Sounds good .
+Candidate target: Sounds good .
+Winner is....: It's a tie! 
+
+Source: Do you like romance novels ?
+Candidate target: Yes .
+Candidate target: Yes .
+Winner is....: It's a tie! 
+
+Source: Sure . Which sport do you like specifically ?
+Candidate target: Sure .
+Candidate target: Um ...
+Winner is....: [1, 0, 0] 
+
+Source: blows , haha , i like it
+Candidate target: blows .
+Candidate target: No .
+Winner is....: [1, 1, 0] 
+
+Source: what ? ! who are " we " ?
+Candidate target: what .
+Candidate target: ? !
+Winner is....: [1, 0, -1] 
+
+Source: Sure . What 's your favorite ? I like trouble .
+Candidate target: I
+Candidate target: You like trouble ?
+Winner is....: [1, 1, 1] 
+
+Source: Okay well I like Basketball and Football .
+Candidate target: Yeah .
+Candidate target: Yeah .
+Winner is....: It's a tie! 
+
+Source: Hi there how are you ?
+Candidate target: I &apos;m good .
+Candidate target: Hi .
+Winner is....: [0, 0, -1] 
+
+Source: That 's a mean thing to say .
+Candidate target: No .
+Candidate target: It 's a word .
+Winner is....: [0, 1, -1] 
+
+Source: It 's actually very funny . If you like to be entertained .
+Candidate target: Yes .
+Candidate target: No , I 'm not .
+Winner is....: [0, 1, -1] 
+
+Source: ok. but who is he ?
+Candidate target: I don &apos;t know .
+Candidate target: Who is he ?
+Winner is....: [1, 0, 0] 
+
+Source: Excellent ! So am I ! Who will you visit with , exactly ?
+Candidate target: I will .
+Candidate target: ? .
+Winner is....: [0, 0, -1] 
+
+Source: Ahhh ... well , that seems very true . How are you ?
+Candidate target: Ahhh
+Candidate target: Good .
+Winner is....: [0, 1, 1] 
+
+Source: I 'm a girl
+Candidate target: I .
+Candidate target: A girl ?
+Winner is....: [1, 0, 1] 
+
+Source: What other stuff can we talk about ?
+Candidate target: I don &apos;t know .
+Candidate target: What do you mean ?
+Winner is....: [0, 1, -1] 
+
+Source: My favorite planet is pluto
+Candidate target: My .
+Candidate target: My favorite planet .
+Winner is....: [1, 1, 1] 
+
+Source: haha that 's a good joke
+Candidate target: .
+Candidate target: I 'm sorry .
+Winner is....: [1, 0, -1] 
+
+Source: I lik chess
+Candidate target: I .
+Candidate target: Yeah .
+Winner is....: [1, 0, 0] 
+
+Source: OK , I am a little
+Candidate target: Yes .
+Candidate target: OK .
+Winner is....: [-1, 0, -1] 
+
+Source: Do you like movies ?
+Candidate target: Yes .
+Candidate target: Yes .
+Winner is....: It's a tie! 
+
+Source: typo sorry . I 'm
+Candidate target: typo .
+Candidate target: Yeah .
+Winner is....: [1, -1, 1] 
+
+Source: I just recently tried that game . It was fun .
+Candidate target: It was fun .
+Candidate target: Yeah .
+Winner is....: [1, 1, 1] 
+
+Source: What do you think about equality in our world ?
+Candidate target: I don &apos;t know .
+Candidate target: What do you think ?
+Winner is....: [1, 1, 0] 
+
+Source: I don 't know about that
+Candidate target: No .
+Candidate target: I know about it .
+Winner is....: [1, 0, 1] 
+
+Source: nice to meet you wayne
+Candidate target: I do .
+Candidate target: Yeah .
+Winner is....: [1, -1, 1] 
+
+Source: Okay . I 'm a little bit confused . Let me change the topic . Do you have relatives where we 're going ?
+Candidate target: No
+Candidate target: No .
+Winner is....: [0, 0, 1] 
+
+Source: which is a good one
+Candidate target: which .
+Candidate target: Which one is a good one ?
+Winner is....: [1, 0, -1] 
+
+Source: mouse lah
+Candidate target: mouse .
+Candidate target: The mouse ?
+Winner is....: [-1, 1, -1] 
+
+Source: About what ?
+Candidate target: About what happened .
+Candidate target: About what you said .
+Winner is....: [0, 0, 0] 
+
+Source: Hockey league
+Candidate target: Yeah .
+Candidate target: Baseball league hockey league hockey league league hockey league league hockey league league hockey league hockey league hockey league hockey game hockey league hockey league hockey league hockey league hockey league hockey league league league league hockey game Playing Playing Game Playing Game Game Playing Game Game Game Playing Game Game Team Playing Game Game Baseball Game Game Playing Playing Game Game Game Game Game Game Game Game Off
+Winner is....: [-1, 1, 0] 
+
+Source: no , but very surprised you are still there
+Candidate target: I &apos;m sorry .
+Candidate target: Yes , I am .
+Winner is....: [1, 1, 1] 
+
+Source: I do enjoy watching soccer occassionally .
+Candidate target: Yeah .
+Candidate target: I do not like it .
+Winner is....: [1, 1, -1] 
+
+Source: you tell me
+Candidate target: I told you .
+Candidate target: you tell me you tell me you tell me you tell me you tell me you tell me you tell me you tell me you tell me you tell me you tell me you tell me you tell me you tell me you tell me you tell me you tell me you tell me you tell me you tell me you tell me you tell me you tell me you tell me you tell me you tell me you tell me you tell me you tell me you tell me you tell me you tell me you tell me you
+Winner is....: [-1, 0, 0] 
+
+Source: Knock what off
+Candidate target: I &apos;m sorry .
+Candidate target: Come on .
+Winner is....: [1, 1, -1] 
+
+Source: ok , i was referring to personal questions
+Candidate target: yeah .
+Candidate target: i i i i i i i i i i i i i i i i i i i i wanted to talk i i i i i i i i i i i i i i i i wanted to talk i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i dont want to talk i dont know i dont know i dont know
+Winner is....: [-1, 0, -1] 
+
+Source: I am interested in watching TV shows . How about you ?
+Candidate target: I &apos;m not interested
+Candidate target: I 'm interested .
+Winner is....: [-1, 1, -1] 
+
+Source: Because bad things are happening .
+Candidate target: No .
+Candidate target: No , no .
+Winner is....: [1, 0, 0] 
+
+Source: Why do you think that ?
+Candidate target: I don &apos;t know .
+Candidate target: I don 't know ...
+Winner is....: [-1, 0, 0] 
+
+Source: Hello ! How are you !
+Candidate target: Good .
+Candidate target: Hello ?
+Winner is....: [1, 0, -1] 
+
+Source: What did the cats do ?
+Candidate target: I don &apos;t know .
+Candidate target: What did they do ?
+Winner is....: [0, -1, 0] 
+
+Source: it means the sun is hiding behind the clouds
+Candidate target: yes it is
+Candidate target: the sun is shining
+Winner is....: [1, 0, 0] 
+
+Source: What is your favorite Tv Show ?
+Candidate target: What .
+Candidate target: What ?
+Winner is....: [-1, 0, 1] 
+
+Source: Politics ?
+Candidate target: No .
+Candidate target: No .
+Winner is....: It's a tie! 
+
+Source: Wow thank you . That 's nice of you
+Candidate target: Wow
+Candidate target: Yeah .
+Winner is....: [1, 0, 0] 
+
+Source: I am not faking anything
+Candidate target: it &apos;s not that .
+Candidate target: Nothing .
+Winner is....: [0, 1, 1] 
+
+Source: I would like to talk about movies
+Candidate target: .
+Candidate target: Yeah .
+Winner is....: [1, 1, 1] 
+
+Source: Hey should I eat icecream
+Candidate target: Hey
+Candidate target: No .
+Winner is....: [1, 1, 0] 
+
+Source: thank you !
+Candidate target: thank !
+Candidate target: thank you .
+Winner is....: [1, 1, 1] 

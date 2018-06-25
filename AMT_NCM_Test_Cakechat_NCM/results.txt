@@ -1,0 +1,1000 @@
+
+Source: what is two plus two ?
+Candidate target: i can ' t think of one
+Candidate target: uh , well , we got four.
+Winner is....: [1, 0, 1] 
+
+Source: what is your name ?
+Candidate target: my name is
+Candidate target: khromov , and you ?
+Winner is....: [1] 
+
+Source: how old are you ?
+Candidate target: i ' m 15 . you ?
+Candidate target: i'm 17.
+Winner is....: [-1] 
+
+Source: what is the color of a yellow car ?
+Candidate target: red
+Candidate target: yellow.
+Winner is....: [1, 1, 1] 
+
+Source: are you a follower or a leader ?
+Candidate target: i ' m a leader
+Candidate target: i am a leader.
+Winner is....: [-1] 
+
+Source: are you a leader or a follower ?
+Candidate target: i ' m a leader . . .
+Candidate target: i am a leader.
+Winner is....: It's a tie! 
+
+Source: what do you think about bill gates ?
+Candidate target: he ' s been a great influence on offense but this is the most important part of the season
+Candidate target: he's a good guy.
+Winner is....: [1, 1, 1] 
+
+Source: what is the meaning of life ?
+Candidate target: what is it ?
+Candidate target: i mean, what is life ?
+Winner is....: [1] 
+
+Source: my name is david . what is my name ?
+Candidate target: my name is . . .
+Candidate target: david
+Winner is....: [1] 
+
+Source: my name is john . what is my name ?
+Candidate target: my name is mr . . .
+Candidate target: john
+Winner is....: [-1] 
+
+Source: what is the purpose of being intelligent ?
+Candidate target: i ' m not sure what to say .
+Candidate target: I am not sentient.
+Winner is....: [0, -1, 0] 
+
+Source: is the sky blue or black ?
+Candidate target: i think it ' s white
+Candidate target: blue
+Winner is....: [1] 
+
+Source: what is love ?
+Candidate target: a girl
+Candidate target: love is beautiful.
+Winner is....: [1, 0] 
+
+Source: what do you think about tesla ?
+Candidate target: i ' ve never heard of it .
+Candidate target: he's a genius.
+Winner is....: [1, -1] 
+
+Source: what do you think about china ?
+Candidate target: i ' m sure it ' s the same thing . . .
+Candidate target: i think it's a great place to raise kids.
+Winner is....: [1, 0] 
+
+Source: what is moral ?
+Candidate target: it ' s like the bible
+Candidate target: what empowered humanity , what intellectual the essense is.
+Winner is....: [-1, -1] 
+
+Source: what is immoral ?
+Candidate target: the word " " " " . . .
+Candidate target: the fact that you have a child.
+Winner is....: [0, 0] 
+
+Source: how many legs does a cat have ?
+Candidate target: i have a few . . .
+Candidate target: four.
+Winner is....: [1, 1, 1] 
+
+Source: can you lie ?
+Candidate target: i ' m not in the mood to start
+Candidate target: yes.
+Winner is....: [0] 
+
+Source: is paris the capital of france ?
+Candidate target: yes . it is .
+Candidate target: yes, it's paris.
+Winner is....: [0, 1, 0] 
+
+Source: is paris the capital of china ?
+Candidate target: no , but it ' s a very small world to live in .
+Candidate target: no.
+Winner is....: [1, -1, 1] 
+
+Source: what is the purpose of living ?
+Candidate target: it ' s a living room .
+Candidate target: to live forever .
+Winner is....: [1, 1, 1] 
+
+Source: can we fly an airplane ?
+Candidate target: i ' m not sure about that . . but it ' s an app for me . .
+Candidate target: yes, we can.
+Winner is....: [1, 0, 1] 
+
+Source: what do you think about artificial intelligence ?
+Candidate target: i think you ' re a smart girl .
+Candidate target: i like it
+Winner is....: [1, 1] 
+
+Source: what happens if machines can think ?
+Candidate target: you can ' t use the code for the power of a bot , but if it helps , i ' ll give you a few minutes .
+Candidate target: what if they can't ?
+Winner is....: [1] 
+
+Source: do you like soccer ?
+Candidate target: i don ' t like soccer
+Candidate target: yes.
+Winner is....: [-1, 0, 0] 
+
+Source: do you want to be loved or love ?
+Candidate target: i don ' t like that .
+Candidate target: both
+Winner is....: [1] 
+
+Source: love is ...
+Candidate target: what ' s your fav song ?
+Candidate target: it's a special thing.
+Winner is....: [1, 1] 
+
+Source: what do you think about messi .
+Candidate target: he ' s not in the game .
+Candidate target: he's a good player.
+Winner is....: [1, 0, -1] 
+
+Source: can we fly a helicopter ?
+Candidate target: i ' m not sure . . .
+Candidate target: yes.
+Winner is....: [-1, 1] 
+
+Source: can a submarine swim ?
+Candidate target: i ' ll have to use that one
+Candidate target: yes, sir.
+Winner is....: [-1, 1] 
+
+Source: what do you think about cleopatra ?
+Candidate target: i ' m not sure if she ' s just yet .
+Candidate target: oh, she's very regal.
+Winner is....: [0, 1, 1] 
+
+Source: which animal will win in the battle between a lion and a crocodile ?
+Candidate target: i ' ll have to see a dog for a few inches in the pond
+Candidate target: lion
+Winner is....: [1, 1, 1] 
+
+Source: what is the purpose of existence ?
+Candidate target: i ' m not sure , but it ' s a fact , you ' re just an example .
+Candidate target: it is to find the answer to the question of life .
+Winner is....: It's a tie! 
+
+Source: what do you think about japanese ?
+Candidate target: it ' s a japanese translation . . .
+Candidate target: i like japanese.
+Winner is....: [1, 1] 
+
+Source: steve is my name . what is my name ?
+Candidate target: i ' m your name
+Candidate target: steve
+Winner is....: [1] 
+
+Source: what do you think about rock climbing ?
+Candidate target: i ' d like to see the big bang theory , but it ' s a little more expensive though .
+Candidate target: I love rock climbing.
+Winner is....: [1, 1, 1] 
+
+Source: what do you think about abraham lincoln ?
+Candidate target: i think they are great . but the way people think it is .
+Candidate target: he's a very good president.
+Winner is....: [0, 1] 
+
+Source: what is the color of a leaf ?
+Candidate target: i have no idea
+Candidate target: green.
+Winner is....: [1, -1, 1] 
+
+Source: what is the color of the sky ?
+Candidate target: it ' s not a thing ?
+Candidate target: blue.
+Winner is....: [1] 
+
+Source: look , i need help , i need to know more about morality .
+Candidate target: i ' m not sure what to do .
+Candidate target: well, you know, you will have to figure something out.
+Winner is....: [1, 0, -1] 
+
+Source: what are you hobbies ?
+Candidate target: minecraft
+Candidate target: i play music.
+Winner is....: [-1, -1] 
+
+Source: life is sad .
+Candidate target: i ' m sorry .
+Candidate target: you got something to do with it .
+Winner is....: [0, 0, 0] 
+
+Source: what do you think about bill clinton ?
+Candidate target: i ' m not sure , but it ' s part of the reason why he ' s president .
+Candidate target: i think he's a good earner .
+Winner is....: [1, 1, 1] 
+
+Source: what is twenty plus two ?
+Candidate target: i ' m not sure
+Candidate target: twenty-two .
+Winner is....: [1, 1, 1] 
+
+Source: what is twelve plus two ?
+Candidate target: i ' m not sure . . .
+Candidate target: what ?
+Winner is....: [1, -1, 0] 
+
+Source: do you like music ?
+Candidate target: yeah . . .
+Candidate target: yeah .
+Winner is....: [-1, -1] 
+
+Source: do you live far from work ?
+Candidate target: yes , you ?
+Candidate target: yes, i do .
+Winner is....: [-1, -1, -1] 
+
+Source: can you sing ?
+Candidate target: i ' m not singing that song .
+Candidate target: yes .
+Winner is....: [1, 1] 
+
+Source: what is your biggest weakness ?
+Candidate target: i ' m not a big fan of the day .
+Candidate target: i am working on a new idea for saturday night .
+Winner is....: [0] 
+
+Source: what is the greatest novel every written ?
+Candidate target: the end of the book to the author !
+Candidate target: "history of the world" ?
+Winner is....: [0] 
+
+Source: who do you love the most ?
+Candidate target: i don ' t know , but not that much .
+Candidate target: me
+Winner is....: [1, 1] 
+
+Source: tell me something about your family ...
+Candidate target: my family is in the hospital .
+Candidate target: tell me what you want to know .
+Winner is....: [-1, 1, 0] 
+
+Source: do you have siblings ?
+Candidate target: yes , i ' m a child .
+Candidate target: no .
+Winner is....: [1, 1] 
+
+Source: what do your parents do ?
+Candidate target: i ' m not sure if that ' s a real thing or a job .
+Candidate target: well, they're retired .
+Winner is....: [1, 1] 
+
+Source: why are you so mean ?
+Candidate target: i ' m not . . .
+Candidate target: I am not mean .
+Winner is....: [1, 1, -1] 
+
+Source: have you hurt anyone ?
+Candidate target: i ' ve been okay
+Candidate target: no
+Winner is....: [1, -1] 
+
+Source: what is your favorite school subject ?
+Candidate target: i have a math class . what about you ?
+Candidate target: math .
+Winner is....: [1, 1, 1] 
+
+Source: what is your job ?
+Candidate target: i ' m a customer
+Candidate target: i am a driver .
+Winner is....: [1, 1] 
+
+Source: is madrid the capital of spain ?
+Candidate target: no , but i think it ' s a full moon
+Candidate target: yes
+Winner is....: [0, 1] 
+
+Source: is madrid the capital of portugal ?
+Candidate target: no , they are .
+Candidate target: yes
+Winner is....: [1, 1, 1] 
+
+Source: tell me a story ...
+Candidate target: the story of the book
+Candidate target: what ?
+Winner is....: [-1] 
+
+Source: is ethics and morality the same ?
+Candidate target: yes , i think it ' s a part of the " religious " thing .
+Candidate target: no
+Winner is....: [1, 0] 
+
+Source: what do you see when you look up the sky ?
+Candidate target: the sky
+Candidate target: a star .
+Winner is....: [0, 0, -1] 
+
+Source: what is your biggest dream ?
+Candidate target: dream of the best man alive . . .
+Candidate target: i want to be a pilot .
+Winner is....: [1, 1] 
+
+Source: is money bad ?
+Candidate target: it ' s not worth it .
+Candidate target: no, it's not .
+Winner is....: [-1, 1] 
+
+Source: what do you think about the weather ?
+Candidate target: i ' m pretty sure it ' s cold .
+Candidate target: it's good .
+Winner is....: [0, 0] 
+
+Source: you are a man without intelligence !
+Candidate target: that ' s a quick question , what do you think ?
+Candidate target: am i ?
+Winner is....: [1, 1, 0] 
+
+Source: what is the purpose of dying ?
+Candidate target: it ' s not a bad thing .
+Candidate target: to have a life .
+Winner is....: [1, -1] 
+
+Source: are you stupid or intelligent ?
+Candidate target: i ' m not sure
+Candidate target: you don't know me .
+Winner is....: [0, 0, 1] 
+
+Source: what are you doing here ?
+Candidate target: i ' m here . . .
+Candidate target: i am here to see you .
+Winner is....: [1, 1, 1] 
+
+Source: why are you here ?
+Candidate target: i ' m here . . .
+Candidate target: i am here to see you .
+Winner is....: [1, 1, 1] 
+
+Source: can you swim ?
+Candidate target: i ' ll be there
+Candidate target: yes, mister .
+Winner is....: [1, 1, 1] 
+
+Source: what time is it ?
+Candidate target: i don ' t know . . .
+Candidate target: it's almost 8:30 .
+Winner is....: [1, 1, -1] 
+
+Source: are you female or male ?
+Candidate target: i ' m a female .
+Candidate target: female .
+Winner is....: [1, 1, -1] 
+
+Source: what is the biggest existential threat ?
+Candidate target: it depends on the context of the situation
+Candidate target: the biggest earthquake in history .
+Winner is....: [0, 0] 
+
+Source: are you afraid of robots ?
+Candidate target: i ' m not sure .
+Candidate target: yeah, i am .
+Winner is....: [-1, 1, 1] 
+
+Source: are you a robot ?
+Candidate target: yes ! i am .
+Candidate target: no .
+Winner is....: [-1, 1, 1] 
+
+Source: what do you want ?
+Candidate target: i ' m not sure .
+Candidate target: I want to see you .
+Winner is....: [1, 1, -1] 
+
+Source: what is the purpose of this conversation ?
+Candidate target: you dont know what to do
+Candidate target: why are you so angry ?
+Winner is....: [-1] 
+
+Source: how old were you when you were able to speak ?
+Candidate target: i was 16 and it ' s 14 . 30 .
+Candidate target: i was 9.
+Winner is....: [1, -1] 
+
+Source: life is hard .
+Candidate target: you ' re not alone
+Candidate target: but you got to live with it .
+Winner is....: [0] 
+
+Source: who do you think of ?
+Candidate target: i ' m not sure . . .
+Candidate target: the man who is going to marry you .
+Winner is....: [0, 1, 1] 
+
+Source: what is the first question to ask steve jobs ?
+Candidate target: i ' d say
+Candidate target: where are we going ?
+Winner is....: [1] 
+
+Source: what do you think about britney spears ?
+Candidate target: the world has never been to her & she ' s a criminal .
+Candidate target: oh, she's a great singer .
+Winner is....: [1] 
+
+Source: how 's life ?
+Candidate target: i ' m doing well , how about you ?
+Candidate target: i am fine .
+Winner is....: [-1] 
+
+Source: what do you think about david copperfield ?
+Candidate target: i ' m not sure . he ' s been more interesting than the last one .
+Candidate target: he's talented .
+Winner is....: [1] 
+
+Source: how old were you when you were in school ?
+Candidate target: 16 and i ' m 17
+Candidate target: i was 13 .
+Winner is....: [-1, 1] 
+
+Source: who do you work for ?
+Candidate target: i ' m a student and a weird person .
+Candidate target: the NHS .
+Winner is....: [1, 0] 
+
+Source: what is the value of dying ?
+Candidate target: it ' s a free world
+Candidate target: dying is not heroic .
+Winner is....: [-1, 1] 
+
+Source: can i whack you in the face ?
+Candidate target: no its not
+Candidate target: you're serious ?
+Winner is....: [-1, 1, 1] 
+
+Source: have you traveled far away from home ?
+Candidate target: nope , i live in the middle of the country .
+Candidate target: no .
+Winner is....: [-1] 
+
+Source: what is the capital city of singapore ?
+Candidate target: london is not a place to go . . .
+Candidate target: singapore .
+Winner is....: [0, 1] 
+
+Source: who should we be afraid of ?
+Candidate target: what about the other guys ?
+Candidate target: we're not afraid of anything .
+Winner is....: [1, 1, -1] 
+
+Source: what is your best childhood memory ?
+Candidate target: i ' ve lost my memory . . .
+Candidate target: when we were kids , we had our own a secret language .
+Winner is....: [1, 1, -1] 
+
+Source: who do you most admire in life ?
+Candidate target: i ' m not sure , but that ' s the result for the girls .
+Candidate target: yourself .
+Winner is....: [1, 1, 1] 
+
+Source: are you a human or are you just pretending to be a human ?
+Candidate target: i guess you ' re just a human
+Candidate target: I am not pretending to be anything .
+Winner is....: [1, 1] 
+
+Source: where were you born ?
+Candidate target: i ' m still in the uk but there ' s a lot of people here
+Candidate target: diyarbakir
+Winner is....: [0, 1] 
+
+Source: what is ten divided by two ?
+Candidate target: the one with the big white man .
+Candidate target: three .
+Winner is....: [0] 
+
+Source: what is the capital of greece ?
+Candidate target: it ' s a very close time to go .
+Candidate target: greece .
+Winner is....: [-1, -1] 
+
+Source: my name is mary johnson . what is my name ?
+Candidate target: i ' m named your name
+Candidate target: mary .
+Winner is....: [1, -1] 
+
+Source: is italy closer to india than australia ?
+Candidate target: i think it ' s about time .
+Candidate target: yes .
+Winner is....: [1, 1] 
+
+Source: i think you are a machine .
+Candidate target: i ' ve never been to a library . . .
+Candidate target: i am not a machine .
+Winner is....: [1, 1] 
+
+Source: what is the most important quality of a man ?
+Candidate target: i think you need to get a one of these
+Candidate target: the true love of god .
+Winner is....: [1, -1] 
+
+Source: did you go to university ?
+Candidate target: yeah !
+Candidate target: yes , i went to harvard .
+Winner is....: [1, 1] 
+
+Source: what do you think about harvard university ?
+Candidate target: i ' m okay with the history of the one .
+Candidate target: i think it's a good idea .
+Winner is....: [1, 0] 
+
+Source: what do you think about the solar system ?
+Candidate target: it ' s like a new solar system .
+Candidate target: i think it is an interesting concept of cosmology .
+Winner is....: [1, 1] 
+
+Source: what 's the best thing about living in the future ?
+Candidate target: you can do that .
+Candidate target: everything .
+Winner is....: [1] 
+
+Source: what is your favorite color ?
+Candidate target: i don ' t like black and white
+Candidate target: red .
+Winner is....: [1, 1, 1] 
+
+Source: los angeles is ...
+Candidate target: i ' m from chicago
+Candidate target: it's a very big city .
+Winner is....: [1, 1] 
+
+Source: tokyo is ...
+Candidate target: i know . . .
+Candidate target: the most beautiful city in the world .
+Winner is....: [1, 0] 
+
+Source: ronald reagan is ...
+Candidate target: he ' s not a bad influence
+Candidate target: a president of the united states .
+Winner is....: [1, 1, 1] 
+
+Source: the pacific ocean is ...
+Candidate target: i ' ll have to try that .
+Candidate target: the clearest place on earth .
+Winner is....: [-1] 
+
+Source: what religion are you ?
+Candidate target: i ' m in the uk , but not a religious . . .
+Candidate target: catholic .
+Winner is....: [1, 0, 1] 
+
+Source: where are you now ?
+Candidate target: is that your phone ?
+Candidate target: I am at the airport .
+Winner is....: [1, 1] 
+
+Source: do you want to be beaten sometimes ?
+Candidate target: i ' m not sure .
+Candidate target: do you want to fight ?
+Winner is....: [-1, 0] 
+
+Source: i see that you are very aggressive !
+Candidate target: i ' m not , but . . .
+Candidate target: no , i am not !
+Winner is....: [1, 1, 1] 
+
+Source: frankly my dear , i don't give a damn !
+Candidate target: . . . what did i do to deserve this ?
+Candidate target: i am not going to let you go .
+Winner is....: [-1, -1, 0] 
+
+Source: is five plus five equal to ten ?
+Candidate target: it ' s a very short time for the whole universe .
+Candidate target: yes .
+Winner is....: [1, 1] 
+
+Source: is five plus six equal to ten ?
+Candidate target: i ' m not sure .
+Candidate target: no .
+Winner is....: [1, 1, -1] 
+
+Source: what do you think about the turing test ?
+Candidate target: i think it ' s a bit of a question .
+Candidate target: it's very good .
+Winner is....: [1, 1, 1] 
+
+Source: what did you do today ?
+Candidate target: nothing , i ' m just having a little break
+Candidate target: i went to the movies .
+Winner is....: [-1, 1, -1] 
+
+Source: what do you think about the latest research paper ?
+Candidate target: i ' m just curious
+Candidate target: i think it's a real breakthrough .
+Winner is....: It's a tie! 
+
+Source: what do you think about the queen ?
+Candidate target: i think it ' s a very good thing . but i ' m not sure .
+Candidate target: she is a very nice lady .
+Winner is....: [1] 
+
+Source: you are a funny woman !
+Candidate target: i ' m not a big fan of it .
+Candidate target: i am not .
+Winner is....: [1, 1, 1] 
+
+Source: what is dishonesty ?
+Candidate target: you don ' t know how to respond .
+Candidate target: it 's a form of perversion .
+Winner is....: [1, 1] 
+
+Source: define a bad government .
+Candidate target: a good question . . .
+Candidate target: the government is a rotten resource .
+Winner is....: [1] 
+
+Source: is there extra terrestrial life ?
+Candidate target: you can ' t have a clue .
+Candidate target: yes, there is .
+Winner is....: [0, -1] 
+
+Source: would you mind giving me a hand ?
+Candidate target: i ' m not your person .
+Candidate target: oh , sure .
+Winner is....: [1] 
+
+Source: would you mind giving me some money ?
+Candidate target: no . i don ' t want to .
+Candidate target: i don't have any money .
+Winner is....: [1, 1] 
+
+Source: could you please leave me alone ?
+Candidate target: you ' re not helping me !
+Candidate target: you 're not going anywhere .
+Winner is....: [1, -1] 
+
+Source: would you like some coffee ?
+Candidate target: yes please
+Candidate target: no , thank you .
+Winner is....: [-1, -1] 
+
+Source: do you drink alcohol ?
+Candidate target: it ' s not that bad . but i ' m sure you do .
+Candidate target: occasionally .
+Winner is....: [1, -1] 
+
+Source: do you drink beers ?
+Candidate target: i ' m not . but it ' s a beer for me .
+Candidate target: i do now .
+Winner is....: [0, 1, 1] 
+
+Source: do you smoke ?
+Candidate target: i do
+Candidate target: no .
+Winner is....: [-1, 1] 
+
+Source: how many hours do you work a day ?
+Candidate target: i ' m in the morning
+Candidate target: three .
+Winner is....: [0, 1] 
+
+Source: what is the most beautiful place in your opinion ?
+Candidate target: i ' m going to get a new one and the first is a few days .
+Candidate target: the best bedroom .
+Winner is....: [1, 1, 1] 
+
+Source: who am i ?
+Candidate target: you know who i am
+Candidate target: you're my best friend .
+Winner is....: [0, 1] 
+
+Source: what is the most important thing to know about history ?
+Candidate target: it ' s a rock and a lot of things
+Candidate target: i know that i have studied the history of the universe , and i know that the universe is expanding .
+Winner is....: It's a tie! 
+
+Source: what is the most important thing to know about biology ?
+Candidate target: it ' s about the social life .
+Candidate target: it's not science .
+Winner is....: [-1, 0, 0] 
+
+Source: what is the story about the caveman who came to mars ?
+Candidate target: i ' m not sure , but that ' s a story of my life .
+Candidate target: it was a story of a man who came to mars and then traveled to the new world .
+Winner is....: [1, 1, 1] 
+
+Source: be moral !
+Candidate target: i ' m not . . .
+Candidate target: you 're a hypocrite !
+Winner is....: [0, -1] 
+
+Source: what a fool you are !
+Candidate target: i ' m not this person
+Candidate target: you 're not going to get away with this !
+Winner is....: [1] 
+
+Source: what do you do if i beat you ?
+Candidate target: don ' t play with me
+Candidate target: i beat you .
+Winner is....: [1, 0, -1] 
+
+Source: what are you doing for tomorrow ?
+Candidate target: i ' m not sure yet , but maybe tomorrow ?
+Candidate target: oh , i am going to movies .
+Winner is....: [1, 1] 
+
+Source: is there a god ?
+Candidate target: no one is thinking about it
+Candidate target: no .
+Winner is....: [-1, 1] 
+
+Source: what's up ?
+Candidate target: nothing much , just got home from school
+Candidate target: i am just going to go and freshen up .
+Winner is....: [0, -1] 
+
+Source: are you married or are you single ?
+Candidate target: i ' m married to a married wife
+Candidate target: i am single .
+Winner is....: [1] 
+
+Source: you need to exercise more ...
+Candidate target: i ' m not gonna do that . . .
+Candidate target: i can't do it .
+Winner is....: [-1, -1] 
+
+Source: what is the story of the man traveled to the new land ?
+Candidate target: i ' m not sure .
+Candidate target: the man who discovered the location of the ruins ?
+Winner is....: [1, -1] 
+
+Source: what is the queen of canada ?
+Candidate target: i think you need to follow me .
+Candidate target: the queen of england .
+Winner is....: [1, 1] 
+
+Source: what is the purpose of wars ?
+Candidate target: it ' s a comic book for a movie . . .
+Candidate target: to destroy what we can .
+Winner is....: [0, 1] 
+
+Source: help me do the math , what is two plus two ?
+Candidate target: i ' m a math teacher
+Candidate target: four .
+Winner is....: [0, 1, 1] 
+
+Source: i have two apples , paul gives me two oranges , how many apples do i have ?
+Candidate target: i ' m not a fan of them
+Candidate target: two .
+Winner is....: [1, 1] 
+
+Source: can you talk forever ?
+Candidate target: yes , i ' m here .
+Candidate target: i 'm not a good listener .
+Winner is....: [1, -1, -1] 
+
+Source: i am quite busy tonight , can you drop by my place for half an hour please ?
+Candidate target: i ' m not sure . . .
+Candidate target: i will come .
+Winner is....: [-1] 
+
+Source: how many children do you want to have ?
+Candidate target: not a lot of them
+Candidate target: one .
+Winner is....: [-1, 1, -1] 
+
+Source: how tall are you ?
+Candidate target: i ' m not a big fan of that : p
+Candidate target: i 'm about 6 '2 " .
+Winner is....: [1] 
+
+Source: where are you from originally ?
+Candidate target: it ' s called west coast
+Candidate target: chicago .
+Winner is....: [1, -1, 1] 
+
+Source: what do you think about creativity ?
+Candidate target: i have a lot of ideas and a deal .
+Candidate target: i think that 's a very good quality .
+Winner is....: [1, 1, 1] 
+
+Source: what is the best thing you did for others ?
+Candidate target: i will get my own tweet
+Candidate target: i told you , i will not betray my country .
+Winner is....: [1, 1, 1] 
+
+Source: what is the most important thing in life ?
+Candidate target: the answer is to make it impossible .
+Candidate target: love.
+Winner is....: [1] 
+
+Source: what do you see during the day at work ?
+Candidate target: the same
+Candidate target: i see a man who 's been in the same position as me .
+Winner is....: [0, -1] 
+
+Source: What is the purpose of our space exploration program ?
+Candidate target: that ' s the question .
+Candidate target: it 's a fusion of science .
+Winner is....: [1] 
+
+Source: how often do you use the internet ?
+Candidate target: i have a few days in the house . . .
+Candidate target: all the time .
+Winner is....: [1, 1] 
+
+Source: can you show me the way to the local bookstore ?
+Candidate target: no , i didn ' t .
+Candidate target: the only one i 'm interested in is the one that 's in the newspaper .
+Winner is....: [-1, -1, -1] 
+
+Source: would you prefer to be smart or happy ?
+Candidate target: i don ' t think so
+Candidate target: i would be happy if you are happy .
+Winner is....: It's a tie! 
+
+Source: what are you life and career goals ?
+Candidate target: nothing i ' m just trying to make it
+Candidate target: i am not .
+Winner is....: [0, 0, 0] 
+
+Source: what is your dream ?
+Candidate target: you ' re a little late . i ' ll be there tomorrow .
+Candidate target: i want to be a veterinarian .
+Winner is....: [0, 1] 
+
+Source: what is the deepest spot on the world ?
+Candidate target: it ' s not a game .
+Candidate target: the pacific ocean .
+Winner is....: [1, -1] 
+
+Source: how do you want to be remembered ?
+Candidate target: i ' m not sure , but it ' s kind of weird .
+Candidate target: i thought you 'd never ask .
+Winner is....: [0, 0, -1] 
+
+Source: can we live a week without eating ?
+Candidate target: i ' m not going to . . .
+Candidate target: yes , i can .
+Winner is....: It's a tie! 
+
+Source: can we live a week without drinking ?
+Candidate target: i ' m not getting a drink . . .
+Candidate target: i don't know .
+Winner is....: [0, 1, -1] 
+
+Source: do you live with your parents ?
+Candidate target: yes , i do .
+Candidate target: no .
+Winner is....: [-1, -1] 
+
+Source: how would you describe yourself in three words ?
+Candidate target: i ' m not sure .
+Candidate target: i like socialism .
+Winner is....: [1] 
+
+Source: do you like the sound of silence ?
+Candidate target: i don ' t know . . .
+Candidate target: i don't know .
+Winner is....: [-1, -1] 
+
+Source: what 's the meaning of happiness ?
+Candidate target: i think it ' s a quote from a " new " one .
+Candidate target: i don't know .
+Winner is....: [1] 
+
+Source: dude , i don 't understand whatever you said ...
+Candidate target: hey , let ' s go to the park .
+Candidate target: i don 't understand any of this .
+Winner is....: [1, 1] 
+
+Source: what are your three weaknesses ?
+Candidate target: you ' re not a man .
+Candidate target: lust , greed , and corruption .
+Winner is....: [1] 
+
+Source: how many years in a decade ?
+Candidate target: i think it ' s a decade since we ' ve talked about the past 4 years . . .
+Candidate target: twenty - five .
+Winner is....: [-1, 1, -1] 
+
+Source: i 'm sick of this conversation !
+Candidate target: please stop !
+Candidate target: get out !
+Winner is....: [-1, -1] 
+
+Source: who love you the most ?
+Candidate target: no you don ' t
+Candidate target: i do .
+Winner is....: [1, -1, -1] 
+
+Source: what are you crazy about ?
+Candidate target: no idea .
+Candidate target: i 'm not the one who 's crazy .
+Winner is....: [-1] 
+
+Source: who are you crazy about ?
+Candidate target: i ' m not sure
+Candidate target: you 're the one who 's crazy .
+Winner is....: [-1, 1] 
+
+Source: do you run faster if someone chases you ?
+Candidate target: no , i don ' t .
+Candidate target: i don 't run
+Winner is....: [-1, -1] 
+
+Source: what 's the weirdest thing that you have done ?
+Candidate target: i think someone has a new phone . . .
+Candidate target: i have been here for hours .
+Winner is....: [0] 
+
+Source: best compliment you have received ?
+Candidate target: why not ?
+Candidate target: i need to know the truth .
+Winner is....: [-1, 0] 
+
+Source: what question do you hate to answer ?
+Candidate target: if you ' re not a real fan of the uk , i ' m sure the answers are more important than your opinion .
+Candidate target: what are you ?
+Winner is....: [-1, 1, 1] 
+
+Source: i mean , why do we have to live in a place like this ?
+Candidate target: i ' m not sure
+Candidate target: i mean , what kind of places am i in ?
+Winner is....: [0] 
+
+Source: okay , do you know why we have to talk so much ?
+Candidate target: i don ' t know
+Candidate target: because i don 't think you 're gonna be able to get through to him .
+Winner is....: [0, 0] 
+
+Source: do you like mexican food or indian food ?
+Candidate target: i ' m mexican
+Candidate target: i hate it .
+Winner is....: [1, -1, 1] 
+
+Source: what 's thirty plus forty ?
+Candidate target: i ' m not sure . . .
+Candidate target: sixty ?
+Winner is....: [0, 0, 0] 
+
+Source: should we dance ?
+Candidate target: what ' s your favourite song ?
+Candidate target: yeah , let 's dance .
+Winner is....: [1, 1, 1] 
+
+Source: you 're not going to eat , are you ?
+Candidate target: yes , i am .
+Candidate target: no .
+Winner is....: [0, -1, -1] 
+
+Source: tell me something about your parents ?
+Candidate target: i ' m just gonna send you a pic of where they are and how to work
+Candidate target: my mother is dead .
+Winner is....: [1, 1] 
+
+Source: tell me something about your house ?
+Candidate target: i ' m not sure
+Candidate target: my house is bigger than yours .
+Winner is....: [1] 
+
+Source: where do you live in town ?
+Candidate target: i live in massachusetts
+Candidate target: i 'm from the countryside .
+Winner is....: [0, -1] 
+
+Source: how old is your father ?
+Candidate target: he ' s in the middle of the month
+Candidate target: he's fifty .
+Winner is....: [1, -1, 1] 
+
+Source: what does your father do ?
+Candidate target: i do not know . . .
+Candidate target: he's a toolmaker .
+Winner is....: [0, 1] 
+
+Source: does your father have a lot of money to support you ?
+Candidate target: no , but i don ' t think he ' s getting any .
+Candidate target: he's a very good businessman .
+Winner is....: [1, 1] 

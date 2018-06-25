@@ -1,0 +1,2 @@
+/data2/chatbot_eval_issues/results/AMT_NCM_Test_Twitter_Human2/pred.txt.seed_701_glove_emb_twitter_clean_acc_22.21_ppl_140.75_e13.pt
+/data2/chatbot_eval_issues/results/AMT_NCM_Test_Twitter_Human2/neural_conv_model_eval_responses_human_2.txt

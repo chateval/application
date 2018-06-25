@@ -1,1 +1,1 @@
-python3 manage.py createsuperuser
+python manage.py createsuperuser

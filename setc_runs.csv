@@ -1,0 +1,20 @@
+NCM,Cakechat,Seq2SeqAttn Twitter,AMT_NCM_Test_Cakechat_GloveTwitter
+NCM,Cakechat,OpenNMT Seq2SeqAttn,AMT_NCM_Test_Cakechat_Harvard
+NCM,Seq2SeqAttn OpenSubtitles,Cakechat,AMT_NCM_Test_Cakechat_OS
+NCM,Seq2SeqAttn OpenSubtitles without PTE,Seq2SeqAttn OpenSubtitles,AMT_NCM_Test_Glove_OS
+NCM,Seq2SeqAttn Twitter without PTE,Seq2SeqAttn Twitter,AMT_NCM_Test_Glove_Twitter
+NCM,Cakechat,NCM,AMT_NCM_Test_Cakechat_NCM
+NCM,Human1,Seq2SeqAttn Twitter,AMT_NCM_Test_Human1_GloveTwitter
+NCM,Human1,Human2,AMT_NCM_Test_Human1_Human2
+NCM,NCM,Cakechat,AMT_NCM_Test_NCM_Cakechat
+NCM,NCM,Seq2SeqAttn Twitter,AMT_NCM_Test_NCM_GloveTwitter
+NCM,NCM,OpenNMT Seq2SeqAttn,AMT_NCM_Test_NCM_Harvard
+NCM,NCM,Human1,AMT_NCM_Test_NCM_Human1
+NCM,NCM,Human2,AMT_NCM_Test_NCM_Human2
+NCM,Seq2SeqAttn OpenSubtitles,Seq2SeqAttn OpenSubtitles Questions,AMT_NCM_Test_OSC_OSQ
+NCM,OpenNMT Seq2SeqAttn,Seq2SeqAttn OpenSubtitles Questions,AMT_NCM_Test_OSQ_Harvard
+NCM,Seq2SeqAttn OpenSubtitles Questions,Human2,AMT_NCM_Test_OSQ_Human2
+NCM,Seq2SeqAttn OpenSubtitles Questions,Human2,AMT_NCM_Test_OSQ_Human2_2
+NCM,Seq2SeqAttn OpenSubtitles,Seq2SeqAttn Twitter,AMT_NCM_Test_OS_Twitter
+NCM,Seq2SeqAttn Twitter,Human2,AMT_NCM_Test_Twitter_Human2
+DBDC,OpenNMT Seq2SeqAttn,Seq2SeqAttn OpenSubtitles Questions,AMT_DBDC_Test_OSQ_Harvard

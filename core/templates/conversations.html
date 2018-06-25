@@ -19,7 +19,8 @@
     <div class="columns">
       <div class="column is-one-quarter">
         <br>
-        <form method="GET" action="/conversations">
+        <form method="POST" action="/conversations">
+          {% csrf_token %}
           <div class="control" name="model">
             <label class="label">Trained Model</label>
             <div class="select">
@@ -48,6 +49,7 @@
       </div>    
       <div class="column">
         <br>
+        {% if POST %}
         <div class="columns is-multiline">
           <div class="column is-half">
             <div class="card">
@@ -100,6 +102,9 @@
             </div>
           </div>
         </div>
+        {% else %}
+        <h1 class="subtitle"> No model/dataset selected. </h1>
+        {% endif %}
       </div>
     </div>
   </div>

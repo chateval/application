@@ -30,6 +30,14 @@ class Model(models.Model):
 
     class Meta:
         db_table = 'Model'
+    
+class ModelSubmission(models.Model):
+    submission_id = models.AutoField(primary_key=True)
+    date = models.DateTimeField()
+    model = models.ForeignKey('Model', models.DO_NOTHING)
+    
+    class Meta:
+        db_table = 'ModelSubmission'
 
 class Metric(models.Model):
     metric_id = models.BigAutoField(primary_key=True)
@@ -75,6 +83,7 @@ class ModelResponse(models.Model):
     evaluationdataset = models.ForeignKey(EvaluationDataset, models.DO_NOTHING, related_name='evaluationdatasets')
     prompt = models.ForeignKey(EvaluationDatasetText, models.DO_NOTHING)
     response_text = models.TextField()
+    model_submission = models.ForeignKey(ModelSubmission, models.DO_NOTHING)
 
     class Meta:
         db_table = 'ModelResponse'
@@ -103,10 +112,3 @@ class HumanEvaluationsABComparison(models.Model):
 
     class Meta:
         db_table = 'HumanEvaluationsABComparison'
-
-class ModelSubmission(models.Model):
-    date = models.DateTimeField()
-    model = models.ForeignKey('Model', models.DO_NOTHING)
-    
-    class Meta:
-        db_table = 'ModelSubmission'

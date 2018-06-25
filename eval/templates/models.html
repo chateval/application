@@ -76,18 +76,12 @@
                     <th>Value</th>
                   </thead>
                   <tbody>
+                    {% for evaluation in evaluations %}
                     <tr>
-                      <td>Average Length</td>
-                      <td>{{ eval.avg_len }}</td>
+                      <td>{{ evaluation.name }}</td>
+                      <td>{{ evaluation.value }}</td>
                     </tr>
-                    <tr>
-                      <td>Average Sentence BLEU-2</td>
-                      <td>0.43</td>
-                    </tr>
-                    <tr>
-                      <td>Embedding Average Score	</td>
-                      <td>0.425, 0.002, 0.201</td>
-                    </tr>
+                    {% endfor %}
                   </tbody>
                 </table>
               </div>

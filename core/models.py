@@ -11,7 +11,7 @@ class Baseline(models.Model):
         db_table = 'Baseline'
 
 class Author(models.Model):
-    author_id = models.ForeignKey(settings.AUTH_USER_MODEL, primary_key=True, on_delete=models.CASCADE,)
+    author_id = models.OneToOneField(settings.AUTH_USER_MODEL, primary_key=True, on_delete=models.CASCADE)
     name = models.CharField(unique=True, max_length=100)
     email = models.CharField(unique=True, max_length=200)
     institution = models.TextField()
@@ -84,13 +84,15 @@ class ModelResponse(models.Model):
     prompt = models.ForeignKey(EvaluationDatasetText, models.DO_NOTHING)
     response_text = models.TextField()
     model_submission = models.ForeignKey(ModelSubmission, models.DO_NOTHING)
+    is_baseline = models.NullBooleanField()
 
     class Meta:
         db_table = 'ModelResponse'
         unique_together = (('evaluationdataset', 'model', 'prompt'),)
 
 class AutomaticEvaluation(models.Model):
-    model = models.ForeignKey('Model', models.DO_NOTHING, primary_key=True)
+    id = models.BigAutoField(primary_key=True)
+    model = models.ForeignKey('Model', models.DO_NOTHING)
     metric = models.ForeignKey('Metric', models.DO_NOTHING)
     evaluationdataset = models.ForeignKey('EvaluationDataset', models.DO_NOTHING)
     value = models.FloatField()

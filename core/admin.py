@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Baseline, Author, Model, Metric, EvaluationDataset, EvaluationDatasetText, ModelResponse, ModelSubmission, HumanEvaluationsABComparison
+from .models import AutomaticEvaluation, Baseline, Author, Model, Metric, EvaluationDataset, EvaluationDatasetText, ModelResponse, ModelSubmission, HumanEvaluationsABComparison
 
 admin.site.register(Baseline)
 admin.site.register(EvaluationDataset)

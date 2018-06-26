@@ -11,7 +11,7 @@ class Baseline(models.Model):
         db_table = 'Baseline'
 
 class Author(models.Model):
-    author_id = models.ForeignKey(settings.AUTH_USER_MODEL, primary_key=True, on_delete=models.CASCADE,)
+    author_id = models.OneToOneField(settings.AUTH_USER_MODEL, primary_key=True, on_delete=models.CASCADE)
     name = models.CharField(unique=True, max_length=100)
     email = models.CharField(unique=True, max_length=200)
     institution = models.TextField()

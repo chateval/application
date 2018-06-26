@@ -30,20 +30,23 @@ def models(request):
         messages = get_messages(request.POST['model_id'], request.POST['evalset_id'])
         dataset = EvaluationDataset.objects.get(pk=request.POST['evalset_id'])
         evaluations = list()
-        for automatic_evaluation in AutomaticEvaluation.objects.filter(model=request.POST['model_id'], evaluationdataset=request.POST['evalset_id']):
+        for automatic_evaluation in AutomaticEvaluation.objects.filter(model=request.POST['model_id'], 
+            evaluationdataset=request.POST['evalset_id']):            
             evaluation = dict()
             evaluation['name'] = automatic_evaluation.metric.name
             evaluation['value'] = automatic_evaluation.value
             evaluations.append(evaluation)
-        return render(request, 'models.html', {'POST': True, 'model': Model.objects.get(pk=request.POST['model_id']), 'messages': messages , 'models': models, 'datasets': datasets, 'dataset': dataset, 'evaluations': evaluations})
+        print(evaluations)
+        return render(request, 'models.html', {'POST': True, 'model': Model.objects.get(pk=request.POST['model_id']),
+            'messages': messages , 'models': models, 'datasets': datasets, 'dataset': dataset, 'evaluations': evaluations})
     return render(request, 'models.html', {'POST': False, 'models': models, 'datasets': datasets})
 
 def run_automatic_evaluation(model, evalset):
     model_id = model.model_id
     evalset_id = evalset.pk
     model_responses = [message['response'] for message in get_messages(model_id, evalset_id)]
-    baseline_responses = [message['response'] for message in get_messages(model_id, evalset_id, True)]
-    
+    baseline_responses = [message['response'] for message in get_messages(model_id, evalset_id, True)[:200]]
+
     AutomaticEvaluation.objects.bulk_create([
         AutomaticEvaluation(metric=Metric.objects.get(metric_id=1), model=model, evaluationdataset=evalset, value=aeu.avg_len(model_responses)),
         AutomaticEvaluation(metric=Metric.objects.get(metric_id=2), model=model, evaluationdataset=evalset, value=aeu.distinct_1(model_responses)),

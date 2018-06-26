@@ -92,10 +92,7 @@
           <div class="card">
             <div class="card-content">
               <p class="title is-4">Human Evaluation</p>
-    
-              <div class="content">
-                <canvas id="myChart" width="400" height="200"></canvas>
-              </div>
+              <div id="chart_div"></div>
             </div>
           </div>
     
@@ -121,44 +118,67 @@
     </div>
   </div>
   
-  <script>
-    var ctx = document.getElementById("myChart").getContext('2d');
-    var myChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-          labels: ["Seq2SeqAttn Twitter", "OpenNMT Seq2SeqAttn", "CakeChat 1", "CakeChat 2", "Human 1", "Human 2"],
-          datasets: [{
-              label: '# of Votes',
-              data: [12, 19, 3, 5, 2, 3],
-              backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(255, 159, 64, 0.2)'
-              ],
-              borderColor: [
-                  'rgba(255,99,132,1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                  'rgba(153, 102, 255, 1)',
-                  'rgba(255, 159, 64, 1)'
-              ],
-              borderWidth: 1
-          }]
-      },
-      options: {
-          scales: {
-              yAxes: [{
-                  ticks: {
-                      beginAtZero:true
-                  },
-                  stacked: true
-              }]
+  
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+  <script type="text/javascript">
+    google.charts.load('current', {packages: ['corechart', 'bar']});
+    google.charts.setOnLoadCallback(drawStuff);
+
+    function drawStuff() {
+
+    var options = {
+      title: 'Human evaluation on dataset: ' + "NCM",
+      chartArea: {width: '50%', height:'100%'},
+      isStacked: 'percent',
+      legend:'right',
+      annotations: {
+        alwaysOutside: false,
+        textStyle: {
+          fontSize: 12,
+          auraColor: 'none',
+          color: '#555'
+        },
+        boxStyle: {
+          stroke: '#ccc',
+          strokeWidth: 1,
+          gradient: {
+            color1: '#f3e5f5',
+            color2: '#f3e5f5',
+            x1: '0%', y1: '0%',
+            x2: '100%', y2: '100%'
           }
+        }
+      },
+      hAxis: {
+        title: 'Fraction of Votes',
+        minValue: 0,
+      },
+      vAxis: {
+        title: 'Competing Model'
       }
-    });
+    };
+
+    output = [];
+    output.push(['Model',
+      "Model 1"  + ' wins',
+      {type: 'string', role: 'annotation'},
+      'Compteting model wins',
+      {type: 'string', role: 'annotation'},
+      'Tie',
+      {type: 'string', role: 'annotation'}])
+    
+      output.push(["Seq2Seq",
+        180,
+        "180",
+        211,
+        "211",
+        101,
+        "101"])
+    output = output.sort(function(a,b){return a[1]<b[1];});
+    var dataTable = google.visualization.arrayToDataTable(output);
+    var chart = new google.visualization.BarChart(document.getElementById("chart_div"));
+    chart.draw(dataTable, options);
+    }
   </script>
 {% endblock %}

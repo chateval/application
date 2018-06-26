@@ -4,31 +4,20 @@ import boto3
 from boto3 import session
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-from .models import Baseline, Author, Model, ModelSubmission, EvaluationDataset, EvaluationDatasetText, ModelResponse
+from eval.views import run_automatic_evaluation, get_messages
+from .models import Baseline, Author, AutomaticEvaluation, Model, ModelSubmission, EvaluationDataset, EvaluationDatasetText, ModelResponse
 from .forms import UploadModelForm
 from chateval.settings import AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY, AWS_STORAGE_BUCKET_NAME, AWS_STORAGE_BUCKET_LOCATION
 from eval.scripts.human_evaluations import upload
 
-def get_messages(model_id, evalset_id):
-    messages = list()
-    model = Model.objects.get(model_id=model_id)
-    dataset = EvaluationDataset.objects.get(evalset_id=evalset_id)
-    responses = ModelResponse.objects.filter(model=model.model_id, evaluationdataset=dataset.evalset_id)
-    for response in responses:
-        message = dict()
-        message['prompt'] = response.prompt.prompt_text
-        message['response'] = response.response_text
-        messages.append(message)
-    return messages
-
-def load_responses(response_file, dataset, model, submission):
+def load_responses(response_file, dataset, model, submission, baseline=False):
     response = requests.get(response_file)
     data = response.text
     responses = data.split('\n')
     prompts = EvaluationDatasetText.objects.all().filter(evaluationdataset=dataset)
     
     for i in range(len(responses)):
-        model_response = ModelResponse(model_submission=submission, evaluationdataset=dataset, prompt=prompts[i], model=model, response_text=responses[i])
+        model_response = ModelResponse(model_submission=submission, evaluationdataset=dataset, prompt=prompts[i], model=model, response_text=responses[i], is_baseline=baseline)
         model_response.save()
 
 def splash(request):
@@ -85,7 +74,7 @@ def submit(request):
                     s3.Bucket(AWS_STORAGE_BUCKET_NAME).put_object(Key=file_path, Body=request.FILES.get(response_file.name))
                     dataset = EvaluationDataset.objects.get(name=response_file.name)
                     load_responses(AWS_STORAGE_BUCKET_LOCATION + file_path, dataset, model, model_submission)
-
+                    run_automatic_evaluation(model, dataset)
             return HttpResponseRedirect('/evaluation/')
     form = UploadModelForm()
     return render(request, 'submit.html', {'form': form, 'response_files': response_files})

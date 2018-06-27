@@ -21,14 +21,15 @@ def upload_model(model, files, baseline=False):
         s3_upload_file(path, file['file'])
         print("saved to s3 and loading responses")
         load_responses(AWS_STORAGE_BUCKET_LOCATION + path, file['dataset'], model, model_submission)
-        print("running automatic eval")
-        run_automatic_evaluation(model, dataset)
+        if not baseline:
+            print("running automatic eval")
+            run_automatic_evaluation(model, file['dataset'])
 
 def load_responses(response_file, dataset, model, submission):
     response = requests.get(response_file)
     data = response.text
     responses = data.split('\n')
-    prompts = EvaluationDatasetText.objects.all().filter(evaluationdataset=dataset)
+    prompts = EvaluationDatasetText.objects.filter(evaluationdataset=dataset)
     
     model_responses = list()
     for i in range(len(responses)):

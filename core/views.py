@@ -45,11 +45,11 @@ def submit(request):
                     file['dataset'] = response_file
                     files.append(file)
                     
-                    if str(form.data['baseline']) == "on":
+                    if 'baseline' in form.data.keys():
                         baseline = Baseline(model=model, evaluationdataset=response_file)
                         baseline.save()
 
-            upload_model(model, files)
+            upload_model(model, files, 'baseline' in form.data.keys())
             return HttpResponseRedirect('/evaluation/')
     form = UploadModelForm()
     return render(request, 'submit.html', {'form': form, 'response_files': response_files})   

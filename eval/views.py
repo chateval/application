@@ -10,9 +10,10 @@ def get_baseline_messages(evalset_id):
         messages.append(dict({'prompt': response.prompt.prompt_text, 'response': response.response_text}))
     return messages
 
-def get_messages(evalset_id, model_id):
+def get_messages(model_id, evalset_id):
     messages = list()
     responses = ModelResponse.objects.filter(model=model_id, evaluationdataset=evalset_id)
+    print(evalset_id, model_id)
     for response in responses:
         messages.append(dict({'prompt': response.prompt.prompt_text, 'response': response.response_text}))
     return messages
@@ -43,6 +44,7 @@ def models(request):
 def run_automatic_evaluation(model, evalset):
     model_id = model.model_id
     evalset_id = evalset.pk
+    print(get_messages(model_id, evalset_id))
     model_responses = [message['response'] for message in get_messages(model_id, evalset_id)]
     baseline_responses = [message['response'] for message in get_baseline_messages(evalset_id)]
 

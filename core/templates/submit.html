@@ -27,9 +27,9 @@
           <br> <br>
           <h2 class="subtitle"> Model Reponse Files </h2>
           {% for response_file in response_files %}
-          <label class="label">{{ response_file.long_name }}</label>
-          <input class="file" type="file" name="{{ response_file.name }}" />
-          <br>
+            <label class="label">{{ response_file.long_name }}</label>
+            <input class="file" type="file" name="{{ response_file.name }}" />
+            <br>
           {% endfor %}
           <div class="field">
             <label class="label">Terms and Conditions</label>
@@ -41,6 +41,18 @@
               <br>
             </div>
           </div>
+
+          {% if request.user.is_superuser %}
+          <div class="field">
+            <div class="control">
+              <label class="checkbox">
+                <input name="baseline" type="checkbox">
+                is_baseline</a>
+              </label>
+              <br>
+            </div>
+          </div>
+          {% endif %}
   
           <input type="submit" value="Upload Model" class="button is-success">
         </form>

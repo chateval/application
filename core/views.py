@@ -1,24 +1,13 @@
-import datetime
-import requests
-import boto3
-from boto3 import session
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-from eval.views import run_automatic_evaluation, get_messages
-from .models import Baseline, Author, AutomaticEvaluation, Model, ModelSubmission, EvaluationDataset, EvaluationDatasetText, ModelResponse
-from .forms import UploadModelForm
-from chateval.settings import AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY, AWS_STORAGE_BUCKET_NAME, AWS_STORAGE_BUCKET_LOCATION
 from eval.scripts.human_evaluations import upload
-
-def load_responses(response_file, dataset, model, submission, baseline=False):
-    response = requests.get(response_file)
-    data = response.text
-    responses = data.split('\n')
-    prompts = EvaluationDatasetText.objects.all().filter(evaluationdataset=dataset)
-    
-    for i in range(len(responses)):
-        model_response = ModelResponse(model_submission=submission, evaluationdataset=dataset, prompt=prompts[i], model=model, response_text=responses[i], is_baseline=baseline)
-        model_response.save()
+from eval.views import run_automatic_evaluation, get_messages
+from .models import (Baseline, Author, AutomaticEvaluation, Model, ModelSubmission, EvaluationDataset,  
+    EvaluationDatasetText, ModelResponse)
+from .forms import UploadModelForm
+from .scripts import upload_model, load_responses
+from chateval.settings import (AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY, AWS_STORAGE_BUCKET_NAME, 
+    AWS_STORAGE_BUCKET_LOCATION)
 
 def splash(request):
     datasets = EvaluationDataset.objects.all()
@@ -26,35 +15,20 @@ def splash(request):
     return render(request, 'splash.html', {'datasets': datasets, 'baselines': baselines})
 
 def conversations(request):
-    
     models = Model.objects.all()
     datasets = EvaluationDataset.objects.all()
-
-    #Queries all the conversations 
-    '''
-    conversations = {}
-    for model in models:
-        conversations[model] = {}
-        for dataset in datasets:
-            conversations[model][dataset] = []
-            prompts = EvaluationDatasetText.objects.filter(evaluationdataset_id=dataset.evalset_id)
-            for prompt in prompts:
-                response = ModelResponse.objects.filter(model_id=model.model_id, evaluationdataset_id=dataset.evalset_id, prompt_id=prompt.prompt_id)
-                
-                if response != []:
-                    print(response)
-                    conversations[model][dataset].append({prompt: prompt.prompt_text, response:response[0].response_text})
-    '''
     messages = list()
     if request.method == "POST":
         messages = get_messages(request.POST['model_id'], request.POST['evalset_id'])
-        return render(request, 'conversations.html', {'POST': True, 'messages': messages, 'models': models, 'datasets': datasets})
-    return render(request, 'conversations.html', {'POST': False, 'messages': messages, 'models': models, 'datasets': datasets})
+        return render(request, 'conversations.html', 
+            {'POST': True, 'messages': messages, 'models': models, 'datasets': datasets})
+    return render(request, 'conversations.html', 
+        {'POST': False, 'messages': messages, 'models': models, 'datasets': datasets})
 
 def submit(request):
     response_files = EvaluationDataset.objects.all()
     if request.method == "POST":
-        form = UploadModelForm(request.POST, files=request.FILES)
+        form = UploadModelForm(request.POST, request.FILES)
         if form.is_valid():
             model = Model(author=Author.objects.get(pk=request.user),
                 name=form.cleaned_data['name'],
@@ -62,23 +36,20 @@ def submit(request):
                 repo_location = form.cleaned_data['repo_location'],
                 cp_location=form.cleaned_data['checkpoint_location'])
             model.save()
-
-            model_submission = ModelSubmission(model=model, date=datetime.datetime.now().date())
-            model_submission.save()
-
+            
+            files = list()
             for response_file in response_files:
+                file = dict()
                 if request.FILES.get(response_file.name) is not None:
-                    file_path = 'models/' + str(model_submission.submission_id) + '-' + request.FILES.get(response_file.name).name
-                    session = boto3.session.Session(aws_access_key_id=AWS_ACCESS_KEY, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
-                    s3 = session.resource('s3')
-                    s3.Bucket(AWS_STORAGE_BUCKET_NAME).put_object(Key=file_path, Body=request.FILES.get(response_file.name))
-                    dataset = EvaluationDataset.objects.get(name=response_file.name)
-                    load_responses(AWS_STORAGE_BUCKET_LOCATION + file_path, dataset, model, model_submission)
-                    run_automatic_evaluation(model, dataset)
+                    file['file'] = request.FILES.get(response_file.name)
+                    file['dataset'] = response_file
+                    files.append(file)
+                    
+                    if 'baseline' in form.data.keys():
+                        baseline = Baseline(model=model, evaluationdataset=response_file)
+                        baseline.save()
+
+            upload_model(model, files, 'baseline' in form.data.keys())
             return HttpResponseRedirect('/evaluation/')
     form = UploadModelForm()
-    return render(request, 'submit.html', {'form': form, 'response_files': response_files})
-
-def test(request):
-    upload()
-    return render(request, 'models.html', {})    
+    return render(request, 'submit.html', {'form': form, 'response_files': response_files})   

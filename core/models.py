@@ -3,13 +3,6 @@ from django.conf import settings
 from django.db.models.signals import post_save
 import requests
 
-class Baseline(models.Model):
-    name = models.CharField(max_length=200)
-    description = models.TextField()
-
-    class Meta:
-        db_table = 'Baseline'
-
 class Author(models.Model):
     author_id = models.OneToOneField(settings.AUTH_USER_MODEL, primary_key=True, on_delete=models.CASCADE)
     name = models.CharField(unique=True, max_length=100)
@@ -78,13 +71,19 @@ class EvaluationDatasetText(models.Model):
         db_table = 'EvaluationDatasetText'
         unique_together = (('evaluationdataset', 'prompt_id'),)
 
+class Baseline(models.Model):
+    model = models.OneToOneField(Model, primary_key=True, on_delete=models.DO_NOTHING)
+    evaluationdataset = models.ForeignKey(EvaluationDataset, models.DO_NOTHING)
+
+    class Meta:
+        db_table = 'Baseline'
+
 class ModelResponse(models.Model):
     model = models.ForeignKey('Model', models.DO_NOTHING)
     evaluationdataset = models.ForeignKey(EvaluationDataset, models.DO_NOTHING, related_name='evaluationdatasets')
     prompt = models.ForeignKey(EvaluationDatasetText, models.DO_NOTHING)
     response_text = models.TextField()
     model_submission = models.ForeignKey(ModelSubmission, models.DO_NOTHING)
-    is_baseline = models.NullBooleanField()
 
     class Meta:
         db_table = 'ModelResponse'

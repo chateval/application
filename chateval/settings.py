@@ -55,11 +55,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'chateval.urls'
-
+print(BASE_DIR + '/chateval/templates')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [(os.path.join(BASE_DIR, 'templates'))],
+        'DIRS': [BASE_DIR + '/chateval/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

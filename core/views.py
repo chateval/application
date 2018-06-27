@@ -1,13 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-from eval.scripts.human_evaluations import upload
-from eval.views import run_automatic_evaluation, get_messages
-from .models import (Baseline, Author, AutomaticEvaluation, Model, ModelSubmission, EvaluationDataset,  
-    EvaluationDatasetText, ModelResponse)
-from .forms import UploadModelForm
+from .models import Baseline, EvaluationDataset, Model
 from .scripts import upload_model, load_responses
-from chateval.settings import (AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY, AWS_STORAGE_BUCKET_NAME, 
-    AWS_STORAGE_BUCKET_LOCATION)
 
 def splash(request):
     datasets = EvaluationDataset.objects.all()

@@ -137,3 +137,5 @@ AWS_STORAGE_BUCKET_LOCATION = "https://s3.amazonaws.com/chateval-models/"
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+ALLOWED_HOSTS =  ['localhost', 'chateval.kirubarajan.com', 'chateval.org']

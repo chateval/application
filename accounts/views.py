@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
-from core.models import Author
+from orm.models import Author
 from .forms import LogInForm, SignUpForm
 
 def login_view(request):
@@ -14,7 +14,7 @@ def login_view(request):
                 return redirect('/')
             return redirect('/accounts/login')
     form = LogInForm()
-    return render(request, 'login.html', {'form' : form})
+    return render(request, 'registration/login.html', {'form' : form})
 
 def signup_view(request):
     if request.method == "POST":
@@ -32,4 +32,4 @@ def signup_view(request):
             author.save()
             return redirect('/accounts/login')            
     form = SignUpForm()
-    return render(request, 'signup.html', {'form' : form})
+    return render(request, 'registration/signup.html', {'form' : form})

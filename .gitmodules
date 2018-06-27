@@ -1,3 +1,0 @@
-[submodule "eval/scripts/Chatbot_evaluation"]
-	path = eval/scripts/Chatbot_evaluation
-	url = https://github.com/chateval/ChatEval

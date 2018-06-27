@@ -12,7 +12,7 @@ def upload():
     all_amt_experiments['DBDC'] = []
 
     data = []
-    for line in open(os.path.abspath(os.path.join('setc_runs.csv'))).readlines()[0:1]:
+    for line in open(os.path.abspath(os.path.join('eval/scripts/files/setc_runs.csv'))).readlines()[0:1]:
         evalset,m1,m2,folder = line.strip('\n').split(',')
 
         target_files = open(os.path.abspath(os.path.join('eval/scripts/Human_Evaluations/' + folder + '/order.txt'))).readlines()
@@ -26,7 +26,7 @@ def upload():
 
         if evalset == 'NCM':
             examples = process_source_and_responses(
-                os.path.abspath(os.path.join('Chatbot_evaluation/eval_data/ncm/neural_conv_model_eval_source.txt')), target_files)
+                os.path.abspath(os.path.join('eval/scripts/Chatbot_evaluation/eval_data/ncm/neural_conv_model_eval_source.txt')), target_files)
             if 'Human' in m1:
                 human_responses['NCM'][m1] = [_.strip('\n') for _ in open(response_files[evalset][m1]).readlines()]
             if 'Human' in m2:
@@ -34,7 +34,7 @@ def upload():
         elif evalset == 'DBDC':
             examples = process_source_and_responses(
                 os.path.abspath(os.path.join(
-                'Chatbot_evaluation/eval_data/dbdc/dbdc_eval_minus_CIC_200rand.txt')), target_files)
+                'eval/scripts/Chatbot_evaluation/eval_data/dbdc/dbdc_eval_minus_CIC_200rand.txt')), target_files)
             
             
         examples_dict = {}

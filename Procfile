@@ -1,1 +1,1 @@
-"web: gunicorn chateval.wsgi"
+web: gunicorn chateval.wsgi

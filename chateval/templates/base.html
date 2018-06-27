@@ -1,0 +1,95 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ChatEval</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="{% static 'app.css' %}" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script type="text/javascript" src="{% static 'bar_graph.js' %}"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  </head>
+
+  <body>
+    <div id="contains-all">
+      <div id="body">
+        <nav class="navbar is-success" role="navigation" aria-label="main navigation">
+          <div class="navbar-menu" id="navMenu">
+            <div class="navbar-start">
+
+            </div>
+            <div class="navbar-end">
+              <a class="navbar-item" href="/">
+                About
+              </a>
+              <a class="navbar-item" href="/conversations">
+                Conversations
+              </a>
+              <a class="navbar-item" href="/models">
+                All Models
+              </a>
+              {% if user.is_authenticated %}
+                <a class="navbar-item" href="/my_models">
+                  <strong>My Models</strong>
+                </a>        
+                <a class="navbar-item" href="/submit">
+                  <strong>Submit Model</strong>
+                </a>              
+                <a class="navbar-item" href="/logout">
+                  <strong>Log Out</strong>
+                </a>
+                {% else %}
+                <a class="navbar-item" href="/login">
+                  <strong>Log In</strong>
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        </nav>
+
+        {% block content %}
+        {% endblock %}
+    </div>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="content has-text-centered">
+            <p>
+              Developed by <strong>The ChatEval Team</strong>
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', function() {
+        // Get all "navbar-burger" elements
+        var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+        // Check if there are any navbar burgers
+        if ($navbarBurgers.length > 0) {
+
+          // Add a click event on each of them
+          $navbarBurgers.forEach(function($el) {
+            $el.addEventListener('click', function() {
+
+              // Get the target from the "data-target" attribute
+              var target = $el.dataset.target;
+              var $target = document.getElementById(target);
+
+              // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+              $el.classList.toggle('is-active');
+              $target.classList.toggle('is-active');
+
+            });
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

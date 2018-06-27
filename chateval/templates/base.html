@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load static %}
 
 <!DOCTYPE html>
 <html>
@@ -8,9 +8,9 @@
     <title>ChatEval</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="{% static "styles/app.css" %}" />
+    <link rel="stylesheet" href="{% static 'app.css' %}" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-    <script type="text/javascript" src="{% static "bar_graph.js" %}"></script>
+    <script type="text/javascript" src="{% static 'bar_graph.js' %}"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
   </head>
 
@@ -29,21 +29,21 @@
               <a class="navbar-item" href="/conversations">
                 Conversations
               </a>
-              <a class="navbar-item" href="/evaluation/models">
+              <a class="navbar-item" href="/models">
                 All Models
               </a>
               {% if user.is_authenticated %}
-                <a class="navbar-item" href="/evaluation">
+                <a class="navbar-item" href="/my_models">
                   <strong>My Models</strong>
                 </a>        
                 <a class="navbar-item" href="/submit">
                   <strong>Submit Model</strong>
                 </a>              
-                <a class="navbar-item" href="/accounts/logout">
+                <a class="navbar-item" href="/logout">
                   <strong>Log Out</strong>
                 </a>
                 {% else %}
-                <a class="navbar-item" href="/accounts/login">
+                <a class="navbar-item" href="/login">
                   <strong>Log In</strong>
                 </a>
               {% endif %}

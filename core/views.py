@@ -36,7 +36,7 @@ def submit(request):
                 repo_location = form.cleaned_data['repo_location'],
                 cp_location=form.cleaned_data['checkpoint_location'])
             model.save()
-
+            
             files = list()
             for response_file in response_files:
                 file = dict()
@@ -44,8 +44,12 @@ def submit(request):
                     file['file'] = request.FILES.get(response_file.name)
                     file['dataset'] = response_file
                     files.append(file)
+                    
+                    if str(form.data['baseline']) == "on":
+                        baseline = Baseline(model=model, evaluationdataset=response_file)
+                        baseline.save()
 
-            upload_model(model, files, baseline=(str(form.data['baseline']) == "on"))
+            upload_model(model, files)
             return HttpResponseRedirect('/evaluation/')
     form = UploadModelForm()
     return render(request, 'submit.html', {'form': form, 'response_files': response_files})   

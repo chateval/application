@@ -20,11 +20,11 @@ def upload_model(model, files, baseline=False):
         path = 'models/' + str(model_submission.submission_id) + '-' + file['file'].name
         s3_upload_file(path, file['file'])
         print("saved to s3 and loading responses")
-        load_responses(AWS_STORAGE_BUCKET_LOCATION + path, file['dataset'], model, model_submission, baseline=baseline)
+        load_responses(AWS_STORAGE_BUCKET_LOCATION + path, file['dataset'], model, model_submission)
         print("running automatic eval")
         run_automatic_evaluation(model, dataset)
 
-def load_responses(response_file, dataset, model, submission, baseline=False):
+def load_responses(response_file, dataset, model, submission):
     response = requests.get(response_file)
     data = response.text
     responses = data.split('\n')
@@ -33,6 +33,6 @@ def load_responses(response_file, dataset, model, submission, baseline=False):
     model_responses = list()
     for i in range(len(responses)):
         model_response = ModelResponse(model_submission=submission, evaluationdataset=dataset, 
-            prompt=prompts[i], model=model, response_text=responses[i], is_baseline=baseline)
+            prompt=prompts[i], model=model, response_text=responses[i])
         model_responses.append(model_response)
     ModelResponse.objects.bulk_create(model_responses)

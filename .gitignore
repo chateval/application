@@ -5,4 +5,3 @@ env.sh
 venv/
 app/__pycache__
 chateval/__pycache__
-Procfile

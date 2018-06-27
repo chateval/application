@@ -12,7 +12,7 @@ def upload():
     all_amt_experiments['DBDC'] = []
 
     data = []
-    for line in open(os.path.abspath(os.path.join('eval/scripts/setc_runs.csv'))).readlines()[0:1]:
+    for line in open(os.path.abspath(os.path.join('eval/scripts/files/setc_runs.csv'))).readlines()[0:1]:
         evalset,m1,m2,folder = line.strip('\n').split(',')
 
         target_files = open(os.path.abspath(os.path.join('eval/scripts/Human_Evaluations/' + folder + '/order.txt'))).readlines()

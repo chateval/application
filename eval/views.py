@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from core.models import Author, Baseline, Model, EvaluationDataset, AutomaticEvaluation, Metric, ModelResponse
-import eval.auto_eval_utils as aeu
+import eval.scripts.auto_eval_utils as aeu
 
 def get_baseline_messages(evalset_id):
     messages = list()

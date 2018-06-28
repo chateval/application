@@ -1,6 +1,7 @@
 import datetime
 import requests
 import boto3
+from io import TextIOWrapper
 from boto3 import session
 from orm.models import EvaluationDatasetText, ModelResponse, ModelSubmission, EvaluationDataset
 from orm.scripts import upload_responses
@@ -19,6 +20,8 @@ def upload_model(model, files, baseline=False):
     for file in files:           
         path = 'models/' + str(model_submission.submission_id) + '-' + file['file'].name
         s3_upload_file(path, file['file'])
-        upload_responses(AWS_STORAGE_BUCKET_LOCATION + path, file['dataset'], model, model_submission)
+        responses = file['file'].file.getvalue().decode(encoding='UTF-8').split('\n')
+
+        upload_responses(responses, file['dataset'], model, model_submission)
         if not baseline:
-            run_automatic_evaluation(model, file['dataset'])
+            run_automatic_evaluation(model, responses, file['dataset'])

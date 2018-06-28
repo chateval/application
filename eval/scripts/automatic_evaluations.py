@@ -17,14 +17,13 @@ class Word2Vec:
     def dim(self):
         return self.vectors.dim
 
-def run_automatic_evaluation(model, evalset):
+def run_automatic_evaluation(model, model_responses, evalset):
     model_id = model.model_id
     evalset_id = evalset.pk
-    model_responses = [message['response'] for message in get_messages(model_id, evalset_id)]
     baseline_responses = [message['response'] for message in get_baseline_messages(evalset_id)]
 
     vectors = Magnitude('eval/scripts/files/google_news.magnitude')
-    w2v = w2v = Word2Vec(vectors)
+    w2v = Word2Vec(vectors)
 
     AutomaticEvaluation.objects.bulk_create([
         AutomaticEvaluation(metric=Metric.objects.get(metric_id=1), model=model, evaluationdataset=evalset, value=avg_len(model_responses)),

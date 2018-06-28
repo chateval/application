@@ -5,4 +5,4 @@ env.sh
 venv/
 app/__pycache__
 chateval/__pycache__
-eval/scripts/files/google_news_vectors.gz
+eval/scripts/files/google_news.magnitude

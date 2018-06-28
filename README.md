@@ -3,10 +3,11 @@ A scientific framework for evaluating chatbots. Scientific
 paper available [here](https://github.com/chateval/ChatEval/blob/master/paper/Chatbot_Evaluation_Demo_2018_EMNLP.pdf).
 
 ## Dependencies
-- Django
-- Bulma CSS Framework
-- MySQL
-- Amazon S3
+- Django (web framework)
+- Bulma (CSS framework)
+- MySQL (database)
+- Amazon S3 (Dataset storage)
+- Magnitude (word embedding format)
 
 ## Usage
 0. Install dependencies using `pip install -r requirements.txt`.

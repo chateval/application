@@ -128,6 +128,11 @@ USE_TZ = True
 STATIC_URL = '/chateval/static/'
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
+STATICFILES_DIRS = (
+  os.path.join(SITE_ROOT, 'static/'),
+)
+
 AWS_ACCESS_KEY = os.environ['AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
 AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
@@ -136,4 +141,4 @@ AWS_STORAGE_BUCKET_LOCATION = "https://s3.amazonaws.com/chateval-models/"
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
-ALLOWED_HOSTS =  ['localhost', 'chateval.kirubarajan.com', 'chateval.org']
+ALLOWED_HOSTS =  ['localhost', 'chateval.org']

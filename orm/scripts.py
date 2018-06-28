@@ -16,12 +16,8 @@ def get_messages(model_id, evalset_id):
         messages.append(dict({'prompt': response.prompt.prompt_text, 'response': response.response_text}))
     return messages
 
-def upload_responses(response_file, dataset, model, submission):
-    response = requests.get(response_file)
-    data = response.text
-    responses = data.split('\n')
+def upload_responses(responses, dataset, model, submission):
     prompts = EvaluationDatasetText.objects.filter(evaluationdataset=dataset)
-    
     model_responses = list()
     for i in range(len(responses)):
         model_response = ModelResponse(model_submission=submission, evaluationdataset=dataset, 

@@ -25,15 +25,13 @@ def submit(request):
         
             files = list()
             for response_file in response_files:
-                file = dict()
-                if request.FILES.get(response_file.name) is not None:
-                    file['file'] = request.FILES.get(response_file.name)
-                    file['dataset'] = response_file
-                    files.append(file)               
+                uploaded = request.FILES[response_file.name]
+                if uploaded is not None:
+                    files.append({'file': uploaded, 'dataset': response_file})               
                     if 'baseline' in form.data.keys():
                         baseline = Baseline(model=model, evaluationdataset=response_file)
                         baseline.save()
-            upload_model(model, files, 'baseline' in form.data.keys())
-            return HttpResponseRedirect('/my_models')
+                    upload_model(model, files, 'baseline' in form.data.keys())
+                    return HttpResponseRedirect('/my_models')
     form = UploadModelForm()
     return render(request, 'submit.html', {'form': form, 'response_files': response_files})   

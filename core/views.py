@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from orm.models import Baseline, EvaluationDataset, Model
+from orm.models import Baseline, EvaluationDataset, Model, AutomaticEvaluation
 from orm.scripts import get_messages
 
 def splash(request):

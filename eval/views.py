@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from orm.models import Author, Baseline, Model, EvaluationDataset, AutomaticEvaluation, Metric, ModelResponse
 from orm.scripts import get_messages
-from .scripts.automatic_evaluations import run_automatic_evaluation
+from .scripts.automatic.automatic_evaluations import run_automatic_evaluation
 from .scripts.upload_model import upload_model
 from .forms import UploadModelForm
 

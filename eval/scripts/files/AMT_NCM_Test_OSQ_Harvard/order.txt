@@ -1,2 +1,0 @@
-/data2/chatbot_eval_issues/results/AMT_NCM_Test_OSQ_Harvard/pred.txt.harvard_opennmt_model_acc_39.74_ppl_26.63_e13.pt
-/data2/chatbot_eval_issues/results/AMT_NCM_Test_OSQ_Harvard/pred.txt.seed_701_no_emb_osq_acc_31.46_ppl_52.67_e13.pt

@@ -11,24 +11,24 @@ def conversations(request):
     models = Model.objects.all()
     datasets = EvaluationDataset.objects.all()
     messages = list()
-    if request.method == "POST":
-        messages = get_messages(request.POST['model_id'], request.POST['evalset_id'])
+    if request.GET.get('model_id') is not None and request.GET.get('evalset_id') is not None:
+        messages = get_messages(request.GET.get('model_id'), request.GET.get('evalset_id'))
         return render(request, 'conversations.html', 
-            {'POST': True, 'messages': messages, 'models': models, 'datasets': datasets})
+            {'GET': True, 'messages': messages, 'models': models, 'datasets': datasets})
     return render(request, 'conversations.html', 
-        {'POST': False, 'messages': messages, 'models': models, 'datasets': datasets})
+        {'GET': False, 'messages': messages, 'models': models, 'datasets': datasets})
 
 def models(request):
     models = Model.objects.all()
     datasets = EvaluationDataset.objects.all()
     messages = list()
     evaluations = list()
-    if request.method == "POST":
-        messages = get_messages(request.POST['model_id'], request.POST['evalset_id'])
-        dataset = EvaluationDataset.objects.get(pk=request.POST['evalset_id'])
-        for automatic_evaluation in AutomaticEvaluation.objects.filter(model=request.POST['model_id'], 
-            evaluationdataset=request.POST['evalset_id']):      
-            evaluations.append(dict({'name': automatic_evaluation.metric.name, 'value': automatic_evaluation.value}))
-        return render(request, 'models.html', {'POST': True, 'model': Model.objects.get(pk=request.POST['model_id']),
+    if request.GET.get('model_id') is not None and request.GET.get('model_id') is not None:
+        messages = get_messages(request.GET.get('model_id'), request.GET.get('evalset_id'), get_all=False)
+        dataset = EvaluationDataset.objects.get(pk=request.GET.get('evalset_id'))
+        for auto in AutomaticEvaluation.objects.filter(model=request.GET.get('model_id'), 
+            evaluationdataset=request.GET.get('evalset_id')):
+            evaluations.append(dict({'name': auto.metric.name, 'value': "{0:.3f}".format(auto.value), 'info': auto.metric.info}))
+        return render(request, 'models.html', {'GET': True, 'model': Model.objects.get(pk=request.GET.get('model_id')),
             'messages': messages , 'models': models, 'datasets': datasets, 'dataset': dataset, 'evaluations': evaluations})
-    return render(request, 'models.html', {'POST': False, 'models': models, 'datasets': datasets})
+    return render(request, 'models.html', {'GET': False, 'models': models, 'datasets': datasets})

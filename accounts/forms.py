@@ -11,4 +11,4 @@ class SignUpForm(forms.Form):
 
 class LogInForm(forms.Form):
     username = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class' : 'input'}))
-    password = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class' : 'input'}))
+    password = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs={'class' : 'input'}))

@@ -51,15 +51,14 @@
       <div class="column">
         <br>
         {% if POST %}
+        <p class="title"> {{ model.name }}</p>
         <div class="card">
-            <div class="card-content">
-              <p class="title is-4">Model: NCM</p>
-    
+            <div class="card-content">    
               <div class="content">
                 <p><strong>Description:</strong> {{ model.description }} <br>
-              <strong>Dataset:</strong> {{ dataset.long_name }} <br>
-                <strong>Code:</strong> {{ model.repo_location }} <br>
-                <strong>Checkpoints:</strong> {{ model.cp_location }}</p>
+                <strong>Dataset:</strong> {{ dataset.long_name }} <br> <br>
+                <a class="button" href="{{ model.repo_location }}"> Code </a> 
+                <a class="button" href="{{ model.cp_location }}"> Checkpoints </a>
               </div>
             </div>
           </div>
@@ -78,7 +77,7 @@
                   <tbody>
                     {% for evaluation in evaluations %}
                     <tr>
-                      <td>{{ evaluation.name }}</td>
+                      <td> <a href="{{ evaluation.info }}">{{ evaluation.name }}</a></td>
                       <td>{{ evaluation.value }}</td>
                     </tr>
                     {% endfor %}
@@ -103,8 +102,8 @@
               <div class="column is-half">
                 <div class="card">
                   <div class="card-content">
-                    <h2 class="text is-size-5"><strong>Prompt: </strong>{{ message.prompt }}</h2>
-                    <p class="text"><strong>Model: </strong>{{ message.response }}</p>
+                    <h2 class="text is-size-5"><strong>{{ message.prompt }}</strong></h2>
+                    <p class="text">{{ message.response }}</p>
                   </div>
                 </div>
               </div>

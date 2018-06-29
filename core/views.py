@@ -24,11 +24,11 @@ def models(request):
     messages = list()
     evaluations = list()
     if request.method == "POST":
-        messages = get_messages(request.POST['model_id'], request.POST['evalset_id'])
+        messages = get_messages(request.POST['model_id'], request.POST['evalset_id'], get_all=False)
         dataset = EvaluationDataset.objects.get(pk=request.POST['evalset_id'])
-        for automatic_evaluation in AutomaticEvaluation.objects.filter(model=request.POST['model_id'], 
+        for auto in AutomaticEvaluation.objects.filter(model=request.POST['model_id'], 
             evaluationdataset=request.POST['evalset_id']):      
-            evaluations.append(dict({'name': automatic_evaluation.metric.name, 'value': automatic_evaluation.value}))
+            evaluations.append(dict({'name': auto.metric.name, 'value': auto.value, 'info': auto.metric.info}))
         return render(request, 'models.html', {'POST': True, 'model': Model.objects.get(pk=request.POST['model_id']),
             'messages': messages , 'models': models, 'datasets': datasets, 'dataset': dataset, 'evaluations': evaluations})
     return render(request, 'models.html', {'POST': False, 'models': models, 'datasets': datasets})

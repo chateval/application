@@ -35,10 +35,10 @@ class ModelSubmission(models.Model):
 class Metric(models.Model):
     metric_id = models.BigAutoField(primary_key=True)
     name = models.CharField(unique=True, max_length=100)
+    info = models.CharField(max_length=200)
 
     class Meta:
         db_table = 'Metrics'
-
 
 class EvaluationDataset(models.Model):
     evalset_id = models.BigAutoField(primary_key=True)

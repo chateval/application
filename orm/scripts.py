@@ -1,17 +1,23 @@
 import requests
 from orm.models import Baseline, ModelResponse, EvaluationDatasetText
 
-def get_baseline_messages(evalset_id):
+def get_baseline_messages(evalset_id, get_all=True):
     messages = list()
     baseline = Baseline.objects.filter(evaluationdataset=evalset_id)[0].model
-    responses = ModelResponse.objects.filter(model=baseline, evaluationdataset=evalset_id)
+    if get_all:
+        responses = ModelResponse.objects.filter(model=baseline, evaluationdataset=evalset_id)
+    else:
+        responses = ModelResponse.objects.filter(model=baseline, evaluationdataset=evalset_id)[:50]
     for response in responses:
         messages.append(dict({'prompt': response.prompt.prompt_text, 'response': response.response_text}))
     return messages
 
-def get_messages(model_id, evalset_id):
+def get_messages(model_id, evalset_id, get_all=True):
     messages = list()
-    responses = ModelResponse.objects.filter(model=model_id, evaluationdataset=evalset_id)
+    if get_all:
+        responses = ModelResponse.objects.filter(model=model_id, evaluationdataset=evalset_id)
+    else:
+        responses = ModelResponse.objects.filter(model=model_id, evaluationdataset=evalset_id)[:50]
     for response in responses:
         messages.append(dict({'prompt': response.prompt.prompt_text, 'response': response.response_text}))
     return messages

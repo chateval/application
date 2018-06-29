@@ -7,9 +7,9 @@ from accounts.views import login_view, signup_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', login_view, name='login'),
-    path('signup/', signup_view, name='signup'),
-    path('', include('django.contrib.auth.urls')),
+    path('accounts/login/', login_view, name='login'),
+    path('accounts/signup/', signup_view, name='signup'),
+    path('accounts/', include('django.contrib.auth.urls')),
     url(r'^my_models$', my_models, name='my_models'),
     url(r'^models$', models, name='models'),
     url(r'^submit$', submit, name='submit'),

@@ -8,10 +8,10 @@ ChatEval folows standard Django practice of organizing functionality into smalle
 
 1. `core` - handles splash page, conversations page etc. (only performs queries)
 2. `eval` - handles uploading model responses and handles evaluation (automatic and human)
-3. `orm` - handles all database interfacing ()
+3. `orm` - handles all database interfacing (handles all Django migrations)
 4. `accounts` - handles account sign up and login  
 
-Templates (HTML) and urls are availabe in `/chateval/templates` and `/chateval/urls.py` respectively.
+In each application, `views.py` handles retreiving information, rendering templates, and collecting user input. Each app's `scripts.py` or `/scripts` folder contains the necessary helper functions for the app. Templates (HTML) and urls are availabe in `/chateval/templates` and `/chateval/urls.py` respectively.
 
 ## Authentication
 User objects are created through Django's `auth` packages and are used as the primary key for the Author objects. Account creation is available at the routes `/accounts/signup` and `/accounts/login`. Logout is available at `/accounts/logout` (as well as from the navbar). Certain views, such as model uploading, are only available when the user is logged in and authenticated. Yes, passwords are hashed before being saved in the database.

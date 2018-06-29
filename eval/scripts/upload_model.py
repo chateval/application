@@ -5,7 +5,7 @@ from io import TextIOWrapper
 from boto3 import session
 from orm.models import EvaluationDatasetText, ModelResponse, ModelSubmission, EvaluationDataset
 from orm.scripts import upload_responses
-from eval.scripts.automatic_evaluations import run_automatic_evaluation
+from eval.scripts.automatic.automatic_evaluations import run_automatic_evaluation
 from chateval.settings import (AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY, AWS_STORAGE_BUCKET_NAME, AWS_STORAGE_BUCKET_LOCATION)
 
 def s3_upload_file(path, body):
@@ -16,12 +16,10 @@ def s3_upload_file(path, body):
 def upload_model(model, files, baseline=False):
     model_submission = ModelSubmission(model=model, date=datetime.datetime.now().date())
     model_submission.save()
-    
     for file in files:           
         path = 'models/' + str(model_submission.submission_id) + '-' + file['file'].name
         s3_upload_file(path, file['file'])
         responses = file['file'].file.getvalue().decode(encoding='UTF-8').split('\n')
-
         upload_responses(responses, file['dataset'], model, model_submission)
         if not baseline:
             run_automatic_evaluation(model, responses, file['dataset'])

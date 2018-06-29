@@ -26,7 +26,8 @@ export AWS_STORAGE_BUCKET_NAME=
 ```
 
 5. Run server using `python manage.py runserver`
-6. Access app at [localhost:8000](localhost:8000) and admin SQL page at [localhost:8000/admin](localhost:8000/admin).
+6. Download `.magnitude` word embeddings from [here](http://magnitude.plasticity.ai/word2vec/GoogleNews-vectors-negative300.magnitude) and place the vectors in `/eval/scripts/files/google_news.magnitude`.
+7. Access app at [localhost:8000](localhost:8000) and admin SQL page at [localhost:8000/admin](localhost:8000/admin).
 
 ## Code Documentation
 Documentation for the codebase is available in `DOCUMENTATION.md`.

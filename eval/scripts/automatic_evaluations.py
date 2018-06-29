@@ -21,6 +21,7 @@ def run_automatic_evaluation(model, model_responses, evalset):
     model_id = model.model_id
     evalset_id = evalset.pk
     baseline_responses = [message['response'] for message in get_baseline_messages(evalset_id)]
+    print(len(model_responses), len(baseline_responses))
 
     vectors = Magnitude('eval/scripts/files/google_news.magnitude')
     w2v = Word2Vec(vectors)
@@ -30,6 +31,6 @@ def run_automatic_evaluation(model, model_responses, evalset):
         AutomaticEvaluation(metric=Metric.objects.get(metric_id=2), model=model, evaluationdataset=evalset, value=distinct_1(model_responses)),
         AutomaticEvaluation(metric=Metric.objects.get(metric_id=3), model=model, evaluationdataset=evalset, value=distinct_2(model_responses)),
         AutomaticEvaluation(metric=Metric.objects.get(metric_id=4), model=model, evaluationdataset=evalset, value=greedy_match(model_responses, baseline_responses, w2v)[0]),
-        AutomaticEvaluation(metric=Metric.objects.get(metric_id=6), model=model, evaluationdataset=evalset, value=extrema_score(model_responses, baseline_responses, w2v)[0]),
-        AutomaticEvaluation(metric=Metric.objects.get(metric_id=7), model=model, evaluationdataset=evalset, value=average_embedding_score(model_responses, baseline_responses, w2v)[0]),
+        AutomaticEvaluation(metric=Metric.objects.get(metric_id=5), model=model, evaluationdataset=evalset, value=extrema_score(model_responses, baseline_responses, w2v)[0]),
+        AutomaticEvaluation(metric=Metric.objects.get(metric_id=6), model=model, evaluationdataset=evalset, value=average_embedding_score(model_responses, baseline_responses, w2v)[0]),
     ])

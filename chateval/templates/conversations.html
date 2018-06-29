@@ -19,7 +19,7 @@
     <div class="columns">
       <div class="column is-one-quarter">
         <br>
-        <form method="POST" action="/conversations">
+        <form method="GET" action="/conversations">
           {% csrf_token %}
           <div class="control" name="model">
             <label class="label">Trained Model</label>
@@ -49,7 +49,7 @@
       </div>    
       <div class="column">
         <br>
-        {% if POST %}
+        {% if GET %}
         <div class="columns is-multiline">
           {% for message in messages %}
           <div class="column is-half">

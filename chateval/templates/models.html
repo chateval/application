@@ -19,7 +19,7 @@
     <div class="columns">
       <div class="column is-one-quarter">
         <br>
-        <form method="POST" action="/models">
+        <form method="GET" action="/models">
           {% csrf_token %}
           <div class="control" name="model">
             <label class="label">Trained Model</label>
@@ -50,7 +50,7 @@
   
       <div class="column">
         <br>
-        {% if POST %}
+        {% if GET %}
         <p class="title"> {{ model.name }}</p>
         <div class="card">
             <div class="card-content">    

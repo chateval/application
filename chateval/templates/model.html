@@ -55,18 +55,20 @@
         <div class="card">
             <div class="card-content">    
               <div class="content">
-                <p><strong>Description:</strong> {{ model.description }} <br>
+                <p><strong>Institution:</strong> {{ model.author.institution }} <br>
+                <strong>Description:</strong> {{ model.description }} <br>
                 <strong>Dataset:</strong> {{ dataset.long_name }} <br> <br>
                 <a class="button" href="{{ model.repo_location }}"> View Code </a> 
                 <a class="button" href="{{ model.cp_location }}"> View Checkpoint </a>
               </div>
             </div>
           </div>
-          <br>
-    
+          <br> <br>
+          <p class="title is-4">Automatic Evaluation <span class="icon has-text-info"> <a href="https://github.com/chateval/application/tree/master/eval"> <i class="fas fa-info-circle"></i>  </a> </span> </p>
+          {% for evaluation in evaluations %}
           <div class="card">
             <div class="card-content">
-              <p class="title is-4">Automatic Evaluation</p>
+              <h2 class="subtitle" class="margin-top: 2rem"> {{ evaluation.evalset }} </h2>
               <div class="content">
                 <table class="table is-bordered">
                   <thead>
@@ -74,10 +76,10 @@
                     <th>Value</th>
                   </thead>
                   <tbody>
-                    {% for evaluation in evaluations %}
+                    {% for auto_eval in evaluation.auto_evals %}
                     <tr>
-                      <td> <a href="{{ evaluation.info }}">{{ evaluation.name }}</a></td>
-                      <td>{{ evaluation.value }}</td>
+                      <td> {{ auto_eval.name }} </td>
+                      <td> {{ auto_eval.value }} </td>
                     </tr>
                     {% endfor %}
                   </tbody>
@@ -86,15 +88,22 @@
             </div>
           </div>
           <br>
-    
+          {% endfor %}
+
+          <br> 
+
+          <p class="title is-4">Human Evaluation</p>
+  
           <div class="card">
             <div class="card-content">
-              <p class="title is-4">Human Evaluation</p>
               <div id="chart_div"></div>
             </div>
           </div>
-    
+
           <br>
+          <hr>
+          <br>
+
           <h1 class="title"> Conversations</h1>
           <div class="columns is-multiline">
               {% for message in messages %}

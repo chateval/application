@@ -19,7 +19,7 @@
     <div class="columns">
       <div class="column is-one-quarter">
         <br>
-        <form method="GET" action="/models">
+        <form method="GET" action="/model">
           {% csrf_token %}
           <div class="control" name="model">
             <label class="label">Trained Model</label>
@@ -57,8 +57,8 @@
               <div class="content">
                 <p><strong>Description:</strong> {{ model.description }} <br>
                 <strong>Dataset:</strong> {{ dataset.long_name }} <br> <br>
-                <a class="button" href="{{ model.repo_location }}"> Code </a> 
-                <a class="button" href="{{ model.cp_location }}"> Checkpoints </a>
+                <a class="button" href="{{ model.repo_location }}"> View Code </a> 
+                <a class="button" href="{{ model.cp_location }}"> View Checkpoint </a>
               </div>
             </div>
           </div>
@@ -67,7 +67,6 @@
           <div class="card">
             <div class="card-content">
               <p class="title is-4">Automatic Evaluation</p>
-    
               <div class="content">
                 <table class="table is-bordered">
                   <thead>

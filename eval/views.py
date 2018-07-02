@@ -6,10 +6,10 @@ from .scripts.automatic.automatic_evaluations import run_automatic_evaluation
 from .scripts.upload_model import upload_model
 from .forms import UploadModelForm
 
-def my_models(request):
+def uploads(request):
     current_author = Author.objects.get(author_id=request.user)
     models = Model.objects.filter(author=current_author)
-    return render(request, 'my_models.html', { 'models': models })
+    return render(request, 'uploads.html', { 'models': models })
 
 def submit(request):
     response_files = EvaluationDataset.objects.all()
@@ -32,6 +32,6 @@ def submit(request):
                         baseline = Baseline(model=model, evaluationdataset=response_file)
                         baseline.save()
                     upload_model(model, files, 'baseline' in form.data.keys())
-                    return HttpResponseRedirect('/my_models')
+                    return HttpResponseRedirect('/uploads')
     form = UploadModelForm()
     return render(request, 'submit.html', {'form': form, 'response_files': response_files})   

@@ -47,7 +47,7 @@
                 {% csrf_token %}
                 <input type="hidden" name="model_id" value="{{ model.model_id }}">
                 <button type="submit" class="button is-success">Run Human Evaluation</button>
-                <a class="button" href="/models?model_id={{ model.model_id }}&evalset_id=1">View Evaluation</a>
+                <a class="button" href="/model?model_id={{ model.model_id }}&evalset_id=1">View Evaluation</a>
               </form>
             </div>
           </div>

@@ -18,8 +18,8 @@ def conversations(request):
     return render(request, 'conversations.html', 
         {'GET': False, 'messages': messages, 'models': models, 'datasets': datasets})
 
-def models(request):
-    models = Model.objects.all()
+def model(request):
+    models = Model.objects.all().reverse()
     datasets = EvaluationDataset.objects.all()
     messages = list()
     evaluations = list()
@@ -28,7 +28,7 @@ def models(request):
         dataset = EvaluationDataset.objects.get(pk=request.GET.get('evalset_id'))
         for auto in AutomaticEvaluation.objects.filter(model=request.GET.get('model_id'), 
             evaluationdataset=request.GET.get('evalset_id')):
-            evaluations.append(dict({'name': auto.metric.name, 'value': "{0:.3f}".format(auto.value), 'info': auto.metric.info}))
-        return render(request, 'models.html', {'GET': True, 'model': Model.objects.get(pk=request.GET.get('model_id')),
+            evaluations.append(dict({'name': auto.metric.name, 'value': "{0:.3f}".format(auto.value)}))
+        return render(request, 'model.html', {'GET': True, 'model': Model.objects.get(pk=request.GET.get('model_id')),
             'messages': messages , 'models': models, 'datasets': datasets, 'dataset': dataset, 'evaluations': evaluations})
-    return render(request, 'models.html', {'GET': False, 'models': models, 'datasets': datasets})
+    return render(request, 'model.html', {'GET': False, 'models': models, 'datasets': datasets})

@@ -21,10 +21,10 @@
       <form method="GET" action="/evaluations">
         <div class="control" name="model">
           <br>
-          <label class="label">Filter by:</label>
+          <label class="label">Filter by Evaluation Dataset:</label>
           <div class="select">
             <select name="model">
-              <option>example filter</option>
+              <option>example dataset</option>
             </select>
           </div>
         </div>
@@ -35,14 +35,16 @@
     <div class="column">
       <br>
       <div class="columns is-multiline">
-        {% for model in models %}
+        {% for upload in uploads %}
         <div class="column is-half">
           <div class="card">
             <div class="card-content">
-              <h2 class="text is-size-5"><strong>{{ model.name }}</strong></h2>
-              <p class="text"><strong>Description:</strong> {{ model.description }} </p>
-              <p class="text"><strong>Repository:</strong> {{ model.repo_location }} </p>
-              <span class="tag is-light">NCM</span>
+              <h2 class="text is-size-5"><strong>{{ upload.model.name }}</strong></h2>
+              <p class="text"><strong>Description:</strong> {{ upload.model.description }} </p>
+              <p class="text"><strong>Repository:</strong> {{ upload.model.repo_location }} </p>
+              {% for evalset in upload.evalsets %}
+              <span class="tag is-light"> {{ evalset }} </span>
+              {% endfor %}
               <form method="POST" action="/evaluation/human">
                 {% csrf_token %}
                 <input type="hidden" name="model_id" value="{{ model.model_id }}">

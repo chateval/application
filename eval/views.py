@@ -1,6 +1,6 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from orm.models import Author, Baseline, Model, EvaluationDataset, AutomaticEvaluation, Metric, ModelResponse
+from orm.models import Author, Baseline, Model, EvaluationDataset, AutomaticEvaluation, Metric, ModelResponse, ModelSubmission
 from orm.scripts import get_messages
 from .scripts.automatic.automatic_evaluations import run_automatic_evaluation
 from .scripts.upload_model import upload_model
@@ -9,7 +9,13 @@ from .forms import UploadModelForm
 def uploads(request):
     current_author = Author.objects.get(author_id=request.user)
     models = Model.objects.filter(author=current_author)
-    return render(request, 'uploads.html', { 'models': models })
+    uploads = list()
+    for model in models:
+        submission = ModelSubmission.objects.filter(model=model)[0]
+        evalsets = [evalset.name for evalset in submission.evaluationdatasets.all()]
+        uploads.append(dict({'model': model, 'evalsets': evalsets}))
+    uploads.reverse()
+    return render(request, 'uploads.html', { 'uploads': uploads })
 
 def submit(request):
     response_files = EvaluationDataset.objects.all()

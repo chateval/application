@@ -1,0 +1,73 @@
+[
+    {
+        "pk": 1,
+        "model": "orm.author",
+        "fields": {
+            "name": "Super User",
+            "email": "chateval@gmail.com",
+            "institution": "ChatEval Team"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "orm.metric",
+        "fields": {
+            "name": "Average Sentence Length"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "orm.metric",
+        "fields": {
+            "name": "Distinct 1"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "orm.metric",
+        "fields": {
+            "name": "Distinct 2"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "orm.metric",
+        "fields": {
+            "name": "Greedy Math"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "orm.metric",
+        "fields": {
+            "name": "Extrema Score"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "orm.metric",
+        "fields": {
+            "name": "Average Embedding Score"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "orm.evaluationdataset",
+        "fields": {
+            "name": "NCM",
+            "long_name": "Neural Conversational Model",
+            "source": "https://s3.amazonaws.com/chateval-models/models/ncm.txt",
+            "description": "In (Vinyals and Le 2015), human evaluation is conducted on a set of 200 hand-picked prompts. We make this dataset available for comparison."
+        }
+    },
+    {
+        "pk": 2,
+        "model": "orm.evaluationdataset",
+        "fields": {
+            "name": "DBDC",
+            "long_name": "Dialogue Breakdown Detection",
+            "source": "https://s3.amazonaws.com/chateval-models/models/ncm.txt",
+            "description": "The Dialogue Breakdown Detection (DBDC) task is part of the Dialogue System Technology Challenge, a series of tasks for understanding human dialog."
+        }
+    }
+]

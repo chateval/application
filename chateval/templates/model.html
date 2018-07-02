@@ -32,32 +32,19 @@
             </div>
           </div>
           <br>
-          <div class="control">
-            <label class="label">Evaluation Dataset</label>
-            <div class="select">
-              <select name="evalset_id">
-                {% for dataset in datasets %}
-                <option value="{{dataset.evalset_id}}">{{dataset.name}}</option>
-                {% endfor %} 
-              </select>
-            </div>
-            <br>
-          </div>
-          <br>
           <input type="submit" value="View Automatic Evaluation" class="button is-success">
         </form>
       </div>    
   
       <div class="column">
-        <br>
+        <br> <br>
         {% if GET %}
         <p class="title"> {{ model.name }}</p>
         <div class="card">
             <div class="card-content">    
               <div class="content">
                 <p><strong>Institution:</strong> {{ model.author.institution }} <br>
-                <strong>Description:</strong> {{ model.description }} <br>
-                <strong>Dataset:</strong> {{ dataset.long_name }} <br> <br>
+                <strong>Description:</strong> {{ model.description }} <br> <br>
                 <a class="button" href="{{ model.repo_location }}"> View Code </a> 
                 <a class="button" href="{{ model.cp_location }}"> View Checkpoint </a>
               </div>
@@ -68,7 +55,7 @@
           {% for evaluation in evaluations %}
           <div class="card">
             <div class="card-content">
-              <h2 class="subtitle" class="margin-top: 2rem"> {{ evaluation.evalset }} </h2>
+              <h2 class="subtitle" class="margin-top: 2rem"> {{ evaluation.evalset.long_name }} </h2>
               <div class="content">
                 <table class="table is-bordered">
                   <thead>
@@ -84,6 +71,7 @@
                     {% endfor %}
                   </tbody>
                 </table>
+              <a class="button is-success" href="/conversations?model_id={{ model.model_id }}&evalset_id={{evaluation.evalset.evalset_id}}">View Conversation</a>
               </div>
             </div>
           </div>
@@ -99,24 +87,7 @@
               <div id="chart_div"></div>
             </div>
           </div>
-
           <br>
-          <hr>
-          <br>
-
-          <h1 class="title"> Conversations</h1>
-          <div class="columns is-multiline">
-              {% for message in messages %}
-              <div class="column is-half">
-                <div class="card">
-                  <div class="card-content">
-                    <h2 class="text is-size-5"><strong>{{ message.prompt }}</strong></h2>
-                    <p class="text">{{ message.response }}</p>
-                  </div>
-                </div>
-              </div>
-              {% endfor %}
-            </div>
         {% else %}
           <h1 class="subtitle">No model/dataset selected. </h1>
         {% endif %}  

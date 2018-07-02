@@ -6,3 +6,4 @@ venv/
 app/__pycache__
 chateval/__pycache__
 eval/scripts/files/google_news.magnitude
+*.pyc

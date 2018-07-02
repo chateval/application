@@ -23,19 +23,10 @@ class Model(models.Model):
 
     class Meta:
         db_table = 'Model'
-    
-class ModelSubmission(models.Model):
-    submission_id = models.BigAutoField(primary_key=True)
-    date = models.DateTimeField()
-    model = models.ForeignKey('Model', models.DO_NOTHING)
-    
-    class Meta:
-        db_table = 'ModelSubmission'
 
 class Metric(models.Model):
     metric_id = models.BigAutoField(primary_key=True)
     name = models.CharField(unique=True, max_length=100)
-    info = models.CharField(max_length=200)
 
     class Meta:
         db_table = 'Metrics'
@@ -60,7 +51,16 @@ def save_evaluation_dataset(sender, instance, **kwargs):
         evaluation_dataset_text.save()
 
 post_save.connect(save_evaluation_dataset, sender=EvaluationDataset)
-        
+
+class ModelSubmission(models.Model):
+    submission_id = models.BigAutoField(primary_key=True)
+    date = models.DateTimeField()
+    model = models.ForeignKey('Model', models.DO_NOTHING)
+    evaluationdatasets = models.ManyToManyField(EvaluationDataset)
+    
+    class Meta:
+        db_table = 'ModelSubmission'        
+
 class EvaluationDatasetText(models.Model):
     evaluationdataset = models.ForeignKey(EvaluationDataset, models.DO_NOTHING)
     prompt_id = models.BigAutoField(primary_key=True)
@@ -95,6 +95,7 @@ class AutomaticEvaluation(models.Model):
     metric = models.ForeignKey('Metric', models.DO_NOTHING)
     evaluationdataset = models.ForeignKey('EvaluationDataset', models.DO_NOTHING)
     value = models.FloatField()
+    model_submission = models.ForeignKey(ModelSubmission, models.DO_NOTHING)
 
     class Meta:
         db_table = 'AutomaticEvaluations'

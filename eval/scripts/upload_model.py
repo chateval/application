@@ -14,12 +14,14 @@ def s3_upload_file(path, body):
     s3.Bucket(AWS_STORAGE_BUCKET_NAME).put_object(Key=path, Body=body)
 
 def upload_model(model, files, baseline=False):
-    model_submission = ModelSubmission(model=model, date=datetime.datetime.now().date())
-    model_submission.save()
-    for file in files:           
-        path = 'models/' + str(model_submission.submission_id) + '-' + file['file'].name
+    submission = ModelSubmission(model=model, date=datetime.datetime.now().date())
+    submission.save()
+    for file in files:
+        submission.evaluationdatasets.add(file['dataset'])
+        path = 'models/' + str(submission.submission_id) + '-' + file['file'].name
         s3_upload_file(path, file['file'])
         responses = file['file'].file.getvalue().decode(encoding='UTF-8').split('\n')
-        upload_responses(responses, file['dataset'], model, model_submission)
+        upload_responses(responses, file['dataset'], model, submission)
         if not baseline:
-            run_automatic_evaluation(model, responses, file['dataset'])
+            run_automatic_evaluation(model, submission, responses, file['dataset'])
+    print(submission.evaluationdatasets)

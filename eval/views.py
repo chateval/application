@@ -22,16 +22,15 @@ def submit(request):
                 repo_location = form.cleaned_data['repo_location'],
                 cp_location=form.cleaned_data['checkpoint_location'])
             model.save()
-        
+ 
             files = list()
             for response_file in response_files:
-                uploaded = request.FILES[response_file.name]
-                if uploaded is not None:
-                    files.append({'file': uploaded, 'dataset': response_file})               
+                if response_file.name in request.FILES.keys():
+                    files.append({'file': request.FILES[response_file.name], 'dataset': response_file})               
                     if 'baseline' in form.data.keys():
                         baseline = Baseline(model=model, evaluationdataset=response_file)
                         baseline.save()
-                    upload_model(model, files, 'baseline' in form.data.keys())
-                    return HttpResponseRedirect('/uploads')
+            upload_model(model, files, 'baseline' in form.data.keys())
+            return HttpResponseRedirect('/uploads')
     form = UploadModelForm()
     return render(request, 'submit.html', {'form': form, 'response_files': response_files})   

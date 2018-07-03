@@ -65,7 +65,7 @@
                   <tbody>
                     {% for auto_eval in evaluation.auto_evals %}
                     <tr>
-                      <td> {{ auto_eval.name }} </td>
+                      <td> <a href="{{ auto_eval.info }}"> {{ auto_eval.name }} </a>  </td>
                       <td> {{ auto_eval.value }} </td>
                     </tr>
                     {% endfor %}

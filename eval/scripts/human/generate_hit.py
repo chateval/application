@@ -9,7 +9,7 @@ import html
 import utils
 import html_gen
 
-def create_HIT(examples):
+def create_HIT(examples, mturk):
   if len(examples) == 0:
     return 0
   num_target_candidates =  len(examples[0].target_lines)

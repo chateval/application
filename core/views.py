@@ -10,13 +10,12 @@ def splash(request):
 def conversations(request):
     models = Model.objects.all()
     datasets = EvaluationDataset.objects.all()
-    messages = list()
     if request.GET.get('model_id') is not None and request.GET.get('evalset_id') is not None:
         messages = get_messages(request.GET.get('model_id'), request.GET.get('evalset_id'))
-        return render(request, 'conversations.html', 
-            {'GET': True, 'messages': messages, 'models': models, 'datasets': datasets})
-    return render(request, 'conversations.html', 
-        {'GET': False, 'messages': messages, 'models': models, 'datasets': datasets})
+        return render(request, 'conversations.html', {'GET': True, 'messages': messages, 
+                                            'models': models, 'datasets': datasets})
+    return render(request, 'conversations.html', {'GET': False, 'messages': list(), 
+                                            'models': models, 'datasets': datasets})
 
 def model(request):
     models = Model.objects.all()

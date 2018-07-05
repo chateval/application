@@ -20,6 +20,7 @@ class Model(models.Model):
     cp_location = models.TextField()
     repo_location = models.TextField()
     comments = models.TextField(blank=True, null=True)
+    archived = models.BooleanField(default=False)
 
     class Meta:
         db_table = 'Model'
@@ -27,6 +28,7 @@ class Model(models.Model):
 class Metric(models.Model):
     metric_id = models.BigAutoField(primary_key=True)
     name = models.CharField(unique=True, max_length=100)
+    info = models.CharField(max_length=200)
 
     class Meta:
         db_table = 'Metrics'

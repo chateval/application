@@ -27,8 +27,9 @@ def model(request):
         for evalset in submission.evaluationdatasets.all():
             auto_evals = list()
             for auto_eval in AutomaticEvaluation.objects.filter(model_submission=submission, evaluationdataset=evalset):
-                auto_evals.append(dict({'name': auto_eval.metric.name, 'value': "{0:.3f}".format(auto_eval.value)}))
+                auto_evals.append(dict({'name': auto_eval.metric.name, 'info': auto_eval.metric.info, 
+                                                        'value': "{0:.3f}".format(auto_eval.value)}))
             evaluations.append(dict({'evalset': evalset, 'auto_evals': auto_evals}))
         return render(request, 'model.html', {'GET': True, 'model': Model.objects.get(pk=request.GET.get('model_id')),
-            'messages': messages , 'models': models, 'evaluations': evaluations})
+                                                'messages': messages , 'models': models, 'evaluations': evaluations})
     return render(request, 'model.html', {'GET': False, 'models': models})

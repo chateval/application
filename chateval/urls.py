@@ -3,6 +3,7 @@ from django.urls import path
 from django.conf.urls import url, include
 from eval.views import uploads, submit
 from core.views import splash, conversations, model
+from orm.views import archive_model
 from accounts.views import login_view, signup_view
 
 urlpatterns = [
@@ -11,6 +12,7 @@ urlpatterns = [
     path('accounts/signup/', signup_view, name='signup'),
     path('accounts/', include('django.contrib.auth.urls')),
     url(r'^uploads$', uploads, name='uploads'),
+    path('model/delete/', archive_model, name='archive_model'),
     url(r'^model$', model, name='model'),
     url(r'^submit$', submit, name='submit'),
     url(r'^conversations$', conversations, name='conversations'),

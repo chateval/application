@@ -28,8 +28,10 @@ def create_HIT(examples, mturk):
   # Generate the full HTML for the hit. The tables html gets inserts in the right place.
   question_html_value = generate_HIT_html(num_required, tables_html, instructions)
 
+  '''
   with codecs.open('task.html', 'w', encoding='utf-8') as fout:
     fout.write(question_html_value)
+  '''
 
   question_html_value = question_html_value.encode('ascii', 'xmlcharrefreplace').decode()
 

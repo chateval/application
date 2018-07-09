@@ -4,6 +4,7 @@ from orm.models import Author, Baseline, Model, EvaluationDataset, AutomaticEval
 from orm.scripts import get_messages
 from .scripts.automatic.automatic_evaluations import run_automatic_evaluation
 from .scripts.human.launch_hit import launch_hits
+from .scripts.human.retrieve_responses import retrieve
 from .scripts.upload_model import upload_model
 from .forms import UploadModelForm
 
@@ -46,5 +47,6 @@ def human(request):
     model = Model.objects.get(model_id=request.POST['model_id'])
     baseline_model = Model.objects.filter(name="Human Baseline")[0]
     evalset = EvaluationDataset.objects.filter(name="NCM")[0]
-    launch_hits(evalset, baseline_model, model)
+    #launch_hits(evalset, baseline_model, model)
+    retrieve()
     return redirect('/model')

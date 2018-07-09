@@ -5,10 +5,10 @@ import random
 import codecs
 import html
 
-import utils
-import html_gen
+from .utils import *
+from .html_gen import *
 
-import * from generate_hit
+from .generate_hit import * 
 
 from orm.models import ModelResponse, EvaluationDatasetText
 
@@ -18,10 +18,10 @@ def launch_hits(dataset, model1, model2):
   sandbox = True
 
   # Create your connection to MTurk
-  mturk = utils.create_mturk_client(sandbox)
+  mturk = create_mturk_client(sandbox)
 
-  hits_out_path = os.path.join(os.path.dirname(args.source_file), 'hits.txt')
-  order_out_path = os.path.join(os.path.dirname(args.source_file), 'order.txt')
+  hits_out_path = 'eval/scripts/human/hits/' + model1.name.replace(" ", "") + '_' + model2.name.replace(" ", "") + '_' + dataset.name.replace(" ", "") + '_hits.txt'
+  order_out_path = os.path.join(os.path.dirname(model1.name + model2.name), 'order.txt')
 
   # If you want to launch with more than 2 targets being compared, use the
   # launch_multichoice.py script.
@@ -43,9 +43,9 @@ def launch_hits(dataset, model1, model2):
 
   for idx in range(len(prompts)):
     example = Example(prompts[idx].prompt_text, "ex-%03d" % (idx))
-    exmaple.add_target_line(model1_responses[idx].response_text)
-    exmaple.add_target_line(model2_responses[idx].response_text)
-    exmaples.append(example)
+    example.add_target_line(model1_responses[idx].response_text)
+    example.add_target_line(model2_responses[idx].response_text)
+    examples.append(example)
     
   print('Read in %d examples, each with %d possible targets.' % (len(examples), len(examples[0].target_lines)))
   #assert args.n_examples_per_hit <= len(examples)
@@ -61,7 +61,7 @@ def launch_hits(dataset, model1, model2):
   while count < len(examples):
     print('Creating HIT for examples %s through %s' % (count, count+n_examples_per_hit-1))
     for idx in range(max_assignments):
-      hit_id = create_HIT(examples[count:count+n_examples_per_hit], hit_id="cb_eval_%d_%d" % (count, idx))
+      hit_id = create_HIT(examples[count:count+n_examples_per_hit], mturk) # second argument - hit_id="cb_eval_%d_%d" % (count, idx)
       if hit_id == 0:
         print('ERROR: Failed to create hit')
       else:

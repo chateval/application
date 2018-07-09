@@ -21,7 +21,7 @@ def run_automatic_evaluation(model, submission, model_responses, evalset):
     model_id = model.model_id
     evalset_id = evalset.pk
     baseline_responses = [message['response'] for message in get_baseline_messages(evalset_id)]
-
+    
     vectors = Magnitude('eval/scripts/files/google_news.magnitude')
     w2v = Word2Vec(vectors)
 

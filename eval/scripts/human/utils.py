@@ -2,6 +2,7 @@ import boto3
 import codecs
 import xmltodict
 import re
+import os
 
 class Example:
   '''Represents a single source line and all corresponding target lines
@@ -77,8 +78,8 @@ def create_mturk_client(run_in_sandbox):
 
 def read_keys_from_file(filename='accessKeys.csv'):
   '''Readers Amazon credentials from the csv file that can be downloaded from Amazon'''
-
-  with open(filename, 'r') as f:
+  BASE = os.path.dirname(os.path.abspath(__file__))
+  with open(os.path.join(BASE, filename), 'r') as f:
     f.readline()
     aws_access_key, aws_secret_access_key = f.readline().strip().split(',')
   return aws_access_key, aws_secret_access_key

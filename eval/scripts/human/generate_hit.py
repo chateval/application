@@ -6,8 +6,8 @@ import random
 import codecs
 import html
 
-import utils
-import html_gen
+from .utils import *
+from .html_gen import *
 
 def create_HIT(examples, mturk):
   if len(examples) == 0:
@@ -19,14 +19,14 @@ def create_HIT(examples, mturk):
   tables_html = ''
   num_required = 0
   for idx in range(len(examples)):
-    html, num_radio_buttons =  html_gen.generate_2choice_html(examples[idx])
+    html, num_radio_buttons = generate_2choice_html(examples[idx])
     tables_html += html
     num_required += num_radio_buttons
 
-  instructions = html_gen.generate_2choice_instructions()
+  instructions = generate_2choice_instructions()
 
   # Generate the full HTML for the hit. The tables html gets inserts in the right place.
-  question_html_value = html_gen.generate_HIT_html(num_required, tables_html, instructions)
+  question_html_value = generate_HIT_html(num_required, tables_html, instructions)
 
   with codecs.open('task.html', 'w', encoding='utf-8') as fout:
     fout.write(question_html_value)
@@ -52,9 +52,10 @@ def create_HIT(examples, mturk):
             Reward="0.02")
             # UniqueRequestToken=hit_id)
   except Exception as e:
-    import pdb; pdb.set_trace()
-    print('Problem creating HIT')
     print(e)
+    #import pdb; pdb.set_trace()
+    print('Problem creating HIT')
+    
     exit(1)
 
   # The response included several fields that will be helpful later

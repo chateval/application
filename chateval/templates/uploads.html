@@ -46,8 +46,9 @@
               <span class="tag is-light"> {{ evalset }} </span>
               {% endfor %}
               <form method="POST" action="/evaluation/human">
-                {% csrf_token %}
-                <input type="hidden" name="model_id" value="{{ model.model_id }}">
+                {% csrf_token %}  
+                <input type="hidden" name="model_id" value="{{ upload.model.model_id }}">
+                <input type="hidden" name="evalset_id" value="{{ upload.model.evalsets }}">
                 <button type="submit" class="button is-success">Run Human Evaluation</button>
                 <a class="button" href="/model?model_id={{ upload.model.model_id }}">View Evaluation</a>
               </form>

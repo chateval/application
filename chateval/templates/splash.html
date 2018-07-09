@@ -54,7 +54,7 @@
           
           {% for baseline in baselines %}
           <div class="column is-half" >
-            <a href="">
+            <a href="/model/{{ baseline.model }}">
               <div class="box">
                 <article class="media">
                   <div class="media-content">
@@ -71,7 +71,28 @@
             </a>
           </div>
           {% endfor %}
+        </div>
+
+        <h1 class="title" style="margin-bottom: 2.5rem"> Evaluation Metrics </h1>
+        <div class="columns is-multiline" style="padding-bottom:0rem; padding-top: 0rem">   
           
+          {% for metric in metrics %}
+          <div class="column is-half" style="padding-top: 0rem; padding-bottom: 0rem;">
+            <div class="box" id="{{ metric.metric_id }}">
+              <article class="media">
+                <div class="media-content">
+                  <div class="content">
+                    <p>
+                      <strong> {{ metric.name }} </strong> <br>
+                      <small> {{ metric.info }} </small>
+                      <br>
+                    </p>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+          {% endfor %}
         </div>
     </div>
     <div class="column is-one-sixth"></div>

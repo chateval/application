@@ -1,20 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<section class="hero has-text-centered is-success is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">
-        Uploaded Models
-      </h1>
-      <h2 class="subtitle">
-        Author: {{ user.get_username }}
-      </h2>
-      <br>
-    </div>
-  </div>
-</section>
-
+<br>
 <div class="container">
   <div class="columns">
     <div class="column is-one-quarter">
@@ -34,6 +21,8 @@
     </div>    
     <div class="column">
       <br>
+      <h1 class="title"> Uploaded Models </h1>
+      <h1 class="subtitle"> Author: {{ request.user.get_username }} </h1>
       <div class="columns is-multiline">
         {% for upload in uploads %}
         <div class="column is-half">
@@ -41,7 +30,9 @@
             <div class="card-content">
               <h2 class="text is-size-5"><strong>{{ upload.model.name }}</strong></h2>
               <p class="text"><strong>Description:</strong> {{ upload.model.description }} </p>
-              <p class="text"><strong>Repository:</strong> {{ upload.model.repo_location }} </p>
+              <p class="text">
+                <strong>Repository:</strong> <a href="{{ upload.model.repo_location }}">{{ upload.model.repo_location }}</a>
+              </p>
               {% for evalset in upload.evalsets %}
               <span class="tag is-light"> {{ evalset }} </span>
               {% endfor %}
@@ -49,7 +40,7 @@
                 {% csrf_token %}
                 <input type="hidden" name="model_id" value="{{ model.model_id }}">
                 <button type="submit" class="button is-success">Run Human Evaluation</button>
-                <a class="button" href="/model?model_id={{ upload.model.model_id }}">View Evaluation</a>
+                <a class="button is-light" href="/model?model_id={{ upload.model.model_id }}">View Evaluation</a>
                 <a class="button is-danger is-outlined" href="/model/delete?model_id={{ upload.model.model_id }}">Delete</a>
               </form>
             </div>

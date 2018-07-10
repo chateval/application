@@ -1,24 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<section class="hero has-text-centered is-success is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">
-        Log In
-      </h1>
-      <h2 class="subtitle">
-        Welcome back.
-      </h2>
-      <br>
-    </div>
-  </div>
-</section>
 <br>
 <div class="container is-fluid">
   <div class="columns">
     <div class="column is-one-third"></div>
     <div class="column is-one-third">
+      <h1 class="title">Log In</h1>
+      <p class="subtitle"> Welcome back to ChatEval. </p>
       <form method="post">
         {% csrf_token %}
         {{ form.as_p }}

@@ -39,7 +39,7 @@
               <form method="POST" action="/evaluation/human">
                 {% csrf_token %}
                 <input type="hidden" name="model_id" value="{{ model.model_id }}">
-                <button type="submit" class="button is-success">Run Human Evaluation</button>
+                <a class="is-light"> </a><button type="submit" class="button is-light">Run Human Evaluation</button> </a>
                 <a class="button is-light" href="/model?model_id={{ upload.model.model_id }}">View Evaluation</a>
                 <a class="button is-danger is-outlined" href="/model/delete?model_id={{ upload.model.model_id }}">Delete</a>
               </form>

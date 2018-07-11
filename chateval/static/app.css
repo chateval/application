@@ -66,9 +66,9 @@ html, body {
 }
 
 a:hover{
-  background-color: #95001a !important;
-  background: #95001a !important;
-  color: white
+  background-color: white !important;
+  background: white !important;
+  color: #01256e
 }
 
 .is-danger {

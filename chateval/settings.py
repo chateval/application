@@ -127,7 +127,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 STATIC_ROOT = os.path.join(SITE_ROOT, 'static/')
-STATIC_URL = "https://storage.googleapis.com/kirubarajan-site.appspot.com/assets/"
+STATIC_URL = os.path.join(SITE_ROOT, 'static/')
 
 STATICFILES_DIRS = [
     os.path.join(SITE_ROOT, 'assets/'),

@@ -53,37 +53,34 @@ def retrieve():
                 input_field = answer_field['QuestionIdentifier']
                 rank = int(answer_field['FreeText'])
                 worker_id = assignment['WorkerId']
+                accept_time = assignment['AcceptTime']
               except Exception as e:
                 #import pdb; pdb.set_trace()
                 print(e)
 
               parsed = re.search(r'(ex-\d+)-target-(.+)', input_field)
               example_key = parsed.group(1) # prompt id (index from 0)
-              target_index_or_tie = parsed.group(2) #
+              target_index_or_tie = parsed.group(2) 
               
-              example = examples_dict[example_key]
+              #example = examples_dict[example_key]
               if 'tie' in target_index_or_tie:
-                example.votes.append(-1)
+                print("tie")
+                #example.votes.append(-1)
+                target_index = -1
               else:
                 target_index = int(target_index_or_tie)
-                if invert:
-                  target_index = 0 if target_index == 1 else 0
-                example.votes.append(target_index)
-              example.workers.append(worker_id)
+                target_index = 0 if target_index == 1 else 0
 
-
-
-
-
-
-
-
-
-
-        worker_results_list.append(worker_results)
+              # TODO - Add the HumanEvaluationsABComparison object 
+              '''
+              prompt_id = example_key
+              worker_id = worker_id
+              HIT = hit_id
+              accept_datetime = accept_time
+              value = target_index
+              '''
         print(worker_results)
         print('\n\n\n')
-  #print(worker_results_list) 
   '''
   out_file_name = os.path.join(os.path.dirname(args.hit_list_path), 'amt_hit_responses.pkl') 
   pickle.dump(worker_results_list, open(out_file_name, "wb"))

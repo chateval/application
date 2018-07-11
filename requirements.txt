@@ -20,7 +20,6 @@ lz4==2.0.0
 monotonic==1.5
 mysqlclient==1.3.13
 numpy==1.14.5
-pymagnitude==0.1.46
 python-dateutil==2.7.3
 pytz==2018.4
 requests==2.19.1
@@ -34,3 +33,5 @@ virtualenv==16.0.0
 xlwt==1.3.0
 xmltodict==0.11.0
 xxhash==1.0.1
+psycopg2
+pymagnitude

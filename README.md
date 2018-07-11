@@ -29,5 +29,14 @@ export AWS_STORAGE_BUCKET_NAME=
 7. Populate database using `python manage.py loaddata init.json`.
 8. Access app at [localhost:8000](localhost:8000) and admin SQL page at [localhost:8000/admin](localhost:8000/admin).
 
+### Optional Docker Installation
+ChatEval supports the use of Docker as both a development and deployment tool.
+
+0. Install [Docker](https://docker.com/).
+1. Configure environment variables in `Dockerfile` by adding `ENV variable value` for each environment variable.
+2. Build Docker image by using `docker build -t chateval .` (this may take some time).
+3. Run ChatEval on port 8000 by using `docker run chateval`
+8. Access app at [localhost:8000](localhost:8000) and admin SQL page at [localhost:8000/admin](localhost:8000/admin).
+
 ## Code Documentation
 Documentation for the codebase is available in `DOCUMENTATION.md`.

@@ -20,7 +20,7 @@ def launch_hits(dataset, model1, model2):
   # Create your connection to MTurk
   mturk = create_mturk_client(sandbox)
 
-  hits_out_path = 'eval/scripts/human/hits/' + model1.name.replace(" ", "") + '_' + model2.name.replace(" ", "") + '_' + dataset.name.replace(" ", "") + '_hits.txt'
+  hits_out_path = 'eval/scripts/human/hits/' + str(model1.model_id) + '_' + str(model2.model_id) + '_' + str(dataset.evalset_id) + '_hits.txt'
   order_out_path = os.path.join(os.path.dirname(model1.name + model2.name), 'order.txt')
 
   # If you want to launch with more than 2 targets being compared, use the
@@ -72,3 +72,5 @@ def launch_hits(dataset, model1, model2):
   with open(hits_out_path, 'a') as f_out:
     for hit_id in hit_ids:
       f_out.write('%s\n' % (hit_id))
+  
+  # TODO: Upload hits file to S3 bucket

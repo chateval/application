@@ -59,3 +59,25 @@ html, body {
   margin-top: 0.5rem;
   margin-bottom: 1rem;
 }
+
+.is-success {
+  background-color: #01256e !important;
+  background: #01256e !important;
+}
+
+a:hover{
+  background-color: white !important;
+  background: white !important;
+  color: #01256e !important;
+}
+
+.is-danger {
+  background-color: #95001a !important;
+  background: #95001a !important;
+  color: white !important;
+  border-color: #95001a !important;
+}
+
+.is-light:hover {
+  color: white !important;
+}

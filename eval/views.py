@@ -10,7 +10,7 @@ from .forms import UploadModelForm
 
 def uploads(request):
     current_author = Author.objects.get(author_id=request.user)
-    models = Model.objects.filter(author=current_author)
+    models = Model.objects.filter(author=current_author, archived=False)
     uploads = list()
     for model in models:
         submission = ModelSubmission.objects.filter(model=model)[0]

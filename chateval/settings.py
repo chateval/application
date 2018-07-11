@@ -26,7 +26,7 @@ SECRET_KEY = '6q!2@#d44#mn))a#_i!c7!1q6@jms3^ez*4#h1vb#k$01=*mvq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -125,13 +125,13 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
-STATIC_URL = '/chateval/static/'
-PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-
 SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
-STATICFILES_DIRS = (
-  os.path.join(SITE_ROOT, 'static/'),
-)
+STATIC_ROOT = os.path.join(SITE_ROOT, 'static/')
+STATIC_URL = "https://storage.googleapis.com/kirubarajan-site.appspot.com/chateval/"
+STATICFILES_DIRS = [
+    os.path.join(SITE_ROOT, 'assets/'),
+]
+
 
 AWS_ACCESS_KEY = os.environ['AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
@@ -140,5 +140,3 @@ AWS_STORAGE_BUCKET_LOCATION = "https://s3.amazonaws.com/chateval-models/"
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
-
-ALLOWED_HOSTS =  ['localhost', 'chateval.org']

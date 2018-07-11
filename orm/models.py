@@ -102,17 +102,27 @@ class AutomaticEvaluation(models.Model):
     class Meta:
         db_table = 'AutomaticEvaluations'
         unique_together = (('model', 'metric', 'evaluationdataset'),)
-
-class HumanEvaluationsABComparison(models.Model):
+        
+class HumanEvaluations(models.Model):
+    mturk_run_id = models.BigAutoField(primary_key=True)
     model_1 = models.ForeignKey('Model', models.DO_NOTHING, db_column='model_1', related_name='model_1')
     model_2 = models.ForeignKey('Model', models.DO_NOTHING, db_column='model_2', related_name='model_2')
-    evaluationdataset = models.ForeignKey(EvaluationDataset, models.DO_NOTHING)
-    prompt = models.ForeignKey(EvaluationDatasetText, models.DO_NOTHING, related_name='prompts')
-    worker_id = models.CharField(max_length=100)
-    hit = models.CharField(db_column='HIT', max_length=100)
+    evaluationdataset = models.ForeignKey(EvaluationDataset, models.DO_NOTHING)  
     submit_datetime = models.DateTimeField()
     results_path = models.TextField()
+
+    class Meta:
+        db_table = 'HumanEvaluations'
+
+class HumanEvaluationsABComparison(models.Model):
+    mturk_run_id = models.ForeignKey(HumanEvaluations, models.DO_NOTHING)
+    prompt_id = models.ForeignKey(EvaluationDatasetText, models.DO_NOTHING, related_name='prompts')
+    worker_id = models.CharField(max_length=100)
+    hit = models.CharField(db_column='HIT', max_length=100)
+    accept_datetime = models.DateTimeField()
     value = models.IntegerField()
 
     class Meta:
         db_table = 'HumanEvaluationsABComparison'
+
+

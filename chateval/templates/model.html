@@ -1,20 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<section class="hero has-text-centered is-success is-small">
-    <div class="hero-body">
-      <div class="container">
-        <h1 class="title">
-          Models
-        </h1>
-        <h2 class="subtitle">
-          Quantitative Model Evaluation
-        </h2>
-        <br>
-      </div>
-    </div>
-  </section>
-  
+<br>
   <div class="container">
     <div class="columns">
       <div class="column is-one-quarter">
@@ -65,7 +52,7 @@
                   <tbody>
                     {% for auto_eval in evaluation.auto_evals %}
                     <tr>
-                      <td> <a href="{{ auto_eval.info }}"> {{ auto_eval.name }} </a>  </td>
+                      <td> <a href="{% url 'splash' %}#{{ auto_eval.id }}"> {{ auto_eval.name }} </a>  </td>
                       <td> {{ auto_eval.value }} </td>
                     </tr>
                     {% endfor %}
@@ -89,6 +76,7 @@
           </div>
           <br>
         {% else %}
+          <h1 class="title">Model Evaluation</h1>
           <h1 class="subtitle">No model/dataset selected. </h1>
         {% endif %}  
         <br>

@@ -68,7 +68,7 @@ html, body {
 a:hover{
   background-color: white !important;
   background: white !important;
-  color: #01256e
+  color: #01256e !important;
 }
 
 .is-danger {

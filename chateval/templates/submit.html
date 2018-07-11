@@ -1,34 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<section class="hero has-text-centered is-success is-small">
-    <div class="hero-body">
-      <div class="container">
-        <h1 class="title">
-          Submit Model
-        </h1>
-        <h2 class="subtitle">
-          Upload model information for evaluation
-        </h2>
-        <br>
-      </div>
-    </div>
-  </section>
-  
+
   <div class="container">
     <div class="columns">
       <div class="column is-one-third"></div>
       <div class="column is-one-third">
         <br>
+        <h1 class="title">Upload Model</h1>
+        <h1 class="subtitle">Automatic Evaluation</h1>
         <form enctype="multipart/form-data" method="POST" action="/submit">
-          <h2 class="subtitle"> Model Information </h2>
+          <h2 class=""> Model Information </h2>
           {% csrf_token %}
           {{ form }}
           <br> <br>
-          <h2 class="subtitle"> Model Reponse Files </h2>
+          <h2 class=""> Model Reponse Files </h2>
+          <br>
           {% for response_file in response_files %}
-            <label class="label">{{ response_file.long_name }}</label>
-            <input class="file" type="file" name="{{ response_file.name }}" />
+          <div class="box" style="margin: 0rem">
+              <label class="label">{{ response_file.long_name }}</label>
+              <input class="file" type="file" name="{{ response_file.name }}" />
+          </div>
             <br>
           {% endfor %}
           <div class="field">

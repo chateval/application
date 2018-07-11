@@ -1,7 +1,0 @@
-{
-    "scripts": {
-      "dokku": {
-        "predeploy": "cd eval/scripts/files && wget http://magnitude.plasticity.ai/glove/glove.6B.50d.magnitude && mv glove.6B.50d.magnitude vectors.magnitude"
-      }
-    }
-  }

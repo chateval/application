@@ -4,13 +4,14 @@ import os
 import random
 import codecs
 import html
+import datetime
 
 from .utils import *
 from .html_gen import *
 
 from .generate_hit import * 
 
-from orm.models import ModelResponse, EvaluationDatasetText
+from orm.models import ModelResponse, EvaluationDatasetText, HumanEvaluations
 
 def launch_hits(dataset, model1, model2):
   n_examples_per_hit = 10
@@ -20,7 +21,7 @@ def launch_hits(dataset, model1, model2):
   # Create your connection to MTurk
   mturk = create_mturk_client(sandbox)
 
-  hits_out_path = 'eval/scripts/human/hits/' + str(model1.model_id) + '_' + str(model2.model_id) + '_' + str(dataset.evalset_id) + '_hits.txt'
+  
   order_out_path = os.path.join(os.path.dirname(model1.name + model2.name), 'order.txt')
 
   # If you want to launch with more than 2 targets being compared, use the
@@ -68,6 +69,14 @@ def launch_hits(dataset, model1, model2):
         hit_ids.append(hit_id)
       count += n_examples_per_hit
 
+  # Create the HumanEvaluations object in the DB
+  
+  s3_bucket_folder = 'https://'
+  human_eval = HumanEvaluations(model_1=model, model_2=model2, evaluationdataset=dataset, submit_datetime=datetime.datetime.now(), results_path=s3_bucket_folder)
+  human_eval.save()
+  id = human_eval.pk
+
+  hits_out_path = 'eval/scripts/human/hits/' + model1.name.replace(" ". "") + '_' + model2.name.replace(" ". "") + '_' + dataset.name.replace(" ". "") + '_' + str(id) + '_hits.txt'
   # Write all the hit_ids to a file to make it easy to extact the results
   with open(hits_out_path, 'a') as f_out:
     for hit_id in hit_ids:

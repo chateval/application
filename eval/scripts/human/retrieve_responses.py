@@ -7,7 +7,7 @@ import os
 from .utils import *
 import glob
 
-from orm.models import EvaluationDatasetText, EvaluationDataset, HumanEvaluationsABComparison, Model
+from orm.models import EvaluationDatasetText, EvaluationDataset, HumanEvaluationsABComparison, Model, HumanEvaluations
 
 def retrieve():
   mturk = create_mturk_client(True)
@@ -21,13 +21,19 @@ def retrieve():
     parts_of_file = file
     parts_of_file = parts_of_file[24:]
     parts_of_file = parts_of_file.split('_')
+    mturk_run_id = parts_of_file[3]
+    human_evaluation = HumanEvaluations.objects.filter(mturk_run_id=mturk_run_id)[0]
+    prompts = EvaluationDatasetText.objects.filter(evaluationdataset=human_evaluation.evaluationdataset)
+
+    '''
     print(parts_of_file[0])
     print(parts_of_file[1])
     model1 = Model.objects.filter(model_id=parts_of_file[0])[0]
     model2 = Model.objects.filter(model_id=parts_of_file[1])[0]
     dataset = EvaluationDataset.objects.filter(evalset_id=parts_of_file[2])[0]
-    prompts = EvaluationDatasetText.objects.filter(evaluationdataset=dataset)
-
+    '''
+    
+    
     #import pdb; pdb.set_trace()
     with open(file, 'r') as f_in:
       for hit_id in f_in:
@@ -79,6 +85,8 @@ def retrieve():
               accept_datetime = accept_time
               value = target_index
               '''
+              human_evaluation_abcomparison = HumanEvaluationsABComparison(mturk_run_id=human_evaluation, prompt=prompts[example_key], worker_id = worker_id, hit = hit_id, accept_datetime = accept_time, value = target_index)
+              human_evaluation_abcomparison.save()
         print(worker_results)
         print('\n\n\n')
   '''

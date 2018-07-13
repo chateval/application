@@ -32,46 +32,19 @@
             </div>
             <div class="navbar-end">
               {% if user.is_authenticated %}
-                <div class="navbar-item">
-                  <div class="field is-grouped">
-                    <p class="control">
-                      <a class="button is-success" href="/uploads">
-                        <span class="icon">
-                          <i class="fas fa-cloud" aria-hidden="true"></i>
-                        </span>
-                        <span>My Uploads</span>
-                      </a>
-                    </p>
-                    <p class="control">
-                      <a class="button is-success" href="/submit">
-                        <span class="icon">
-                          <i class="fas fa-cloud-upload-alt" aria-hidden="true"></i>
-                        </span>
-                        <span>Upload Model</span>
-                      </a>
-                    </p>
-                    <p class="control">
-                      <a class="button is-success" href="/accounts/logout">
-                        <span class="icon">
-                          <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
-                        </span>
-                        <span>Log Out</span>
-                      </a>
-                    </p>
-                  </div>
-                </div>
-                {% else %}
-                <div class="navbar-item">
-                    <div class="field is-grouped">
-                      <p class="control">
-                        <a class="button is-success" href="/accounts/login">
-                          <span class="icon">
-                            <i class="fas fa-user-circle" aria-hidden="true"></i>
-                          </span>
-                          <span>Log In</span>
-                        </a>
-                      </p>
-                    </div>
+                <a class="navbar-item" href="/uploads">
+                  My Uploads
+                </a>
+                <a class="navbar-item" href="/submit">
+                  Upload Model
+                </a>
+                <a class="navbar-item" href="/accounts/logout">
+                  Log Out
+                </a>
+              {% else %}
+                <a class="navbar-item" href="/accounts/login">
+                  Log In
+                </a>
               {% endif %}
             </div>
           </div>
@@ -85,37 +58,22 @@
         <div class="container">
           <div class="content has-text-centered">
             <p>
-              Developed by <strong>The ChatEval Team</strong> <a href="https://github.com/chateval/application">here</a>.
+              Developed by <strong>The ChatEval Team</strong>. <br>
             </p>
+            <a href="https://github.com/chateval/application">
+              <span class="icon">
+                <i class="fab fa-github"></i>
+              </span>
+            </a>
+
+            <a href="mailto:chateval@gmail.com">
+              <span class="icon">
+                <i class="fas fa-envelope"></i>
+              </span>
+            </a>
           </div>
         </div>
       </footer>
     </div>
-
-    <script type="text/javascript">
-      document.addEventListener('DOMContentLoaded', function() {
-        // Get all "navbar-burger" elements
-        var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-
-        // Check if there are any navbar burgers
-        if ($navbarBurgers.length > 0) {
-
-          // Add a click event on each of them
-          $navbarBurgers.forEach(function($el) {
-            $el.addEventListener('click', function() {
-
-              // Get the target from the "data-target" attribute
-              var target = $el.dataset.target;
-              var $target = document.getElementById(target);
-
-              // Toggle the class on both the "navbar-burger" and the "navbar-menu"
-              $el.classList.toggle('is-active');
-              $target.classList.toggle('is-active');
-
-            });
-          });
-        }
-      });
-    </script>
   </body>
 </html>

@@ -37,6 +37,3 @@ ChatEval supports the use of Docker as both a development and deployment tool.
 2. Build Docker image by using `docker build -t chateval .` (this may take some time).
 3. Run ChatEval on port 8000 by using `docker run chateval`
 8. Access app at [localhost:8000](localhost:8000) and admin SQL page at [localhost:8000/admin](localhost:8000/admin).
-
-## Code Documentation
-Documentation for the codebase is available in `DOCUMENTATION.md`.

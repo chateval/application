@@ -1,6 +1,5 @@
 # ChatEval
-A scientific framework for evaluating chatbots. Scientific
-paper available [here](https://github.com/chateval/ChatEval/blob/master/paper/Chatbot_Evaluation_Demo_2018_EMNLP.pdf).
+A scientific framework for evaluating neural open domain chatbots. EMNLP paper available [here](https://github.com/chateval/ChatEval/blob/master/paper/Chatbot_Evaluation_Demo_2018_EMNLP.pdf).
 
 ## Dependencies
 - Django (web framework)
@@ -10,6 +9,9 @@ paper available [here](https://github.com/chateval/ChatEval/blob/master/paper/Ch
 - Magnitude (word embedding format)
 
 ## Usage
+### Running `application`
+ChatEval's primary microservice is `application`, which handles our Django back-end and SQL database. To run this:
+
 0. Install dependencies using `pip install -r requirements.txt`.
 2. Edit database information in `/chateval/settings.py`.
 3. Run server migrations using `python manage.py makemigrations && python manage.py migrate`.
@@ -29,7 +31,10 @@ export AWS_STORAGE_BUCKET_NAME=
 7. Populate database using `python manage.py loaddata init.json`.
 8. Access app at [localhost:8000](localhost:8000) and admin SQL page at [localhost:8000/admin](localhost:8000/admin).
 
-### Optional Docker Installation
+### Running `evaluation`
+ChatEval's evaluation microservice is available [here](https://github.com/chateval/evaluation) and handles the evaluation of  models to abstract Mechanical Turk interactions and to offload computation for loading/querying word embeddings. The location for this API is configurable as an environment variable named `EVAL_LOCATION` and is defaulted to [localhost:8001](localhost:8001). Note the location must be configured for both `application` and `evaluation`.
+
+### (Optional) Docker Installation
 ChatEval supports the use of Docker as both a development and deployment tool.
 
 0. Install [Docker](https://docker.com/).

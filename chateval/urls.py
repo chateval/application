@@ -11,6 +11,7 @@ urlpatterns = [
     path('accounts/login/', login_view, name='login'),
     path('accounts/signup/', signup_view, name='signup'),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('evaluation/human', human, name='human'),
     url(r'^uploads$', uploads, name='uploads'),
     path('model/confirm/delete/', confirm_delete, name='confirm_delete'),
     path('model/delete/', archive_model, name='archive_model'),

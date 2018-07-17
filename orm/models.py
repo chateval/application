@@ -116,11 +116,11 @@ class HumanEvaluations(models.Model):
 
 class HumanEvaluationsABComparison(models.Model):
     mturk_run_id = models.ForeignKey(HumanEvaluations, models.DO_NOTHING)
-    prompt_id = models.ForeignKey(EvaluationDatasetText, models.DO_NOTHING, related_name='prompts')
+    prompt = models.ForeignKey(EvaluationDatasetText, models.DO_NOTHING)
     worker_id = models.CharField(max_length=100)
-    hit = models.CharField(db_column='HIT', max_length=100)
+    hit = models.CharField(max_length=100)
     accept_datetime = models.DateTimeField()
-    value = models.IntegerField()
+    value = models.IntegerField()    
 
     class Meta:
         db_table = 'HumanEvaluationsABComparison'

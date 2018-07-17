@@ -1,8 +1,10 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from orm.models import Author, Baseline, Model, EvaluationDataset, AutomaticEvaluation, Metric, ModelResponse, ModelSubmission
 from orm.scripts import get_messages
 from .scripts.automatic.automatic_evaluations import run_automatic_evaluation
+from .scripts.human.launch_hit import launch_hits
+from .scripts.human.retrieve_responses import retrieve
 from .scripts.upload_model import upload_model
 from .forms import UploadModelForm
 
@@ -31,7 +33,7 @@ def submit(request):
                 repo_location = form.cleaned_data['repo_location'],
                 cp_location=form.cleaned_data['checkpoint_location'])
             model.save()
- 
+
             files = list()
             for response_file in response_files:
                 if response_file.name in request.FILES.keys():
@@ -43,3 +45,11 @@ def submit(request):
             return HttpResponseRedirect('/uploads')
     form = UploadModelForm()
     return render(request, 'submit.html', {'form': form, 'response_files': response_files})   
+
+def human(request):
+    model = Model.objects.get(model_id=request.POST['model_id'])
+    baseline_model = Model.objects.filter(name="Human Baseline")[0]
+    evalset = EvaluationDataset.objects.filter(name="NCM")[0]
+    launch_hits(evalset, baseline_model, model)
+    retrieve() 
+    return redirect('/model')

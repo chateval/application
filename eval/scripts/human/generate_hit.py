@@ -34,7 +34,7 @@ def create_HIT(examples, mturk):
   '''
 
   question_html_value = question_html_value.encode('ascii', 'xmlcharrefreplace').decode()
-
+  #print(question_html_value)
   try:
     # These parameters define the HIT that will be created
     # question is what we defined above

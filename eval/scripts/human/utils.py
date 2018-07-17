@@ -104,7 +104,7 @@ def process_amt_hit_responses(worker_results_list, examples_dict, invert=False):
             rank = int(answer_field['FreeText'])
             worker_id = assignment['WorkerId']
           except Exception as e:
-            import pdb; pdb.set_trace()
+            #import pdb; pdb.set_trace()
             print(e)
 
           parsed = re.search(r'(ex-\d+)-target-(.+)', input_field)

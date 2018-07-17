@@ -6,6 +6,7 @@ import pickle
 import os
 from .utils import *
 import glob
+import datetime
 
 from orm.models import EvaluationDatasetText, EvaluationDataset, HumanEvaluationsABComparison, Model, HumanEvaluations
 
@@ -85,7 +86,13 @@ def retrieve():
               accept_datetime = accept_time
               value = target_index
               '''
-              human_evaluation_abcomparison = HumanEvaluationsABComparison(mturk_run_id=human_evaluation, prompt=prompts[example_key], worker_id = worker_id, hit = hit_id, accept_datetime = accept_time, value = target_index)
+              print("\n\n")
+              print(example_key)
+              print(type(example_key))
+              example_key = int(example_key[3:])
+              human_evaluation_abcomparison = HumanEvaluationsABComparison(mturk_run_id=human_evaluation, prompt=prompts[example_key], worker_id = worker_id, hit = hit_id, accept_datetime = datetime.datetime.now(), value = target_index)
+              #human_evaluation_abcomparison = HumanEvaluationsABComparison(pk=1, prompt=prompts[example_key], worker_id = worker_id, hit = hit_id, accept_datetime = datetime.datetime.now(), value = target_index)
+              
               human_evaluation_abcomparison.save()
         print(worker_results)
         print('\n\n\n')

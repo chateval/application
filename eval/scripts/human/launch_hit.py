@@ -42,6 +42,8 @@ def launch_hits(dataset, model1, model2):
   model2_responses = ModelResponse.objects.filter(evaluationdataset=dataset, model=model2)
   examples = []
 
+
+
   for idx in range(len(prompts)):
     example = Example(prompts[idx].prompt_text, "ex-%03d" % (idx))
     example.add_target_line(model1_responses[idx].response_text)
@@ -72,11 +74,12 @@ def launch_hits(dataset, model1, model2):
   # Create the HumanEvaluations object in the DB
   
   s3_bucket_folder = 'https://'
-  human_eval = HumanEvaluations(model_1=model, model_2=model2, evaluationdataset=dataset, submit_datetime=datetime.datetime.now(), results_path=s3_bucket_folder)
+  human_eval = HumanEvaluations(model_1=model1, model_2=model2, evaluationdataset=dataset, submit_datetime=datetime.datetime.now(), results_path=s3_bucket_folder)
   human_eval.save()
   id = human_eval.pk
 
-  hits_out_path = 'eval/scripts/human/hits/' + model1.name.replace(" ". "") + '_' + model2.name.replace(" ". "") + '_' + dataset.name.replace(" ". "") + '_' + str(id) + '_hits.txt'
+  
+  hits_out_path = 'eval/scripts/human/hits/' + model1.name.replace(" ", "").replace("_", "") + '_' + model2.name.replace(" ", "").replace("_", "") + '_' + dataset.name.replace(" ", "").replace("_", "") + '_' + str(id) + '_hits.txt'
   # Write all the hit_ids to a file to make it easy to extact the results
   with open(hits_out_path, 'a') as f_out:
     for hit_id in hit_ids:

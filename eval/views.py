@@ -30,7 +30,7 @@ def submit(request):
                 repo_location = form.cleaned_data['repo_location'],
                 cp_location=form.cleaned_data['checkpoint_location'])
             model.save()
- 
+
             files = list()
             for response_file in response_files:
                 if response_file.name in request.FILES.keys():
@@ -48,5 +48,5 @@ def human(request):
     baseline_model = Model.objects.filter(name="Human Baseline")[0]
     evalset = EvaluationDataset.objects.filter(name="NCM")[0]
     #launch_hits(evalset, baseline_model, model)
-    retrieve()
+    retrieve() 
     return redirect('/model')

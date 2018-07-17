@@ -10,7 +10,7 @@ def run_automatic_evaluation(model, submission, model_responses, evalset):
     baseline_responses = [message['response'] for message in get_baseline_messages(evalset_id)]
     responses = json({'model_responses': model_responses, 'baseline_responses': baseline_responses})
 
-    r = requests.post('http://' + os.environ['EVAL_LOCATION'] + '/', json=responses).json()
+    r = requests.post(os.environ['EVAL_LOCATION'], json=responses).json()
 
     AutomaticEvaluation.objects.bulk_create([
         AutomaticEvaluation(metric=Metric.objects.get(metric_id=1), model=model, evaluationdataset=evalset, value=r['avg_len'], model_submission=submission),

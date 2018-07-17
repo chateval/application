@@ -48,7 +48,7 @@
           
           {% for baseline in baselines %}
           <div class="column is-half" >
-            <a href="/model/{{ baseline.model }}">
+            <a href="/model?model_id={{ baseline.model.model_id }}">
               <div class="box">
                 <article class="media">
                   <div class="media-content">

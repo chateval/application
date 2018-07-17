@@ -19,6 +19,9 @@ def uploads(request):
     uploads.reverse()
     return render(request, 'uploads.html', { 'uploads': uploads })
 
+def confirm_delete(request):
+    return render(request, 'delete.html', { 'model_id': request.GET['model_id']})
+
 def submit(request):
     response_files = EvaluationDataset.objects.all()
     if request.method == "POST":

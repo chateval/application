@@ -3,14 +3,13 @@
 {% block content %}
 <section class="hero has-text-centered is-success is-medium">
   <div class="hero-body">
-    <div class="container">
+    <div class="container" style="text-align:left">
       <h1 class="title">
         ChatEval
       </h1>
-      <h2 class="subtitle">
-        A standard evaluation tool for chatbots
-      </h2>
+      <p> ChatEval is a scientific framework for evaluating neural open domain chatbots. Researchers can submit their trained models to effortlessly receive comparisons with baselines and prior work. Since all evaluation code is open-source, we ensure evaluation is performed in a standardized and transparent way. Additionally, open source baseline models and an ever growing groups public evaluation sets are available for public use.</p>
       <br>
+      <a class="button is-light is-outlined is-large" href="/submit"> Upload Model</a>
     </div>
   </div>
 </section>
@@ -20,11 +19,6 @@
     <div class="column is-one-sixth"></div>
     <div class="column is-two-thirds">
         <br> <br>
-        <h1 class="title"> About </h1>
-        <p class=""> ChatEval is a scientific framework for evaluating chatbots. Researchers can submit their trained models to the ChatEval web interface to effortlessly receive back comparisons with baselines and prior work. Since all evaluation code is open-source, we ensure evaluation is performed in a standardized and transparent way. Additionally ChatEval has open-source baseline models and an ever growing groups public evaluation sets.</p>
-        <br>
-        <a class="button is-success" href="/submit"> Upload Model for Evaluation</a>
-        <br> <br><br>
         <h1 class="title" style="margin-bottom: 2.5rem"> Evaluation Datasets </h1>
         <div class="columns is-multiline" style="padding-bottom:0rem; padding-top: 0rem">  
           {% for dataset in datasets %}
@@ -54,7 +48,7 @@
           
           {% for baseline in baselines %}
           <div class="column is-half" >
-            <a href="/model/{{ baseline.model }}">
+            <a href="/model?model_id={{ baseline.model.model_id }}">
               <div class="box">
                 <article class="media">
                   <div class="media-content">

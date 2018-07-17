@@ -25,6 +25,7 @@ export DB_PORT=
 export AWS_ACCESS_KEY_ID=
 export AWS_SECRET_ACCESS_KEY=
 export AWS_STORAGE_BUCKET_NAME=
+export EVAL_LOCATION=
 ```
 5. Run server using `python manage.py runserver`
 6. Download `.magnitude` word embeddings from [here](http://magnitude.plasticity.ai/word2vec/GoogleNews-vectors-negative300.magnitude) and place the vectors in `/eval/scripts/files/google_news.magnitude`.

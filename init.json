@@ -12,42 +12,48 @@
         "pk": 1,
         "model": "orm.metric",
         "fields": {
-            "name": "Average Sentence Length"
+            "name": "Average Sentence Length",
+            "info": ""
         }
     },
     {
         "pk": 2,
         "model": "orm.metric",
         "fields": {
-            "name": "Distinct 1"
+            "name": "Distinct 1",
+            "info": ""
         }
     },
     {
         "pk": 3,
         "model": "orm.metric",
         "fields": {
-            "name": "Distinct 2"
+            "name": "Distinct 2",
+            "info": ""
         }
     },
     {
         "pk": 4,
         "model": "orm.metric",
         "fields": {
-            "name": "Greedy Math"
+            "name": "Greedy Math",
+            "info": ""
         }
     },
     {
         "pk": 5,
         "model": "orm.metric",
         "fields": {
-            "name": "Extrema Score"
+            "name": "Extrema Score",
+            "info": ""
         }
     },
     {
         "pk": 6,
         "model": "orm.metric",
         "fields": {
-            "name": "Average Embedding Score"
+            "name": "Average Embedding Score",
+            "info": ""
         }
     },
     {

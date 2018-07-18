@@ -7,6 +7,8 @@ import os
 from .utils import *
 import glob
 import datetime
+from django.utils import timezone
+
 
 from orm.models import EvaluationDatasetText, EvaluationDataset, HumanEvaluationsABComparison, Model, HumanEvaluations
 
@@ -16,7 +18,7 @@ def retrieve():
   print(hit_files)
   worker_results_list = []
   for file in hit_files:
-    print('Reading HIT ids from: ' + file)
+    print('Reading HIT ids from: ' + file  + '\n')
     
     # Extracting the models and dataset that the comparison was made for
     parts_of_file = file
@@ -51,7 +53,6 @@ def retrieve():
           for assignment in worker_results['Assignments']:
             print(assignment)
             xml_doc = xmltodict.parse(assignment['Answer'])
-            print(xml_doc)
             # This code assumes there are multiple fields in HIT layout
             for answer_field in xml_doc['QuestionFormAnswers']['Answer']:
               if type(answer_field) == str:
@@ -86,11 +87,8 @@ def retrieve():
               accept_datetime = accept_time
               value = target_index
               '''
-              print("\n\n")
-              print(example_key)
-              print(type(example_key))
               example_key = int(example_key[3:])
-              human_evaluation_abcomparison = HumanEvaluationsABComparison(mturk_run_id=human_evaluation, prompt=prompts[example_key], worker_id = worker_id, hit = hit_id, accept_datetime = datetime.datetime.now(), value = target_index)
+              human_evaluation_abcomparison = HumanEvaluationsABComparison(mturk_run_id=human_evaluation, prompt=prompts[example_key], worker_id = worker_id, hit = hit_id, accept_datetime = datetime.datetime.now(tz=timezone.utc), value = target_index)
               #human_evaluation_abcomparison = HumanEvaluationsABComparison(pk=1, prompt=prompts[example_key], worker_id = worker_id, hit = hit_id, accept_datetime = datetime.datetime.now(), value = target_index)
               
               human_evaluation_abcomparison.save()

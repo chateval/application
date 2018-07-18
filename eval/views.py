@@ -47,9 +47,11 @@ def submit(request):
     return render(request, 'submit.html', {'form': form, 'response_files': response_files})   
 
 def human(request):
+    print("\n\n")
+    print(request.POST['model_id'])
     model = Model.objects.get(model_id=request.POST['model_id'])
     baseline_model = Model.objects.filter(name="Human Baseline")[0]
     evalset = EvaluationDataset.objects.filter(name="NCM")[0]
-    launch_hits(evalset, baseline_model, model)
+    #launch_hits(evalset, baseline_model, model)
     retrieve() 
     return redirect('/model')

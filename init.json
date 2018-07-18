@@ -57,6 +57,14 @@
         }
     },
     {
+        "pk": 7,
+        "model": "orm.metric",
+        "fields": {
+            "name": "BLEU Score",
+            "info": "The Bilingual Evaluation Understudy Score, or BLEU for short, is a metric for evaluating a generated sentence to a reference sentence."
+        }
+    },
+    {
         "pk": 1,
         "model": "orm.evaluationdataset",
         "fields": {

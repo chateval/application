@@ -13,7 +13,7 @@
         "model": "orm.metric",
         "fields": {
             "name": "Average Sentence Length",
-            "info": ""
+            "info": "The average number of tokens in the model's responses."
         }
     },
     {
@@ -21,7 +21,7 @@
         "model": "orm.metric",
         "fields": {
             "name": "Distinct 1",
-            "info": ""
+            "info": "The number of unique unigrams in the model's responses divided by the total number of generated tokens."
         }
     },
     {
@@ -29,23 +29,23 @@
         "model": "orm.metric",
         "fields": {
             "name": "Distinct 2",
-            "info": ""
+            "info": "The number of unique bigrams in the model's responses divided by the total number of generated tokens."
         }
     },
     {
         "pk": 4,
         "model": "orm.metric",
         "fields": {
-            "name": "Greedy Math",
-            "info": ""
+            "name": "Embedding Greedy Match Score",
+            "info": "Greedy meatching between word embeddings of target utterance and model utterance (Rus et al., 2012)."
         }
     },
     {
         "pk": 5,
         "model": "orm.metric",
         "fields": {
-            "name": "Extrema Score",
-            "info": ""
+            "name": "Embedding Extrema Score",
+            "info": "Vector extrema of a model's response token vectors (Forgues et al., 2014)."
         }
     },
     {
@@ -53,7 +53,7 @@
         "model": "orm.metric",
         "fields": {
             "name": "Average Embedding Score",
-            "info": ""
+            "info": "Average of a model's responses token vectors."
         }
     },
     {

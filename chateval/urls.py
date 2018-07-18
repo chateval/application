@@ -1,10 +1,11 @@
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
-from eval.views import uploads, submit, confirm_delete
+from eval.views import uploads, submit, confirm_delete, human
 from core.views import splash, conversations, model
 from orm.views import archive_model
 from accounts.views import login_view, signup_view
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),

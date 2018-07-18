@@ -39,6 +39,7 @@ def retrieve():
     
     #import pdb; pdb.set_trace()
     with open(file, 'r') as f_in:
+      no_response_hits = []
       for hit_id in f_in:
         #print('Processing: ' + hit_id)
         hit_id = hit_id.strip()
@@ -51,7 +52,7 @@ def retrieve():
           continue
         if worker_results['NumResults'] > 0:
           for assignment in worker_results['Assignments']:
-            print(assignment)
+            #print(assignment)
             xml_doc = xmltodict.parse(assignment['Answer'])
             # This code assumes there are multiple fields in HIT layout
             for answer_field in xml_doc['QuestionFormAnswers']['Answer']:
@@ -72,7 +73,7 @@ def retrieve():
               
               #example = examples_dict[example_key]
               if 'tie' in target_index_or_tie:
-                print("tie")
+                #print("tie")
                 #example.votes.append(-1)
                 target_index = -1
               else:
@@ -92,8 +93,13 @@ def retrieve():
               #human_evaluation_abcomparison = HumanEvaluationsABComparison(pk=1, prompt=prompts[example_key], worker_id = worker_id, hit = hit_id, accept_datetime = datetime.datetime.now(), value = target_index)
               
               human_evaluation_abcomparison.save()
+        else:
+          no_response_hits.append(hit_id)
         print(worker_results)
         print('\n\n\n')
+    with open(file, 'w') as f_out:
+      for hit_id in no_response_hits:
+        f_out.write('%s\n' % (hit_id))
   '''
   out_file_name = os.path.join(os.path.dirname(args.hit_list_path), 'amt_hit_responses.pkl') 
   pickle.dump(worker_results_list, open(out_file_name, "wb"))

@@ -19,4 +19,5 @@ def run_automatic_evaluation(model, submission, model_responses, evalset):
         AutomaticEvaluation(metric=Metric.objects.get(metric_id=4), model=model, evaluationdataset=evalset, value=r['greedy_match'], model_submission=submission),
         AutomaticEvaluation(metric=Metric.objects.get(metric_id=5), model=model, evaluationdataset=evalset, value=r['extrema_score'], model_submission=submission),
         AutomaticEvaluation(metric=Metric.objects.get(metric_id=6), model=model, evaluationdataset=evalset, value=r['average_embedding_score'], model_submission=submission),
+        AutomaticEvaluation(metric=Metric.objects.get(metric_id=7), model=model, evaluationdataset=evalset, value=r['bleu'], model_submission=submission),
     ])

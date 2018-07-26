@@ -5,7 +5,7 @@ from io import TextIOWrapper
 from boto3 import session
 from orm.models import EvaluationDatasetText, ModelResponse, ModelSubmission, EvaluationDataset
 from orm.scripts import upload_responses
-from eval.automatic import run_evaluation
+from eval.scripts.automatic import run_evaluation
 from chateval.settings import (AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY, AWS_STORAGE_BUCKET_NAME, AWS_STORAGE_BUCKET_LOCATION)
 
 def s3_upload_file(path, body):

@@ -9,7 +9,7 @@ def run_automatic_evaluation(model, submission, model_responses, evalset):
     evalset_id = evalset.pk
     baseline_responses = [message['response'] for message in get_baseline_messages(evalset_id)]
     responses = json({'model_responses': model_responses, 'baseline_responses': baseline_responses})
-
+    print(os.environ['EVAL_LOCATION'])
     r = requests.post(os.environ['EVAL_LOCATION'], json=responses).json()
 
     AutomaticEvaluation.objects.bulk_create([

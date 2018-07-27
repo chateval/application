@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
 from eval.views import uploads, submit, confirm_delete, human
-from core.views import splash, conversations, model
+from core.views import splash, conversations, model, faq
 from orm.views import archive_model
 from accounts.views import login_view, signup_view
 
@@ -12,11 +12,12 @@ urlpatterns = [
     path('accounts/login/', login_view, name='login'),
     path('accounts/signup/', signup_view, name='signup'),
     path('accounts/', include('django.contrib.auth.urls')),
-    url(r'^uploads$', uploads, name='uploads'),
+    path('uploads/', uploads, name='uploads'),
     path('model/confirm/delete/', confirm_delete, name='confirm_delete'),
     path('model/delete/', archive_model, name='archive_model'),
-    url(r'^model$', model, name='model'),
-    url(r'^submit$', submit, name='submit'),
-    url(r'^conversations$', conversations, name='conversations'),
-    url(r'^$', splash, name='splash'),
+    path('model', model, name='model'),
+    path('submit', submit, name='submit'),
+    path('conversations', conversations, name='conversations'),
+    path('faq', faq, name='faq'),
+    path('', splash, name='splash'),
 ]

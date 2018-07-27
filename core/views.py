@@ -8,6 +8,9 @@ def splash(request):
     metrics = Metric.objects.all()
     return render(request, 'splash.html', {'datasets': datasets, 'baselines': baselines, 'metrics': metrics})
 
+def faq(request):
+    return render(request, 'faq.html', {})
+
 def conversations(request):
     models = Model.objects.filter(archived=False)
     datasets = EvaluationDataset.objects.all()

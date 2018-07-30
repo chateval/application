@@ -8,8 +8,11 @@ def splash(request):
     metrics = Metric.objects.all()
     return render(request, 'splash.html', {'datasets': datasets, 'baselines': baselines, 'metrics': metrics})
 
+def faq(request):
+    return render(request, 'faq.html', {})
+
 def conversations(request):
-    models = Model.objects.all()
+    models = Model.objects.filter(archived=False)
     datasets = EvaluationDataset.objects.all()
     if request.GET.get('model_id') is not None and request.GET.get('evalset_id') is not None:
         messages = get_messages(request.GET.get('model_id'), request.GET.get('evalset_id'))
@@ -19,7 +22,7 @@ def conversations(request):
                                             'models': models, 'datasets': datasets})
 
 def model(request):
-    models = Model.objects.all()
+    models = Model.objects.filter(archived=False)
     if request.GET.get('model_id') is not None and request.GET.get('model_id') is not None:
         # Queries to get the vote results for all the comparisons 
         humanevaluations_1 = HumanEvaluations.objects.filter(model_1=Model.objects.get(pk=request.GET.get('model_id')))

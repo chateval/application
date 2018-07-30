@@ -1,12 +1,11 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-from orm.models import Author, Baseline, Model, EvaluationDataset, AutomaticEvaluation, Metric, ModelResponse, ModelSubmission
+from orm.models import Author, Baseline, Model, EvaluationDataset, Metric, ModelResponse, ModelSubmission
 from orm.scripts import get_messages
-from .scripts.automatic.automatic_evaluations import run_automatic_evaluation
-from .scripts.human.launch_hit import launch_hits
-from .scripts.human.retrieve_responses import retrieve
-from .scripts.upload_model import upload_model
-from .forms import UploadModelForm
+from eval.scripts.human.launch_hit import launch_hits
+from eval.scripts.human.retrieve_responses import retrieve
+from eval.scripts.upload_model import upload_model
+from eval.forms import UploadModelForm
 
 def uploads(request):
     current_author = Author.objects.get(author_id=request.user)
@@ -19,8 +18,12 @@ def uploads(request):
     uploads.reverse()
     return render(request, 'uploads.html', { 'uploads': uploads })
 
-def confirm_delete(request):
+def delete(request):
     return render(request, 'delete.html', { 'model_id': request.GET['model_id']})
+
+def publish(request):
+    if request.method == "GET":
+        return render(request, 'publish.html', { 'model_id': request.GET['model_id']})
 
 def submit(request):
     response_files = EvaluationDataset.objects.all()

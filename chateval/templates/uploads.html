@@ -30,17 +30,22 @@
             <div class="card-content">
               <h2 class="text is-size-5"><strong>{{ upload.model.name }}</strong></h2> 
               <p class="text" > {{ upload.model.description }} </p>
+              {% for evalset in upload.evalsets %}
+              <span class="tag is-success"> {{ evalset }} </span>
+              {% endfor %}
+
               <form method="POST" action="/evaluation/human">
                 {% csrf_token %}
                 <input type="hidden" name="model_id" value="{{ upload.model.model_id }}">
                 <a class="is-light"> </a><button type="submit" class="button is-light">Run Human Evaluation</button> </a>
                 <a class="button is-light" href="/model?model_id={{ upload.model.model_id }}">View Evaluation</a>
               </form>
-              {% for evalset in upload.evalsets %}
-              <span class="tag is-success"> {{ evalset }} </span>
-              {% endfor %}
               <a href="/model/edit?model_id={{ upload.model.model_id }}"> <span class="tag is-light"> Edit </span> </a>
+              {% if upload.model.public != True %}
+                <a href="/model/confirm/publish?model_id={{ upload.model.model_id }}"> <span class="tag is-info"> Publish </span> </a>
+              {% else %}
               <a href="/model/confirm/delete?model_id={{ upload.model.model_id }}"> <span class="tag is-danger"> Delete </span> </a>
+              {% endif %}
             </div>
           </div>
         </div>  

@@ -21,6 +21,9 @@ def uploads(request):
 def delete(request):
     if request.method == "GET":
         return render(request, 'delete.html', { 'model_id': request.GET['model_id']})
+    model = Model.objects.get(pk=request.GET['model_id'])
+    model.archived = True
+    model.save()
     return redirect('/uploads')
 
 def publish(request):

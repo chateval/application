@@ -12,7 +12,7 @@ def faq(request):
     return render(request, 'faq.html', {})
 
 def conversations(request):
-    models = Model.objects.filter(archived=False)
+    models = Model.objects.filter(public=True)
     datasets = EvaluationDataset.objects.all()
     if request.GET.get('model_id') is not None and request.GET.get('evalset_id') is not None:
         messages = get_messages(request.GET.get('model_id'), request.GET.get('evalset_id'))
@@ -22,7 +22,7 @@ def conversations(request):
                                             'models': models, 'datasets': datasets})
 
 def model(request):
-    models = Model.objects.filter(archived=False)
+    models = Model.objects.filter(public=True)
     if request.GET.get('model_id') is not None and request.GET.get('model_id') is not None:
         messages = get_messages(request.GET.get('model_id'), request.GET.get('evalset_id'), get_all=False)
         submission = ModelSubmission.objects.filter(model=request.GET.get('model_id'))[0]

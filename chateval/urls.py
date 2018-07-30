@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
-from eval.views import uploads, submit, confirm_delete, human
+from eval.views import uploads, submit, delete, publish, human
 from core.views import splash, conversations, model, faq
 from orm.api import api, responses, evaluationdatasets, prompts, models
 from accounts.views import login_view, signup_view
@@ -18,9 +18,11 @@ urlpatterns = [
     path('api/prompts', prompts, name='prompts'),
     path('api/responses', responses, name='responses'),
     path('api/', api, name='api'),
+    ### ACTIONS
+    path('model/delete/', delete, name='delete'),
+    path('model/publish/', publish, name='publish'),
     ## SITE ROUTES
     path('uploads/', uploads, name='uploads'),
-    path('model/confirm/delete/', confirm_delete, name='confirm_delete'),
     path('model', model, name='model'),
     path('submit', submit, name='submit'),
     path('conversations', conversations, name='conversations'),

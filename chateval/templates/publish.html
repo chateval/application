@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="columns">
+        <div class="column is-one-third"></div>
+        <div class="column is-one-third">
+            <br>
+            <h1 class="title"> Are you sure you want to publish this model? </h1>
+            <form method="POST" actions="/model/publish">
+                {% csrf_token %}
+                <input type="hidden" name="model_id" value="{{ model_id }}">
+                <input class="button is-success" type="submit">
+            </form>
+        </div>
+        <div class="column is-one-third"></div>
+    </div>
+</div>
+<br>
+{% endblock %}

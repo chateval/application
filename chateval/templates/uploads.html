@@ -42,9 +42,9 @@
               </form>
               <a href="/model/edit?model_id={{ upload.model.model_id }}"> <span class="tag is-light"> Edit </span> </a>
               {% if upload.model.public != True %}
-                <a href="/model/confirm/publish?model_id={{ upload.model.model_id }}"> <span class="tag is-info"> Publish </span> </a>
+                <a href="/model/publish?model_id={{ upload.model.model_id }}"> <span class="tag is-info"> Publish </span> </a>
               {% else %}
-              <a href="/model/confirm/delete?model_id={{ upload.model.model_id }}"> <span class="tag is-danger"> Delete </span> </a>
+              <a href="/model/delete?model_id={{ upload.model.model_id }}"> <span class="tag is-danger"> Delete </span> </a>
               {% endif %}
             </div>
           </div>

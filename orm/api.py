@@ -8,7 +8,7 @@ def responses(request):
     if Model.get(pk=request.GET['model_id']).public == True:
         responses = ModelResponse.objects.filter(model=request.GET['model_id'], evaluationdataset=request.GET['evalset']).values()
         return JsonResponse({'responses': list(responses)})
-    return return JsonResponse({'message': "Model is not public."})
+    return JsonResponse({'message': "Model is not public."})
 
 def prompts(request):
     prompts = EvaluationDatasetText.objects.filter(evaluationdataset=request.GET.get('evalset')).values()

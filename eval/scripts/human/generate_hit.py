@@ -25,6 +25,10 @@ def create_HIT(examples, mturk):
 
   instructions = generate_2choice_instructions()
 
+  print("\n\ntables html\n")
+  print(tables_html)
+  print("\n\n")
+
   # Generate the full HTML for the hit. The tables html gets inserts in the right place.
   question_html_value = generate_HIT_html(num_required, tables_html, instructions)
 
@@ -66,5 +70,6 @@ def create_HIT(examples, mturk):
   print("Your HIT has been created. You can see it at: "),
   print("https://workersandbox.mturk.com/mturk/preview?groupId={}".format(hit_type_id))
   print("Your HIT ID is: {}".format(hit_id))
+  print(question_html_value)
 
   return hit_id

@@ -6,10 +6,17 @@
         <div class="column is-one-third"></div>
         <div class="column is-one-third">
             <br>
-            <h1 class="subtitle"> Are you sure you want to delete this model? </h1>
-            <a class="button is-danger is-outlined" href="/model/delete?model_id={{ model_id }}">Delete</a>
+            <h1 class="title"> Are you sure you want to delete this model? </h1>
+            <p>A member from the ChatEval Team will contact you to confirm model deletion.</p>
+            <br>
+            <form method="POST" actions="/model/delete">
+                {% csrf_token %}
+                <input type="hidden" name="model_id" value="{{ model_id }}">
+                <input class="button is-danger" value="Delete" type="submit">
+            </form>
         </div>
         <div class="column is-one-third"></div>
     </div>
 </div>
+<br>
 {% endblock %}

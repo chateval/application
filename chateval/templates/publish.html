@@ -7,10 +7,12 @@
         <div class="column is-one-third">
             <br>
             <h1 class="title"> Are you sure you want to publish this model? </h1>
+            <p>This cannot be undone.</p>
+            <br>
             <form method="POST" actions="/model/publish">
                 {% csrf_token %}
                 <input type="hidden" name="model_id" value="{{ model_id }}">
-                <input class="button is-success" type="submit">
+                <input class="button is-success" value="Publish" type="submit">
             </form>
         </div>
         <div class="column is-one-third"></div>

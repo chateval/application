@@ -19,11 +19,17 @@ def uploads(request):
     return render(request, 'uploads.html', { 'uploads': uploads })
 
 def delete(request):
-    return render(request, 'delete.html', { 'model_id': request.GET['model_id']})
+    if request.method == "GET":
+        return render(request, 'delete.html', { 'model_id': request.GET['model_id']})
+    return redirect('/uploads')
 
 def publish(request):
     if request.method == "GET":
         return render(request, 'publish.html', { 'model_id': request.GET['model_id']})
+    model = Model.objects.get(pk=request.GET['model_id'])
+    model.public = True
+    model.save()
+    return redirect('/uploads')
 
 def submit(request):
     response_files = EvaluationDataset.objects.all()

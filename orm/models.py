@@ -20,6 +20,7 @@ class Model(models.Model):
     cp_location = models.TextField()
     repo_location = models.TextField()
     comments = models.TextField(blank=True, null=True)
+    public = models.BooleanField(default=False)
     archived = models.BooleanField(default=False)
 
     class Meta:

@@ -125,5 +125,3 @@ class HumanEvaluationsABComparison(models.Model):
 
     class Meta:
         db_table = 'HumanEvaluationsABComparison'
-
-

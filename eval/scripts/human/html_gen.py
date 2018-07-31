@@ -8,9 +8,11 @@ def generate_2choice_html(example):
   as well as a count of the total number of radio buttons.
   '''
 
+  
   # Check for duplicates.
   if example.target_lines[0] == example.target_lines[1]:
     return "", 0
+  
 
   # Find all the non-duplicate target indices.
   target_indices = [0, 1]

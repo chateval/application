@@ -25,6 +25,8 @@ def get_messages(model_id, evalset_id, get_all=True):
 def upload_responses(responses, dataset, model, submission):
     prompts = EvaluationDatasetText.objects.filter(evaluationdataset=dataset)
     model_responses = list()
+    print(len(responses))
+    print(len(prompts))
     for i in range(min(len(responses), len(prompts))):
         model_response = ModelResponse(model_submission=submission, evaluationdataset=dataset, 
             prompt=prompts[i], model=model, response_text=responses[i])

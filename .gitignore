@@ -6,6 +6,7 @@ db.sqlite3
 env.sh
 .env
 eval/scripts/human/accessKeys.csv
+eval/scripts/files
 
 */__pycache__
 *.pyc

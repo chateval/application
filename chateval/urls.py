@@ -28,4 +28,6 @@ urlpatterns = [
     path('conversations', conversations, name='conversations'),
     path('faq', faq, name='faq'),
     path('', splash, name='splash'),
+    # EVALUATION
+    path('human', human, name="human"),
 ]

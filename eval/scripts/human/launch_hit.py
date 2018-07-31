@@ -61,7 +61,7 @@ def launch_hits(dataset, model1, model2):
   count = 0
   hit_ids = []
 
-  while count < len(examples):
+  while count < 10:     #len(examples):
     print('Creating HIT for examples %s through %s' % (count, count+n_examples_per_hit-1))
     for idx in range(max_assignments):
       hit_id = create_HIT(examples[count:count+n_examples_per_hit], mturk) # second argument - hit_id="cb_eval_%d_%d" % (count, idx)

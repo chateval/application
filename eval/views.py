@@ -57,4 +57,4 @@ def human(request):
     evalset = EvaluationDataset.objects.filter(name="NCM")[0]
     launch_hits(evalset, baseline_model, model)
     #retrieve() 
-    return redirect('/model')
+    return redirect('/uploads')

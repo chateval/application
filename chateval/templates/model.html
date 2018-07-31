@@ -6,6 +6,7 @@
     <div class="columns">
       <div class="column is-one-quarter">
         <br>
+        <input type="hidden" id="myVar" name="variable" value="{{ results }}" readonly>
         <form method="GET" action="/model">
           {% csrf_token %}
           <div class="control" name="model">
@@ -68,7 +69,7 @@
           <br> 
 
           <p class="title is-4">Human Evaluation</p>
-          <p>Coming soon!</p>
+  
           <div class="card">
             <div class="card-content">
               <div id="chart_div"></div>
@@ -88,63 +89,73 @@
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
   <script type="text/javascript">
+    var myVar = document.getElementById("myVar").value;
+    results = JSON.parse(myVar)
+
     google.charts.load('current', {packages: ['corechart', 'bar']});
     google.charts.setOnLoadCallback(drawStuff);
-
-    function drawStuff() {
-
-    var options = {
-      title: 'Human evaluation on dataset: ' + "NCM",
-      chartArea: {width: '50%', height:'100%'},
-      isStacked: 'percent',
-      legend:'right',
-      annotations: {
-        alwaysOutside: false,
-        textStyle: {
-          fontSize: 12,
-          auraColor: 'none',
-          color: '#555'
-        },
-        boxStyle: {
-          stroke: '#ccc',
-          strokeWidth: 1,
-          gradient: {
-            color1: '#f3e5f5',
-            color2: '#f3e5f5',
-            x1: '0%', y1: '0%',
-            x2: '100%', y2: '100%'
-          }
-        }
-      },
-      hAxis: {
-        title: 'Fraction of Votes',
-        minValue: 0,
-      },
-      vAxis: {
-        title: 'Competing Model'
-      }
-    };
-
-    output = [];
-    output.push(['Model',
-      "Model 1"  + ' wins',
-      {type: 'string', role: 'annotation'},
-      'Compteting model wins',
-      {type: 'string', role: 'annotation'},
-      'Tie',
-      {type: 'string', role: 'annotation'}])
     
-      output.push(["Seq2Seq",
-        180,
-        "180",
-        211,
-        "211",
-        101,
-        "101"])
-    output = output.sort(function(a,b){return a[1]<b[1];});
-    var dataTable = google.visualization.arrayToDataTable(output);
-    var chart = new google.visualization.BarChart(document.getElementById("chart_div"));
-    chart.draw(dataTable, options);
+    function drawStuff() {
+      var options = {
+        title: 'Human evaluation on dataset: ' + "NCM",
+        chartArea: {width: '50%', height:'100%'},
+        isStacked: 'percent',
+        legend:'right',
+        annotations: {
+          alwaysOutside: false,
+          textStyle: {
+            fontSize: 12,
+            auraColor: 'none',
+            color: '#555'
+          },
+          boxStyle: {
+            stroke: '#ccc',
+            strokeWidth: 1,
+            gradient: {
+              color1: '#f3e5f5',
+              color2: '#f3e5f5',
+              x1: '0%', y1: '0%',
+              x2: '100%', y2: '100%'
+            }
+          }
+        },
+        hAxis: {
+          title: 'Fraction of Votes',
+          minValue: 0,
+        },
+        vAxis: {
+          title: 'Competing Model'
+        }
+      };
+
+      output = [];
+      output.push(['Model',
+        "Model 1"  + ' wins',
+        {type: 'string', role: 'annotation'},
+        'Compteting model wins',
+        {type: 'string', role: 'annotation'},
+        'Tie',
+        {type: 'string', role: 'annotation'}])
+      
+      
+      for(var key in results){
+        output.push([key,
+          results[key][0], String(results[key][0]), results[key][1], String(results[key][1]), results[key][2], String(results[key][2])])  
+      }
+    
+      // output.push(["Seq2Seq",
+      //   180,
+      //   "180",
+      //   211,
+      //   "211",
+      //   101,
+      //   "101"])
+      output = output.sort(function(a,b){return a[1]<b[1];});
+      var dataTable = google.visualization.arrayToDataTable(output);
+      var chart = new google.visualization.BarChart(document.getElementById("chart_div"));
+      chart.draw(dataTable, options);
     }
   </script>
+
+  
 {% endblock %}

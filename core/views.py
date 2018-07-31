@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from orm.models import Baseline, EvaluationDataset, Model, AutomaticEvaluation, ModelSubmission, Metric, HumanEvaluations, HumanEvaluationsABComparison
 from orm.scripts import get_messages
+import json
 
 def splash(request):
     datasets = EvaluationDataset.objects.all()
@@ -58,6 +59,7 @@ def model(request):
                 
         print("Results:")
         print(results)
+        results = json.dumps(dict({'CakeChat': [100, 50 ,20], 'Seq2Seq': [10, 10 ,10]}))
         messages = get_messages(request.GET.get('model_id'), request.GET.get('evalset_id'), get_all=False)
         submission = ModelSubmission.objects.filter(model=request.GET.get('model_id'))[0]
         evaluations = list()

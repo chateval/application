@@ -3,7 +3,7 @@ from django.urls import path
 from django.conf.urls import url, include
 from eval.views import uploads, submit, delete, publish, human
 from core.views import splash, conversations, model, faq
-from orm.api import api, responses, evaluationdatasets, prompts, models
+from orm.api import api, responses, evaluationdatasets, prompts, models, automatic_evaluations
 from accounts.views import login_view, signup_view
 
 urlpatterns = [
@@ -13,6 +13,7 @@ urlpatterns = [
     path('accounts/signup/', signup_view, name='signup'),
     path('accounts/', include('django.contrib.auth.urls')),
     # API ROUTES
+    path('api/automatic_evaluations', automatic_evaluations, name='automatic_evaluations'),
     path('api/models', models, name='models'),
     path('api/evaluationdatasets', evaluationdatasets, name='evaluationdatasets'),
     path('api/prompts', prompts, name='prompts'),

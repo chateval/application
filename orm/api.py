@@ -5,7 +5,7 @@ def api(request):
     return JsonResponse({'message': "Welcome to the API!"})
 
 def responses(request):
-    if Model.get(pk=request.GET['model_id']).public == True:
+    if Model.objects.get(pk=request.GET['model_id']).public == True:
         responses = ModelResponse.objects.filter(model=request.GET['model_id'], evaluationdataset=request.GET['evalset']).values()
         return JsonResponse({'responses': list(responses)})
     return JsonResponse({'message': "Model is not public."})

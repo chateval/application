@@ -22,7 +22,7 @@
         <h1 class="title" style="margin-bottom: 2.5rem"> Evaluation Datasets </h1>
         <div class="columns is-multiline" style="padding-bottom:0rem; padding-top: 0rem">  
           {% for dataset in datasets %}
-          <div class="column is-half">
+          <div class="column is-half" style="padding-top: 0rem; padding-bottom: 0rem;">
             <a href="{{dataset.source}}">
               <div class="box">
                 <article class="media">
@@ -47,7 +47,7 @@
         <div class="columns is-multiline" style="padding-bottom:0rem; padding-top: 0rem">   
           
           {% for baseline in baselines %}
-          <div class="column is-half" >
+          <div class="column is-half" style="padding-top: 0rem; padding-bottom: 0rem;">
             <a href="/model?model_id={{ baseline.model.model_id }}">
               <div class="box">
                 <article class="media">

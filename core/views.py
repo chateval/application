@@ -13,7 +13,10 @@ def faq(request):
     return render(request, 'faq.html', {})
 
 def about(request):
-    return render(request, 'about.html', {})
+    datasets = EvaluationDataset.objects.all()
+    baselines = Baseline.objects.all()
+    metrics = Metric.objects.all()
+    return render(request, 'about.html', {'datasets': datasets, 'baselines': baselines, 'metrics': metrics})
 
 def conversations(request):
     models = Model.objects.filter(public=True)

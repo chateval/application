@@ -12,6 +12,9 @@ def splash(request):
 def faq(request):
     return render(request, 'faq.html', {})
 
+def about(request):
+    return render(request, 'about.html', {})
+
 def conversations(request):
     models = Model.objects.filter(public=True)
     datasets = EvaluationDataset.objects.all()

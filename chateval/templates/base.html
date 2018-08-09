@@ -44,23 +44,31 @@
       });
     </script>
 
-    <nav class="navbar is-success" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
       <div class="navbar-menu" id="navMenu">
         <div class="navbar-start">
-          <a class="navbar-item" href="/">
-            <strong>ChatEval</strong>
-          </a>
-          <a class="navbar-item" href="/faq">
-            About
-          </a>
-          <a class="navbar-item" href="/model">
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link" href="/">
+              <strong> ChatEval </strong>
+            </a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="/about">
+                About
+              </a>
+              <a class="navbar-item" href="/faq">
+                FAQ
+              </a>
+              <a class="navbar-item" href="/license">
+                License
+              </a>
+            </div>
+          </div>
+
+          <a class="navbar-item" href="https://compare.chateval.org/models">
             Models
           </a>
-          <a class="navbar-item" href="/conversations">
+          <a class="navbar-item" href="https://compare.chateval.org/conversations">
             Conversations
-          </a>
-          <a class="navbar-item" href="https://compare.chateval.org">
-            Comparison
           </a>
         </div>
         <div class="navbar-end">

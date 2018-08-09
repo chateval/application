@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
 from eval.views import uploads, submit, delete, publish, human
-from core.views import splash, conversations, model, faq
+from core.views import splash, conversations, model, faq, about
 from orm.api import api, responses, evaluationdatasets, prompts, models, automatic_evaluations
 from accounts.views import login_view, signup_view
 
@@ -28,6 +28,7 @@ urlpatterns = [
     path('submit', submit, name='submit'),
     path('conversations', conversations, name='conversations'),
     path('faq', faq, name='faq'),
+    path('about', about, name='about'),
     path('', splash, name='splash'),
     # EVALUATION
     path('human', human, name="human"),

@@ -35,9 +35,9 @@ def publish(request):
     return redirect('/uploads')
 
 def submit(request):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return redirect('/accounts/login')
-        
+
     response_files = EvaluationDataset.objects.all()
     if request.method == "POST":
         form = UploadModelForm(request.POST, request.FILES)

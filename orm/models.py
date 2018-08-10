@@ -3,37 +3,6 @@ from django.conf import settings
 from django.db.models.signals import post_save
 import requests
 
-class Author(models.Model):
-    author_id = models.OneToOneField(settings.AUTH_USER_MODEL, primary_key=True, on_delete=models.CASCADE)
-    name = models.CharField(unique=True, max_length=100)
-    email = models.CharField(unique=True, max_length=200)
-    institution = models.TextField()
-
-    class Meta:
-        db_table = 'Author'
-
-class Model(models.Model):
-    model_id = models.BigAutoField(primary_key=True)
-    name = models.CharField(max_length=255)
-    description = models.TextField()
-    author = models.ForeignKey(Author, models.DO_NOTHING)
-    cp_location = models.TextField()
-    repo_location = models.TextField()
-    comments = models.TextField(blank=True, null=True)
-    public = models.BooleanField(default=False)
-    archived = models.BooleanField(default=False)
-
-    class Meta:
-        db_table = 'Model'
-
-class Metric(models.Model):
-    metric_id = models.BigAutoField(primary_key=True)
-    name = models.CharField(unique=True, max_length=100)
-    info = models.CharField(max_length=200)
-
-    class Meta:
-        db_table = 'Metrics'
-
 class EvaluationDataset(models.Model):
     evalset_id = models.BigAutoField(primary_key=True)
     name = models.CharField(unique=True, max_length=100)
@@ -54,6 +23,38 @@ def save_evaluation_dataset(sender, instance, **kwargs):
         evaluation_dataset_text.save()
 
 post_save.connect(save_evaluation_dataset, sender=EvaluationDataset)
+
+class Author(models.Model):
+    author_id = models.OneToOneField(settings.AUTH_USER_MODEL, primary_key=True, on_delete=models.CASCADE)
+    name = models.CharField(unique=True, max_length=100)
+    email = models.CharField(unique=True, max_length=200)
+    institution = models.TextField()
+
+    class Meta:
+        db_table = 'Author'
+
+class Model(models.Model):
+    model_id = models.BigAutoField(primary_key=True)
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    author = models.ForeignKey(Author, models.DO_NOTHING)
+    evaluationdatasets = models.ManyToManyField(EvaluationDataset)
+    cp_location = models.TextField()
+    repo_location = models.TextField()
+    comments = models.TextField(blank=True, null=True)
+    public = models.BooleanField(default=False)
+    archived = models.BooleanField(default=False)
+
+    class Meta:
+        db_table = 'Model'
+
+class Metric(models.Model):
+    metric_id = models.BigAutoField(primary_key=True)
+    name = models.CharField(unique=True, max_length=100)
+    info = models.CharField(max_length=200)
+
+    class Meta:
+        db_table = 'Metrics'
 
 class ModelSubmission(models.Model):
     submission_id = models.BigAutoField(primary_key=True)

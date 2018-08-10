@@ -5,7 +5,7 @@ def api(request):
     return JsonResponse({'message': "Welcome to the API!"})
 
 def responses(request):
-    if Model.objects.get(pk=request.GET['model_id']).public == True:
+    if Model.objects.get(pk=request.GET['model_id']).public == True and Model.objects.get(pk=request.GET['model_id']).archived == False:
         responses = ModelResponse.objects.filter(model=request.GET['model_id'], evaluationdataset=request.GET['evalset']).values()
         return JsonResponse({'responses': list(responses)})
     return JsonResponse({'message': "Model is not public."})
@@ -15,7 +15,7 @@ def prompts(request):
     return JsonResponse({'prompts': list(prompts)})
 
 def models(request):
-    models = Model.objects.filter(public=True).values()
+    models = Model.objects.filter(public=True, archived=False).values()
     return JsonResponse({'models': list(models)})
 
 def evaluationdatasets(request):

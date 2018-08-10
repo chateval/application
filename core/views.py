@@ -29,7 +29,7 @@ def conversations(request):
                                             'models': models, 'datasets': datasets})
 
 def model(request):
-    models = Model.objects.filter(public=True)
+    models = Model.objects.filter(public=True, archived=False)
     if request.GET.get('model_id') is not None and request.GET.get('model_id') is not None:
         # Queries to get the vote results for all the comparisons 
         humanevaluations_1 = HumanEvaluations.objects.filter(model_1=Model.objects.get(pk=request.GET.get('model_id')))

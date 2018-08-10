@@ -6,7 +6,7 @@ class SignUpForm(forms.Form):
     institution = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class' : 'input'}))
     username = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class' : 'input'}))
     email = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class' : 'input'}))
-    password = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class' : 'input'}))
+    password = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs={'class' : 'input'}))
     confirm_password = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs={'class' : 'input'}))
 
 class LogInForm(forms.Form):

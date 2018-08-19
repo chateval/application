@@ -19,55 +19,62 @@
     <div class="column is-one-sixth"></div>
     <div class="column is-two-thirds">
         <br> <br>
-        <h1 class="title" style="margin-bottom: 2.5rem"> Evaluation Datasets </h1>
+        <h1 class="title"> Evaluation Datasets </h1>
+        <h4 style="margin-bottom: 2.5rem">
+          ChatEval allows you to directly compare your model's responses to other models' responses on a standardized set of prompts. When you upload your model, you can choose to include responses to the prompts of any of the following evaluation datasets. While we currently only support datasets with single-turn prompts, stay-tuned for multi-turn prompt datasets coming soon. If you would like to propose a new evaluation dataset, submit a pull request <a href="https://github.com/chateval/ChatEval/tree/master/eval_data">here</a>. 
+        </h4>
         <div class="columns is-multiline" style="padding-bottom:0rem; padding-top: 0rem">  
           {% for dataset in datasets %}
           <div class="column is-half" style="padding-top: 0rem; padding-bottom: 0rem;">
-            <a href="{{dataset.source}}">
-              <div class="box">
-                <article class="media">
-                  <div class="media-content">
-                    <div class="content">
-                      <p>
-                        <strong> {{dataset.long_name}} </strong> <br>
-                        <small> {{dataset.description}} </small>
-                        <br>
-                      </p>
-                    </div>
+            <div class="box">
+              <article class="media">
+                <div class="media-content">
+                  <div class="content">
+                    <p>
+                      <strong> {{dataset.long_name}} </strong> <br>
+                      <small> {{dataset.description}} </small>
+                      <br/>
+                      <a class="button is-outlined is-small" href="{{dataset.source}}"> Download </a>
+                      <br>
+                    </p>
                   </div>
-                </article>
-              </div>
-            </a>
+                </div>
+              </article>
+            </div>
           </div>
           <br>
           {% endfor %}    
         </div>
 
-        <h1 class="title" style="margin-bottom: 2.5rem"> Supported Baselines </h1>
-        <div class="columns is-multiline" style="padding-bottom:0rem; padding-top: 0rem">   
-          
+        <h1 class="title"> ChatEval Baselines </h1>
+        <h4 style="margin-bottom: 2.5rem">
+          While you can choose to compare your model against any public user-submitted model that has submitted responses to the same evaluation dataset, we have also provided several baselines for you to compare against. These include reference human responses and OpenNMT-Seq2Seq models trained on OpenSubtitles and Twitter.
+        </h4>
+        <div class="columns is-multiline" style="padding-bottom:0rem; padding-top: 0rem">             
           {% for baseline in baselines %}
           <div class="column is-half" style="padding-top: 0rem; padding-bottom: 0rem;">
-            <a href="/model?model_id={{ baseline.model.model_id }}">
-              <div class="box">
-                <article class="media">
-                  <div class="media-content">
-                    <div class="content">
-                      <p>
-                        <strong> {{baseline.model.name}} </strong> <br>
-                        <small> {{baseline.model.description}} </small>
-                        <br>
-                      </p>
-                    </div>
+            <div class="box">
+              <article class="media">
+                <div class="media-content">
+                  <div class="content">
+                    <p>
+                      <strong> {{baseline.model.name}} </strong> <br>
+                      <small> {{baseline.model.description}} </small>
+                      <br/>
+                      <a class="button is-outlined is-small" href="/model?model_id={{ baseline.model.model_id }}"> View </a>
+                      <br>
+                    </p>
                   </div>
-                </article>
-              </div>
-            </a>
+                </div>
+              </article>
+            </div>
           </div>
           {% endfor %}
         </div>
 
-        <h1 class="title" style="margin-bottom: 2.5rem"> Automated Evaluation Methods </h1>
+        <h1 class="title"> Automated Evaluation Methods </h1>
+        <h4  style="margin-bottom: 2.5rem">We currently support the following evaluation metrics. These are computed automatically for every model uploaded to the ChatEval system. Implementations can be found <a href='https://github.com/chateval/evaluation/blob/master/auto_eval_utils.py'>here</a>. If you would like to propose an additional evaluation metric, please submit a pull request.
+        </h4>
         <div class="columns is-multiline" style="padding-bottom:0rem; padding-top: 0rem">   
           
           {% for metric in metrics %}
@@ -90,21 +97,37 @@
         </div>
 
         <h1 class="title" style="margin-bottom: 2.5rem"> References </h1>
-        <p>
-          <div class="columns is-multiline" style="padding-bottom:0rem; padding-top: 0rem">   
-          Liu, Chia-Wei, Ryan Lowe, Iulian Serban, Mike Noseworthy,Laurent Charlin, and Joelle Pineau. "How not to evaluate your dialogue system: An empirical study of unsupervised evaluation metrics for dialogue response generation." In <i>EMNLP</i>, pp. 2122–2132. Association for Computational Linguistics,  2016.
-        </p>
-        <p>
-          Forgues, Gabriel, Joelle Pineau, Jean-Marie Larchevêque, and Réal Tremblay. "Bootstrapping dialog systems with word embeddings." In <i>NIPS, modern machine learning and natural language processing workshop</i>, vol. 2. 2014.
-        </p>
-        <p>
-          Papineni, Kishore, Salim Roukos, Todd Ward, and Wei-Jing Zhu. "BLEU: a method for automatic evaluation of machine translation." In <i>Proceedings of the 40th annual meeting on association for computational linguistics</i>, pp. 311-318. Association for Computational Linguistics, 2002.
-        </p>
-        <p>
-          Rus, Vasile, and Mihai Lintean. "A comparison of greedy and optimal assessment of natural language student input using word-to-word similarity metrics." In <i>Proceedings of the Seventh Workshop on Building Educational Applications Using NLP</i>, pp. 157-162. Association for Computational Linguistics, 2012.
-        </p>
+        <div class="columns is-multiline" style="padding-bottom:0rem; padding-top: 0rem">
+          <p>
+            Higashinaka, Ryuichiro, Kotaro Funakoshi, Yuka Kobayashi, and Michimasa Inaba. "The dialogue breakdown detection challenge: Task description, datasets, and evaluation metrics." In <i>LREC</i>. 2016.
+          </p>
+          <br/>
+          <p>
+            Liu, Chia-Wei, Ryan Lowe, Iulian Serban, Mike Noseworthy,Laurent Charlin, and Joelle Pineau. "How not to evaluate your dialogue system: An empirical study of unsupervised evaluation metrics for dialogue response generation." In <i>EMNLP</i>, pp. 2122–2132. Association for Computational Linguistics,  2016.
+          </p>
+          <br/>
+          <p>
+            Forgues, Gabriel, Joelle Pineau, Jean-Marie Larchevêque, and Réal Tremblay. "Bootstrapping dialog systems with word embeddings." In <i>NIPS, modern machine learning and natural language processing workshop</i>, vol. 2. 2014.
+          </p>
+          <br/>
+          <p>
+            Papineni, Kishore, Salim Roukos, Todd Ward, and Wei-Jing Zhu. "BLEU: a method for automatic evaluation of machine translation." In <i>Proceedings of the 40th annual meeting on association for computational linguistics</i>, pp. 311-318. Association for Computational Linguistics, 2002.
+          </p>
+          <br/>
+          <p>
+            Rus, Vasile, and Mihai Lintean. "A comparison of greedy and optimal assessment of natural language student input using word-to-word similarity metrics." In <i>Proceedings of the Seventh Workshop on Building Educational Applications Using NLP</i>, pp. 157-162. Association for Computational Linguistics, 2012.
+          </p>
+          <br/>
+          <p>
+            Tiedemann, Jörg. "News from OPUS-A collection of multilingual parallel corpora with tools and interfaces." In Recent advances in natural language processing, vol. 5, pp. 237-248. 2009.
+          </p>
+          <br/>
+          <p>
+            Vinyals, Oriol, and Quoc Le. "A neural conversational model." arXiv preprint arXiv:1506.05869 (2015).
+          </p>
+          <br/>
         </div>
-    </div>
+      </div>
     <div class="column is-one-sixth"></div>
   </div>
   <br>

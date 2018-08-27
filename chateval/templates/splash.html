@@ -34,7 +34,7 @@
                   <div class="content">
                     <p>
                       <strong> {{dataset.long_name}} </strong> <br>
-                      <small> {{dataset.description}} </small>
+                      <small> {{ dataset.description |safe }} </small>
                       <br/>
                       <a class="button is-outlined is-small" href="{{dataset.source}}"> Download </a>
                       <br>

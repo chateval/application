@@ -1,10 +1,10 @@
+import datetime
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-from orm.models import Author, Baseline, Model, EvaluationDataset, Metric, ModelResponse, ModelSubmission
-from orm.scripts import get_messages
+from orm.models import Author, Model, EvaluationDataset, Metric, ModelResponse, ModelSubmission
 from eval.scripts.human.launch_hit import launch_hits
 from eval.scripts.human.retrieve_responses import retrieve
-from eval.scripts.upload_model import upload_model
+from eval.scripts.upload_model import handle_submit
 from eval.forms import UploadModelForm
 
 def uploads(request):
@@ -12,11 +12,10 @@ def uploads(request):
     models = Model.objects.filter(author=current_author, archived=False)
     uploads = list()
     for model in models:
-        submission = ModelSubmission.objects.filter(model=model)[0]
-        evalsets = [evalset.name for evalset in submission.evaluationdatasets.all()]
+        evalsets = []
         uploads.append(dict({'model': model, 'evalsets': evalsets}))
     uploads.reverse()
-    return render(request, 'uploads.html', { 'uploads': uploads })
+    return render(request, 'uploads.html', {'uploads': uploads})
 
 def delete(request):
     if request.method == "GET":
@@ -38,28 +37,17 @@ def submit(request):
     if not request.user.is_authenticated:
         return redirect('/accounts/login')
 
-    response_files = EvaluationDataset.objects.all()
+    datasets = EvaluationDataset.objects.all()
     if request.method == "POST":
-        form = UploadModelForm(request.POST, request.FILES)
-        if form.is_valid():
-            model = Model(author=Author.objects.get(pk=request.user),
-                name=form.cleaned_data['name'],
-                description=form.cleaned_data['description'],
-                repo_location = form.cleaned_data['repo_location'],
-                cp_location=form.cleaned_data['checkpoint_location'])
-            model.save()
+        model = Model(name=request.POST['name'], author=Author.objects.get(pk=request.user), description=request.POST['description'], repo_location=request.POST['repo_location'], cp_location=request.POST['checkpoint_location'])
+        for dataset in datasets:
+            if dataset.name in request.FILES.keys():
+                response_file = request.FILES[dataset.name]
+                handle_submit(model, dataset, response_file, 'baseline' in request.POST)
+        return HttpResponseRedirect('/uploads')
 
-            files = list()
-            for response_file in response_files:
-                if response_file.name in request.FILES.keys():
-                    files.append({'file': request.FILES[response_file.name], 'dataset': response_file})               
-                    if 'baseline' in form.data.keys():
-                        baseline = Baseline(model=model, evaluationdataset=response_file)
-                        baseline.save()
-            upload_model(model, files, 'baseline' in form.data.keys())
-            return HttpResponseRedirect('/uploads')
     form = UploadModelForm()
-    return render(request, 'submit.html', {'form': form, 'response_files': response_files})   
+    return render(request, 'submit.html', {'form': form, 'response_files': datasets})
 
 def human(request):
     print("\n\n")

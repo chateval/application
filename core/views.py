@@ -1,12 +1,14 @@
 from django.shortcuts import render, redirect
-from orm.models import Baseline, EvaluationDataset, Model, AutomaticEvaluation, ModelSubmission, Metric, HumanEvaluations, HumanEvaluationsABComparison
-from orm.scripts import get_messages
+from orm.models import EvaluationDataset, Model, AutomaticEvaluation, ModelSubmission, Metric, HumanEvaluations, HumanEvaluationsABComparison
+from orm.scripts import get_messages, get_baselines
 import json
 
 def splash(request):
     datasets = EvaluationDataset.objects.all()
-    baselines = Baseline.objects.all()
     metrics = Metric.objects.all()
+    baselines = list()
+    for dataset in datasets:
+        baselines += get_baselines(dataset.pk)
     return render(request, 'splash.html', {'datasets': datasets, 'baselines': baselines, 'metrics': metrics})
 
 def faq(request):
@@ -14,7 +16,9 @@ def faq(request):
 
 def about(request):
     datasets = EvaluationDataset.objects.all()
-    baselines = Baseline.objects.all()
+    baselines = list()
+    for dataset in datasets:
+        baselines += get_baselines(dataset.pk)
     metrics = Metric.objects.all()
     return render(request, 'about.html', {'datasets': datasets, 'baselines': baselines, 'metrics': metrics})
 

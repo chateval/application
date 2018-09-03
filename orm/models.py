@@ -9,6 +9,7 @@ class EvaluationDataset(models.Model):
     long_name = models.CharField(unique=True, max_length=255)
     source = models.TextField()
     description = models.TextField()
+    baselines = models.ManyToManyField('Model', blank=True)
 
     class Meta:
         db_table = 'EvaluationDataset'
@@ -44,6 +45,7 @@ class Model(models.Model):
     comments = models.TextField(blank=True, null=True)
     public = models.BooleanField(default=False)
     archived = models.BooleanField(default=False)
+    is_baseline = models.BooleanField(default=False)
 
     class Meta:
         db_table = 'Model'
@@ -73,14 +75,7 @@ class EvaluationDatasetText(models.Model):
 
     class Meta:
         db_table = 'EvaluationDatasetText'
-        unique_together = (('evaluationdataset', 'prompt_id'),)
-
-class Baseline(models.Model):
-    model = models.OneToOneField(Model, primary_key=True, on_delete=models.DO_NOTHING)
-    evaluationdataset = models.ForeignKey(EvaluationDataset, models.DO_NOTHING)
-
-    class Meta:
-        db_table = 'Baseline'
+        unique_together = (('evaluationdataset', 'prompt_id'))
 
 class ModelResponse(models.Model):
     model = models.ForeignKey('Model', models.DO_NOTHING)

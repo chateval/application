@@ -34,7 +34,7 @@
                   <div class="content">
                     <p>
                       <strong> {{dataset.long_name}} </strong> <br>
-                      <small> {{dataset.description}} </small>
+                      <small> {{ dataset.description |safe }} </small>
                       <br/>
                       <a class="button is-outlined is-small" href="{{dataset.source}}"> Download </a>
                       <br>
@@ -97,37 +97,39 @@
           </div>
           {% endfor %}
         </div>
-
-        <h1 class="title" style="margin-bottom: 2.5rem"> References </h1>
+        <hr />
         <div class="columns is-multiline" style="padding-bottom:0rem; padding-top: 0rem">
-          <p>
-            Higashinaka, Ryuichiro, Kotaro Funakoshi, Yuka Kobayashi, and Michimasa Inaba. "The dialogue breakdown detection challenge: Task description, datasets, and evaluation metrics." In <i>LREC</i>. 2016.
-          </p>
-          <br/>
-          <p>
-            Liu, Chia-Wei, Ryan Lowe, Iulian Serban, Mike Noseworthy,Laurent Charlin, and Joelle Pineau. "How not to evaluate your dialogue system: An empirical study of unsupervised evaluation metrics for dialogue response generation." In <i>EMNLP</i>, pp. 2122–2132. Association for Computational Linguistics,  2016.
-          </p>
-          <br/>
-          <p>
-            Forgues, Gabriel, Joelle Pineau, Jean-Marie Larchevêque, and Réal Tremblay. "Bootstrapping dialog systems with word embeddings." In <i>NIPS, modern machine learning and natural language processing workshop</i>, vol. 2. 2014.
-          </p>
-          <br/>
-          <p>
-            Papineni, Kishore, Salim Roukos, Todd Ward, and Wei-Jing Zhu. "BLEU: a method for automatic evaluation of machine translation." In <i>Proceedings of the 40th annual meeting on association for computational linguistics</i>, pp. 311-318. Association for Computational Linguistics, 2002.
-          </p>
-          <br/>
-          <p>
-            Rus, Vasile, and Mihai Lintean. "A comparison of greedy and optimal assessment of natural language student input using word-to-word similarity metrics." In <i>Proceedings of the Seventh Workshop on Building Educational Applications Using NLP</i>, pp. 157-162. Association for Computational Linguistics, 2012.
-          </p>
-          <br/>
-          <p>
-            Tiedemann, Jörg. "News from OPUS-A collection of multilingual parallel corpora with tools and interfaces." In Recent advances in natural language processing, vol. 5, pp. 237-248. 2009.
-          </p>
-          <br/>
-          <p>
-            Vinyals, Oriol, and Quoc Le. "A neural conversational model." arXiv preprint arXiv:1506.05869 (2015).
-          </p>
-          <br/>
+          <div class="column">
+            <h1 class="title" style="margin-bottom: 2.5rem"> References </h1>
+            <p>
+              Higashinaka, Ryuichiro, Kotaro Funakoshi, Yuka Kobayashi, and Michimasa Inaba. "The dialogue breakdown detection challenge: Task description, datasets, and evaluation metrics." In <i>LREC</i>. 2016.
+            </p>
+            <br/>
+            <p>
+              Liu, Chia-Wei, Ryan Lowe, Iulian Serban, Mike Noseworthy,Laurent Charlin, and Joelle Pineau. "How not to evaluate your dialogue system: An empirical study of unsupervised evaluation metrics for dialogue response generation." In <i>EMNLP</i>, pp. 2122–2132. Association for Computational Linguistics,  2016.
+            </p>
+            <br/>
+            <p>
+              Forgues, Gabriel, Joelle Pineau, Jean-Marie Larchevêque, and Réal Tremblay. "Bootstrapping dialog systems with word embeddings." In <i>NIPS, modern machine learning and natural language processing workshop</i>, vol. 2. 2014.
+            </p>
+            <br/>
+            <p>
+              Papineni, Kishore, Salim Roukos, Todd Ward, and Wei-Jing Zhu. "BLEU: a method for automatic evaluation of machine translation." In <i>Proceedings of the 40th annual meeting on association for computational linguistics</i>, pp. 311-318. Association for Computational Linguistics, 2002.
+            </p>
+            <br/>
+            <p>
+              Rus, Vasile, and Mihai Lintean. "A comparison of greedy and optimal assessment of natural language student input using word-to-word similarity metrics." In <i>Proceedings of the Seventh Workshop on Building Educational Applications Using NLP</i>, pp. 157-162. Association for Computational Linguistics, 2012.
+            </p>
+            <br/>
+            <p>
+              Tiedemann, Jörg. "News from OPUS-A collection of multilingual parallel corpora with tools and interfaces." In Recent advances in natural language processing, vol. 5, pp. 237-248. 2009.
+            </p>
+            <br/>
+            <p>
+              Vinyals, Oriol, and Quoc Le. "A neural conversational model." arXiv preprint arXiv:1506.05869 (2015).
+            </p>
+            <br/>
+          </div>
         </div>
       </div>
     <div class="column is-one-sixth"></div>

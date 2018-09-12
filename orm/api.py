@@ -1,8 +1,19 @@
 from django.http import JsonResponse
-from orm.models import Model, ModelResponse, ModelSubmission, AutomaticEvaluation, EvaluationDataset, EvaluationDatasetText 
+from orm.models import Model, Metric, ModelResponse, ModelSubmission, AutomaticEvaluation, EvaluationDataset, EvaluationDatasetText 
+from orm.scripts import get_baselines
+
+def metrics(request):
+    return JsonResponse({'metrics': list(Metric.objects.all().values())})
 
 def api(request):
     return JsonResponse({'message': "Welcome to the API!"})
+
+def baselines(request):
+    datasets = EvaluationDataset.objects.all()
+    baselines = list()
+    for dataset in datasets:
+        baselines += get_baselines(dataset.pk).values()
+    return JsonResponse({'baselines': list(baselines)})
 
 def responses(request):
     if Model.objects.get(pk=request.GET['model_id']).public == True and Model.objects.get(pk=request.GET['model_id']).archived == False:
@@ -15,7 +26,7 @@ def prompts(request):
     return JsonResponse({'prompts': list(prompts)})
 
 def models(request):
-    models = Model.objects.filter(public=True, archived=False).values()
+    models = Model.objects.all().values()
     return JsonResponse({'models': list(models)})
 
 def evaluationdatasets(request):

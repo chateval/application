@@ -20,6 +20,7 @@ def handle_submit(model, dataset, response_file, is_baseline):
     evaluations = requests.post(os.environ['EVAL_LOCATION'], json=dumps({'model_responses': responses, 'baseline_responses': baseline_responses, 'is_baseline': is_baseline})).json()
 
     model.save()
+    model.evaluationdatasets.add(dataset)
     submission = ModelSubmission(model=model, date=datetime.datetime.now().date())
     submission.save()
     submission.evaluationdatasets.add(dataset)

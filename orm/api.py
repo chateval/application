@@ -1,4 +1,5 @@
 from django.http import JsonResponse
+from django.forms.models import model_to_dict
 from orm.models import Model, Metric, ModelResponse, ModelSubmission, AutomaticEvaluation, EvaluationDataset, EvaluationDatasetText 
 from orm.scripts import get_baselines
 
@@ -28,6 +29,10 @@ def prompts(request):
 def models(request):
     models = Model.objects.all().values()
     return JsonResponse({'models': list(models)})
+
+def model(request):
+    model = Model.objects.get(pk=request.GET['id'])
+    return JsonResponse({'model': model_to_dict(model)})
 
 def evaluationdatasets(request):
     evaluationdatasets = EvaluationDataset.objects.all().values()

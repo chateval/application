@@ -17,10 +17,8 @@ def baselines(request):
     return JsonResponse({'baselines': list(baselines)})
 
 def responses(request):
-    if Model.objects.get(pk=request.GET['model_id']).public == True and Model.objects.get(pk=request.GET['model_id']).archived == False:
-        responses = ModelResponse.objects.filter(model=request.GET['model_id'], evaluationdataset=request.GET['evalset']).values()
-        return JsonResponse({'responses': list(responses)})
-    return JsonResponse({'message': "Model is not public."})
+    responses = ModelResponse.objects.filter(model=request.GET['model_id'], evaluationdataset=request.GET['evalset']).values()
+    return JsonResponse({'responses': list(responses)})
 
 def prompts(request):
     prompts = EvaluationDatasetText.objects.filter(evaluationdataset=request.GET.get('evalset')).values()
@@ -31,8 +29,8 @@ def models(request):
     return JsonResponse({'models': list(models)})
 
 def model(request):
-    model = Model.objects.get(pk=request.GET['id'])
-    return JsonResponse({'model': model_to_dict(model)})
+    model = Model.objects.filter(pk=request.GET['id']).values()[0]
+    return JsonResponse({'model': model})
 
 def evaluationdatasets(request):
     evaluationdatasets = EvaluationDataset.objects.all().values()

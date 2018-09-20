@@ -10,7 +10,7 @@
         <form method="GET" action="/model">
           {% csrf_token %}
           <div class="control" name="model">
-            <label class="label">Trained Model</label>
+            <label class="label">Published Models</label>
             <div class="select">
               <select name="model_id">
                 {% for model in models %}
@@ -20,7 +20,7 @@
             </div>
           </div>
           <br>
-          <input type="submit" value="View Automatic Evaluation" class="button is-success">
+          <input type="submit" value="View Evaluation" class="button is-success">
         </form>
       </div>    
   

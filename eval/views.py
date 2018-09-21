@@ -17,6 +17,9 @@ def uploads(request):
     uploads.reverse()
     return render(request, 'uploads.html', {'uploads': uploads})
 
+def human(request):
+    return render(request, 'human_demo.html', {})
+
 def delete(request):
     if request.method == "GET":
         return render(request, 'delete.html', { 'model_id': request.GET['model_id']})
@@ -24,6 +27,7 @@ def delete(request):
     model.archived = True
     model.save()
     return redirect('/uploads')
+
 
 def publish(request):
     if request.method == "GET":
@@ -49,7 +53,7 @@ def submit(request):
     form = UploadModelForm()
     return render(request, 'submit.html', {'form': form, 'response_files': datasets})
 
-def human(request):
+'''def human(request):
     print("\n\n")
     print(request.POST['model_id'])
     model = Model.objects.get(model_id=request.POST['model_id'])
@@ -57,4 +61,4 @@ def human(request):
     evalset = EvaluationDataset.objects.filter(name="NCM")[0]
     launch_hits(evalset, baseline_model, model)
     #retrieve() 
-    return redirect('/uploads')
+    return redirect('/uploads')'''

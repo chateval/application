@@ -19,7 +19,7 @@
               <span class="tag is-success"> {{ evalset }} </span>
               {% endfor %}
               <hr />
-              <form method="POST" action="/human">
+              <form method="GET" action="/human">
                 {% csrf_token %}
                 <input type="hidden" name="model_id" value="{{ upload.model.model_id }}">
                 <a class="is-light"> </a><button type="submit" class="button is-light">Run Human Evaluation</button> </a>

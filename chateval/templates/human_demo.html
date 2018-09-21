@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="columns">         
+        <div class="column is-one-quarter"></div>  
+        <div class="column is-half">
+            <br />
+            <h1 class="title"> Human Evaluation </h1>
+            <hr />
+            <h2 class="subtitle"><strong>Evaluation Dataset</strong></h2>
+            <label class="checkbox"> 
+                <input type="checkbox" />
+                NCM
+            </label> <br />
+            <label class="checkbox"> 
+                <input type="checkbox" />
+                DBDC
+            </label> <br />
+            <label class="checkbox"> 
+                <input type="checkbox" />
+                OS
+            </label> <br /> <br />
+            <form action="your-server-side-code" method="POST">
+                <script
+                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="pk_test_TYooMQauvdEDq54NiTphI7jx"
+                    data-amount="999"
+                    data-name="ChatEval"
+                    data-description="Human Evaluation"
+                    data-image="https://github.com/chateval/chateval.github.io/blob/master/assets/images/logo2.png?raw=true"
+                    data-locale="auto"
+                    data-zip-code="true">
+                </script>
+            </form>
+        </div>
+        <div class="column is-one-quarter"></div>  
+
+    </div>
+</div>
+<br>
+{% endblock %}

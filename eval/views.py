@@ -2,6 +2,7 @@ import datetime
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from orm.models import Author, Model, EvaluationDataset, Metric, ModelResponse, ModelSubmission
+from orm.scripts import get_messages, get_baselines
 from eval.scripts.human.launch_hit import launch_hits
 from eval.scripts.human.retrieve_responses import retrieve
 from eval.scripts.upload_model import handle_submit
@@ -18,7 +19,11 @@ def uploads(request):
     return render(request, 'uploads.html', {'uploads': uploads})
 
 def human(request):
-    return render(request, 'human_demo.html', {})
+    datasets = EvaluationDataset.objects.all()
+    baselines = list()
+    for dataset in datasets:
+        baselines += get_baselines(dataset.pk)
+    return render(request, 'human_demo.html', {'baselines': baselines})
 
 def delete(request):
     if request.method == "GET":

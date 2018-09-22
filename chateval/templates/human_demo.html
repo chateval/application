@@ -7,6 +7,7 @@
         <div class="column is-half">
             <br />
             <h1 class="title"> Human Evaluation </h1>
+            <p>Launch Amazon Mechanical Turk for human evaluation directly from ChatEval's portal.</p>
             <hr />
             <h2 class="subtitle"><strong>Evaluation Dataset</strong></h2>
             <label class="checkbox"> 
@@ -21,6 +22,28 @@
                 <input type="checkbox" />
                 OS
             </label> <br /> <br />
+            <h2 class="subtitle"> Baseline Comparison </h2>
+            <div class="columns is-multiline" style="padding-bottom:0rem; padding-top: 0rem">             
+              {% for baseline in baselines %}
+              <div class="column is-half" style="padding-top: 0rem; padding-bottom: 0rem;">
+                <div class="box">
+                  <article class="media">
+                    <div class="media-content">
+                      <div class="content">
+                        <p>
+                          <strong> {{baseline.name}} </strong> <br>
+                          <small> {{baseline.description}} </small>
+                          <br/> <br />
+                          <a class="button is-outlined" href="/model?model_id={{ baseline.model_id }}"> Compare </a>
+                          <br>
+                        </p>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
             <form action="your-server-side-code" method="POST">
                 <script
                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"

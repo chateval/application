@@ -36,7 +36,7 @@ class Author(models.Model):
 
 class Model(models.Model):
     model_id = models.BigAutoField(primary_key=True)
-    name = models.CharField(max_length=255)
+    name = models.CharField(unique=True, max_length=255)
     description = models.TextField()
     author = models.ForeignKey(Author, models.DO_NOTHING)
     evaluationdatasets = models.ManyToManyField(EvaluationDataset)

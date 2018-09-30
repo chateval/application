@@ -13,7 +13,7 @@ from django.utils import timezone
 from orm.models import EvaluationDatasetText, EvaluationDataset, HumanEvaluationsABComparison, Model, HumanEvaluations
 
 def retrieve():
-  mturk = create_mturk_client(True)
+  mturk = create_mturk_client(run_in_sandbox=True)
   hit_files = glob.glob('eval/scripts/human/hits/*.txt')
   print(hit_files)
   worker_results_list = []

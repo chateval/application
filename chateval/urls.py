@@ -1,10 +1,9 @@
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
-from eval.views import uploads, submit, delete, publish, human
-from core.views import splash, conversations, model, faq, about
+from eval.views import uploads, submit, delete, publish, human, login_view, signup_view
 from orm.api import api, responses, evaluationdatasets, prompts, models, automatic_evaluations, baselines, metrics, model as api_model
-from accounts.views import login_view, signup_view
+
 
 urlpatterns = [
     # ACCOUNT ROUTES
@@ -27,12 +26,8 @@ urlpatterns = [
     path('model/publish/', publish, name='publish'),
     ## SITE ROUTES
     path('uploads/', uploads, name='uploads'),
-    path('model', model, name='model'),
-    path('submit', submit, name='submit'),
-    path('conversations', conversations, name='conversations'),
-    path('faq', faq, name='faq'),
-    path('about', about, name='about'),
-    path('', splash, name='splash'),
+    path('upload', submit, name='submit'),
     # EVALUATION
     path('human', human, name="human"),
+    path('', uploads, name="uploads")
 ]

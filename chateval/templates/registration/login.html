@@ -2,22 +2,20 @@
 
 {% block content %}
 <br>
-<div class="container is-fluid">
-  <div class="columns">
-    <div class="column is-one-third"></div>
-    <div class="column is-one-third">
-      <h1 class="title">Log In</h1>
-      <p class="subtitle"> Welcome back to ChatEval. </p>
-      <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <br>
-        <button class="button" type="submit">Log In</button> <br> <br>
-        <a href="/accounts/signup"> Don't have an account? </a> 
-      </form>
+<main role="main" class="container">
+  <br />
+  <div class="row">
+    <div class="col-md-4">
+        <h1 class="mt-5">Log In</h1>
+        <p>Welcome back to ChatEval.</p>
+        <form method="post" class="form-group">
+          {% csrf_token %}
+          {{ form.as_p }}
+          
+          <button class="btn btn-primary" type="submit">Log In</button> <br> <br>
+          <a href="/accounts/signup"> Don't have an account? </a> 
+        </form>
     </div>
-    <div class="column is-one-third"></div>
   </div>
-</div>
-<br>
+</main>
 {% endblock %}

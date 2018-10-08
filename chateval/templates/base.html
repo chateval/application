@@ -6,14 +6,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>ChatEval</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" />
-    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
-    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'favicon-96x96.png' %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
-    <link rel="stylesheet" href="{% static 'app.css' %}" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-    <script type="text/javascript" src="{% static 'bar_graph.js' %}"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
   </head>
 
@@ -47,72 +43,37 @@
       });
     </script>
 
-    <nav class="navbar is-light" role="navigation" aria-label="main navigation">
-      <div class="navbar-menu" id="navMenu">
-        <div class="navbar-start">
-          <a class="navbar-item" href="/">
-            <strong> ChatEval </strong>
-          </a>
-          <a class="navbar-item" href="/about">
-            About Evaluation
-          </a>
-          <a class="navbar-item" href="/faq">
-            FAQ
-          </a>
-          <a class="navbar-item" href="https://beta.chateval.org/models">
-            Models
-          </a>
-          <a class="navbar-item" href="https://beta.chateval.org/conversations">
-            Conversations
-          </a>
-        </div>
-        <div class="navbar-end">
-          {% if user.is_authenticated %}
-            <a class="navbar-item" href="/uploads">
-              My Uploads
-            </a>
-            <a class="navbar-item" href="/submit">
-              Upload Model
-            </a>
-            <a class="navbar-item" href="/accounts/logout">
-              Log Out
-            </a>
-          {% else %}
-            <a class="navbar-item" href="/accounts/login">
-              Log In
-            </a>
-          {% endif %}
-        </div>
-      </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="https://chateval.org">My ChatEval</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-      <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+              <a class="nav-link" href="/upload">Upload</a>
+            </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/uploads">Models</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/accounts/logout">Log Out</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="/accounts/login">Log In</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
     </nav>
 
     {% block content %}
     {% endblock %}
     
-    <div class="container">
-      <div class="content has-text-centered">
-        <p>
-          Developed by <strong>The ChatEval Team</strong> at the University of Pennsylvania. <br>
-        </p>
-        <a href="https://github.com/chateval/application">
-          <span class="icon">
-            <i class="fab fa-github"></i>
-          </span>
-        </a>
-
-        <a href="mailto:chatevalteam@gmail.com">
-          <span class="icon">
-            <i class="fas fa-envelope"></i>
-          </span>
-        </a>
-      </div>
-    </div>
     <br>
   </body>
 </html>

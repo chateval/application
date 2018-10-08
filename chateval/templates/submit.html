@@ -1,56 +1,57 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-  <div class="container">
-    <div class="columns">
-      <div class="column is-one-third"></div>
-      <div class="column is-one-third">
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <br>
+      <h1 class="title">Upload Model</h1>
+      <p class="subtitle"> Select a <code>.txt</code> file containing the responses for each dataset. </p>
+      <form enctype="multipart/form-data" method="POST" action="/submit">
+        <h2 class=""> Model Information </h2>
+        {% csrf_token %}
+        {{ form }}
+        <br> <br>
+        <h2 class=""> Model Reponses </h2>
         <br>
-        <h1 class="title">Upload Model</h1>
-        <h1 class="subtitle"> Select a <code>.txt</code> file containing the responses for each dataset. </h1>
-        <form enctype="multipart/form-data" method="POST" action="/submit">
-          <h2 class=""> Model Information </h2>
-          {% csrf_token %}
-          {{ form }}
-          <br> <br>
-          <h2 class=""> Model Reponse Files </h2>
+        {% for response_file in response_files %}
+        <div class="card" style="margin: 0rem">
+          <div class="card-body">
+            <h5 class="card-title">{{ response_file.long_name }}</h5>
+            <input class="file" type="file" name="{{ response_file.name }}" />
+          </div>
+        </div>
           <br>
-          {% for response_file in response_files %}
-          <div class="box" style="margin: 0rem">
-              <label class="label">{{ response_file.long_name }}</label>
-              <input class="file" type="file" name="{{ response_file.name }}" />
-          </div>
+        {% endfor %}
+        <div class="field">
+          <h2 class="label">Terms and Conditions</h2>
+          <div class="control">
+            <label class="checkbox">
+              <input type="checkbox">
+              I agree to the <a href="#">terms and conditions.</a>
+            </label>
             <br>
-          {% endfor %}
-          <div class="field">
-            <label class="label">Terms and Conditions</label>
-            <div class="control">
-              <label class="checkbox">
-                <input type="checkbox">
-                I agree to the <a href="#">terms and conditions.</a>
-              </label>
-              <br>
-            </div>
           </div>
+        </div>
 
-          {% if request.user.is_superuser %}
-          <div class="field">
-            <div class="control">
-              <label class="checkbox">
-                <input name="baseline" type="checkbox">
-                is_baseline</a>
-              </label>
-              <br>
-            </div>
+        {% if request.user.is_superuser %}
+        <div class="field">
+          <div class="control">
+            <label class="checkbox">
+              <input name="baseline" type="checkbox">
+              is_baseline</a>
+            </label>
+            <br>
           </div>
-          {% endif %}
-  
-          <input type="submit" value="Upload Model" class="button is-success">
-        </form>
-        <br>
-      </div>
-      <div class="column is-one-third"></div>
+        </div>
+        {% endif %}
+
+        <input type="submit" value="Upload Model" class="btn btn-primary">
+      </form>
+      <br>
     </div>
+    <div class="col-md-2"></div>
   </div>
+</main>
 {% endblock %}

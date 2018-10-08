@@ -2,22 +2,19 @@
 
 {% block content %}
 <br>  
-<div class="container is-fluid">
-  <div class="columns">
-    <div class="column is-one-third"></div>
-    <div class="column is-one-third">
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-4">
       <h1 class="title">Sign Up</h1>
-      <p class="subtitle"> Uploading models on ChatEval is free of charge. </p>
+      <p class="subtitle"> Uploading models is free of charge. </p>
       <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <br>
-        <button class="button" type="submit">Sign Up</button>
+        <button class="btn btn-primary" type="submit">Sign Up</button>
       </form>
     </div>
-    <div class="column is-one-third"></div>
   </div>
-</div>
+</main>
 <br>
 {% endblock %}
   

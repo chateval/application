@@ -7,7 +7,7 @@
     <div class="col-md-12">
       <br>
       <h1 class="title"> Uploaded Models </h1>
-      <p>Edit/delete models and run human evaluations using the ChatEval evaluation library or Amazon Mechanical Turk.</p>
+      <p>Edit/delete models and run human evaluations using the ChatEval evaluation library or Amazon Mechanical Turk. </p>
       <div class="row">
         {% for upload in uploads %}
         <div class="col-md-6">
@@ -24,7 +24,7 @@
                 <input type="hidden" name="model_id" value="{{ upload.model.model_id }}">
                 <button type="submit" class="btn btn-primary btn-sm">Run Human Evaluation</button>
                 {% if upload.model.public != True %}
-                  <a href="/model/publish?model_id={{ upload.model.model_id }}"> <span class="btn btn-success btn-sm"> Publish </span> </a>
+                  <a class="btn btn-success btn-sm" href="/model/publish?model_id={{ upload.model.model_id }}">Publish</a>
                 {% else %}
                   <a href="/model/delete?model_id={{ upload.model.model_id }}"> <span class="btn btn-sm btn-danger"> Delete </span> </a>
                 {% endif %}

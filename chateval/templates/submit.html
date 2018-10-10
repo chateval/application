@@ -7,14 +7,13 @@
     <div class="col-md-8">
       <br>
       <h1 class="title">Upload Model</h1>
-      <p class="subtitle"> Select a <code>.txt</code> file containing the responses for each dataset. </p>
       <form enctype="multipart/form-data" method="POST" action="/upload">
         <h2 class=""> Model Information </h2>
         {% csrf_token %}
         {{ form }}
         <br> <br>
         <h2 class=""> Model Reponses </h2>
-        <br>
+        <p class="subtitle"> Select a <code>.txt</code> file containing the responses for each dataset. <a href="https://raw.githubusercontent.com/chateval/archive/master/eval_data/ncm/neural_conv_model_eval_responses_human_1.txt">Example model response file.</a> </p>
         {% for response_file in response_files %}
         <div class="card" style="margin: 0rem">
           <div class="card-body">

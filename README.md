@@ -1,5 +1,5 @@
 # ChatEval
-A scientific framework for evaluating neural open domain chatbots. EMNLP paper available [here](https://github.com/chateval/ChatEval/blob/master/paper/Chatbot_Evaluation_Demo_2018_EMNLP.pdf).
+A scientific framework for evaluating neural open domain chatbots.
 
 ## Dependencies
 - Django (web framework)

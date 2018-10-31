@@ -5,7 +5,6 @@
     <br />
         <h1 class="title"> Human Evaluation </h1>
         <p>Launch Amazon Mechanical Turk for human evaluation directly from ChatEval's portal.</p>
-        <hr />
         <h2 class="subtitle"><strong>Evaluation Dataset</strong></h2>
         <label class="checkbox"> 
             <input type="checkbox" />
@@ -27,7 +26,7 @@
             <div class="card">
                 <div class="card-body">
                     <p>
-                    <strong> {{baseline.name}} </strong> <br>
+                    <strong> {xs{baseline.name}} </strong> <br>
                     <small> {{baseline.description}} </small>
                     <br/> <br />
                     <a class="btn btn-primary" href=""> Compare </a>
@@ -39,6 +38,8 @@
         </div>
         {% endfor %}
     </div>
+    <hr />
+
     <form action="your-server-side-code" method="POST">
             <script
                 src="https://checkout.stripe.com/checkout.js" class="stripe-button"

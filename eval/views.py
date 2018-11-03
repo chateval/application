@@ -27,7 +27,7 @@ def human(request):
     baselines = list()
     for dataset in datasets:
         baselines += get_baselines(dataset.pk)
-    return render(request, 'human_demo.html', {'baselines': baselines})
+    return render(request, 'human.html', {'baselines': baselines})
 
 
 def delete(request):

@@ -89,6 +89,7 @@ DATABASES = {
         'PASSWORD': os.environ['DB_PASSWORD'],
         'HOST': os.environ['DB_HOST'],   # Or an IP Address that your DB is hosted on
         'PORT': os.environ['DB_PORT'],
+        'OPTIONS': {'charset': 'utf8mb4'},
     }
 }
 

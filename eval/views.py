@@ -52,17 +52,21 @@ def submit(request):
     if not request.user.is_authenticated:
         return redirect('/accounts/login')
 
-    datasets = EvaluationDataset.objects.all()
+    eval_datasets = EvaluationDataset.objects.all()
     if request.method == "POST":
         model = Model(name=request.POST['name'], author=Author.objects.get(pk=request.user), description=request.POST['description'], repo_location=request.POST['repo_location'], cp_location=request.POST['checkpoint_location'])
-        for dataset in datasets:
+        response_files = []
+        datasets = []
+        for dataset in eval_datasets:
             if dataset.name in request.FILES.keys():
                 response_file = request.FILES[dataset.name]
-                handle_submit(model, dataset, response_file, 'baseline' in request.POST)
+                response_files.append(response_file)
+                datasets.append(dataset)
+        handle_submit(model, datasets, response_files, 'baseline' in request.POST)
         return HttpResponseRedirect('/uploads')
 
     form = UploadModelForm()
-    return render(request, 'submit.html', {'form': form, 'response_files': datasets})
+    return render(request, 'submit.html', {'form': form, 'response_files': eval_datasets})
 
 
 def login_view(request):

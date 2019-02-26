@@ -9,28 +9,40 @@ from orm.models import Model, EvaluationDatasetText, ModelResponse, ModelSubmiss
 from orm.scripts import get_latest_baseline, get_messages
 from chateval.settings import (AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY, AWS_STORAGE_BUCKET_NAME, AWS_STORAGE_BUCKET_LOCATION)
 
-def handle_submit(model, dataset, response_file, is_baseline):
-    if not is_baseline:
-        baseline = get_latest_baseline(dataset.evalset_id)
-        baseline_responses = [message['response'] for message in get_messages(baseline, dataset.evalset_id)]
-    else:
-        baseline_responses = list()
+def handle_submit(model, datasets, response_files, is_baseline):
+    responses, evaluations = [], []
+    for i in range(len(datasets)):
+        if not is_baseline:
+            baseline = get_latest_baseline(datasets[i].evalset_id)
+            baseline_responses = [message['response'] for message in get_messages(baseline, datasets[i].evalset_id)]
+        else:
+            baseline_responses = list()
         
-    responses = response_file.file.getvalue().decode(encoding='UTF-8').split('\n')
-    evaluations = requests.post(os.environ['EVAL_LOCATION'], json=dumps({'model_responses': responses, 'baseline_responses': baseline_responses, 'is_baseline': is_baseline})).json()
+        response = response_files[i].file.getvalue().decode(encoding='UTF-8').split('\n')[0:len(baseline_responses)]
+        responses.append(response)
+        evaluations.append(requests.post(os.environ['EVAL_LOCATION'], json=dumps({'model_responses': response, 'baseline_responses': baseline_responses, 'is_baseline': is_baseline})).json())
 
     model.save()
-    model.evaluationdatasets.add(dataset)
+
+    for dataset in datasets:
+        model.evaluationdatasets.add(dataset)
+
     submission = ModelSubmission(model=model, date=datetime.datetime.now().date())
     submission.save()
-    submission.evaluationdatasets.add(dataset)
-    if is_baseline:
-        dataset.baselines.add(model)
-        dataset.save()
 
-    save_responses(responses, dataset, model, submission)
-    save_evaluations(evaluations, dataset, model, submission, is_baseline)
-    upload_file('models/' + str(submission.submission_id) + '-' + response_file.name, response_file)
+    for dataset in datasets:
+        submission.evaluationdatasets.add(dataset)
+
+    if is_baseline:
+        for dataset in datasets:
+            dataset.baselines.add(model)
+            dataset.save()
+
+    for i in range(len(datasets)):
+        save_responses(responses[i], datasets[i], model, submission)
+        save_evaluations(evaluations[i], datasets[i], model, submission, is_baseline)
+    for response_file in response_files:
+        upload_file('models/' + str(submission.submission_id) + '-' + response_file.name, response_file)
 
 def upload_file(path, body):
     session = boto3.session.Session(aws_access_key_id=AWS_ACCESS_KEY, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)

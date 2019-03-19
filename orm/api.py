@@ -25,8 +25,11 @@ def prompts(request):
     return JsonResponse({'prompts': list(prompts)})
 
 def models(request):
-    models = Model.objects.all().values()
-    return JsonResponse({'models': list(models)})
+    models = Model.objects.all()
+    serialized = []
+    for i, model in enumerate(models):
+        serialized.append({"id": model.pk, "name": model.name, "description": model.description, "evalsets": list(model.evaluationdatasets.all().values())})
+    return JsonResponse({'models': list(serialized)})
 
 def model(request):
     model = Model.objects.filter(pk=request.GET['id']).values()[0]

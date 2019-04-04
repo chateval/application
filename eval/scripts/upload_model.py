@@ -20,8 +20,10 @@ def handle_submit(model, datasets, response_files, is_baseline):
         
         response = response_files[i].file.getvalue().decode(encoding='UTF-8').split('\n')[0:len(baseline_responses)]
         responses.append(response)
-        evaluations.append(requests.post(os.environ['EVAL_LOCATION'], json=dumps({'model_responses': response, 'baseline_responses': baseline_responses, 'is_baseline': is_baseline})).json())
-
+        try:
+            evaluations.append(requests.post(os.environ['EVAL_LOCATION'], json=dumps({'model_responses': response, 'baseline_responses': baseline_responses, 'is_baseline': is_baseline})).json())
+        except:
+            return False
     model.save()
 
     for dataset in datasets:
@@ -43,6 +45,8 @@ def handle_submit(model, datasets, response_files, is_baseline):
         save_evaluations(evaluations[i], datasets[i], model, submission, is_baseline)
     for response_file in response_files:
         upload_file('models/' + str(submission.submission_id) + '-' + response_file.name, response_file)
+    
+    return True
 
 def upload_file(path, body):
     session = boto3.session.Session(aws_access_key_id=AWS_ACCESS_KEY, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)

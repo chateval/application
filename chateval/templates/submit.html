@@ -6,6 +6,12 @@
     <div class="col-md-2"></div>
     <div class="col-md-8">
       <br>
+      {% if error %}
+        <div class="alert alert-danger" role="alert">
+          There was an error with your upload! Confirm your response file is the correct length (e.g. no empty lines) and 
+          that it is formatted appropriately. Email <a href="mailto:chatevalteam@gmail.com">chatevalteam@gmail.com</a> for help.
+        </div>
+      {% endif %}
       <h1 class="title">Upload Model</h1>
       <form enctype="multipart/form-data" method="POST" action="/upload">
         <h2 class=""> Model Information </h2>

@@ -63,11 +63,15 @@ def submit(request):
                 response_file = request.FILES[dataset.name]
                 response_files.append(response_file)
                 datasets.append(dataset)
-        handle_submit(model, datasets, response_files, 'baseline' in request.POST)
-        return HttpResponseRedirect('/uploads')
+        if handle_submit(model, datasets, response_files, 'baseline' in request.POST):
+            return HttpResponseRedirect('/uploads')
+        else:
+            print(str(request))
+            return redirect("/upload?error=input")
 
     form = UploadModelForm()
-    return render(request, 'submit.html', {'form': form, 'response_files': eval_datasets})
+    error = "error" in request.GET
+    return render(request, 'submit.html', {'form': form, 'response_files': eval_datasets, 'error': error})
 
 
 def login_view(request):

@@ -12,18 +12,21 @@
           that it is formatted appropriately. Email <a href="mailto:chatevalteam@gmail.com">chatevalteam@gmail.com</a> for help.
         </div>
       {% endif %}
-      <h1 class="title">Upload Model</h1>
+      <h1 class="title">Upload Method</h1>
       <form enctype="multipart/form-data" method="POST" action="/upload">
         <h2 class=""> Model Information </h2>
         {% csrf_token %}
         {{ form }}
         <br> <br>
-        <h2 class=""> Model Reponses </h2>
-        <p class="subtitle"> Select a <code>.txt</code> file containing the responses for each dataset. <a href="https://raw.githubusercontent.com/chateval/archive/master/eval_data/ncm/neural_conv_model_eval_responses_human_1.txt">Example model response file.</a> </p>
+        <h2 class=""> Method Reponses </h2>
+        <p class="subtitle">ChatEval can evaluate your method on any of the following datasets.
+        For each dataset you are interested in evaluating on, download the prompts below, and then output a <code>.txt</code> file containing a single response for each prompt, as in this <a href="https://raw.githubusercontent.com/chateval/archive/master/eval_data/ncm/neural_conv_model_eval_responses_human_1.txt">example</a> of responses to the <a href="https://raw.githubusercontent.com/chateval/application/master/chateval/assets/prompts/ncm.txt">Neural Conversation Model</a>.</p>
+        <p>To request additional public evaluation datasets, email chatevalteam@gmail.com.</p>
         {% for response_file in response_files %}
         <div class="card" style="margin: 0rem">
           <div class="card-body">
-            <h5 class="card-title">{{ response_file.long_name }}</h5>
+            <h3><a href="{{ response_file.source }}" class="card-title">{{ response_file.long_name }}</a> 
+            </h3>
             <input class="file" type="file" name="{{ response_file.name }}" />
           </div>
         </div>

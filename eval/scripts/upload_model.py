@@ -1,3 +1,5 @@
+"""Functions for submitting models,  launching evaluation, and saving results to the database."""
+
 import os
 import datetime
 import requests

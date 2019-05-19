@@ -6,36 +6,39 @@
   <div class="row">
     <div class="col-md-12">
       <br>
-      <h1 class="title"> Uploaded Models </h1>
-      <p>Edit/delete models and run human evaluations using the ChatEval evaluation library or Amazon Mechanical Turk. </p>
-      <div class="row">
+      <h1 class="title"> My Uploaded Methods</h1>
+      <a href="/upload" class="btn btn-sm btn-primary">Upload New Method</a> 
+      {% if uploads|length > 0 %}
+        <p>Edit/delete methods and run human evaluations using the ChatEval evaluation library or Amazon Mechanical Turk. </p>
+        <div class="row">
         {% for upload in uploads %}
-        <div class="col-md-6">
-          <div class="card" style="margin-top: 2rem">
-            <div class="card-body">
-              <h2 class="text is-size-5"><strong>{{ upload.model.name }}</strong></h2> 
-              <p class="text" > {{ upload.model.description }} </p>
-              {% for evalset in upload.evalsets %}
-              <span class="tag is-success"> {{ evalset }} </span>
-              {% endfor %}
-              <hr />
-              <form method="GET" action="/human">
-                {% csrf_token %}
-                <input type="hidden" name="model_id" value="{{ upload.model.model_id }}">
-                <button type="submit" class="btn btn-primary btn-sm">Run Human Evaluation</button>
-                {% if upload.model.public != True %}
-                  <a class="btn btn-success btn-sm" href="/model/publish?model_id={{ upload.model.model_id }}">Publish</a>
-                {% else %}
-                  <a href="/model/delete?model_id={{ upload.model.model_id }}"> <span class="btn btn-sm btn-danger"> Delete </span> </a>
-                {% endif %}
-                <a href="https://chateval.org/model?id={{ upload.model.model_id }}" class="btn btn-light btn-sm">View</a>
-              </form>
+          <div class="col-md-6">
+            <div class="card" style="margin-top: 2rem">
+              <div class="card-body">
+                <h2 class="text is-size-5"><strong>{{ upload.model.name }}</strong></h2> 
+                <p class="text" > {{ upload.model.description }} </p>
+                {% for evalset in upload.evalsets %}
+                <span class="tag is-success"> {{ evalset }} </span>
+                {% endfor %}
+                <hr />
+                <form method="GET" action="/human">
+                  {% csrf_token %}
+                  <input type="hidden" name="model_id" value="{{ upload.model.model_id }}">
+                  <button type="submit" class="btn btn-primary btn-sm">Run Human Evaluation</button>
+                  {% if upload.model.public != True %}
+                    <a class="btn btn-success btn-sm" href="/model/publish?model_id={{ upload.model.model_id }}">Publish</a>
+                  {% else %}
+                    <a href="/model/delete?model_id={{ upload.model.model_id }}"> <span class="btn btn-sm btn-danger"> Delete </span> </a>
+                  {% endif %}
+                  <a href="https://chateval.org/model?id={{ upload.model.model_id }}" class="btn btn-light btn-sm">View</a>
+                </form>
+              </div>
             </div>
           </div>
-        </div>
-        <br /> <br />
+          <br /> <br />
         {% endfor %}
-      </div>    
+        </div>    
+      {% endif %}
     </div>
   </div>
 </main>

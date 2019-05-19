@@ -17,20 +17,6 @@ const Header = () => (
       </button>
 
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav mr-auto">
-          <li className="nav-item">
-            <a className="nav-link" href="/about">About</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/models">Models</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/conversations">Conversations</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="https://my.chateval.org">Account</a>
-          </li>
-        </ul>
       </div>
     </nav>
   </div>

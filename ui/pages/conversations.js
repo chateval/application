@@ -9,19 +9,31 @@ import TurnList from '../components/TurnList';
 class Conversations extends Component {
   constructor(props) {
     super(props)
-    this.state = { prompts: [], responses: [], show: false };
+    this.state = { prompts: [], responses: [], show: false, model_options: props.models, models: [] };
     this.updateTurns = this.updateTurns.bind(this);
   }
 
   handleEvaluationDatasetChange = (selectedOption) => {
     this.setState({ evalset: selectedOption.value });
+    let filtered = [];
+    for (const model of this.props.models) {
+      for (const evalset of model.evalsets) {
+        if (evalset.evalset_id == selectedOption.value) {
+          filtered.push(model)
+        }
+      }
+    }
+
+    this.setState({ model_options: filtered });
   }
 
   handleModelChange = models => {
-    this.setState({ models });
+    console.log(models)
+    this.setState({ models: models });
   }
 
   async updateTurns() {
+    console.log(this.state.models)
     const promptsRequest = await fetch('https://api.chateval.org/api/prompts?evalset=' + this.state.evalset);
     const promptsData = await promptsRequest.json();
     const prompts = promptsData.prompts.slice(0, 200);
@@ -66,7 +78,7 @@ class Conversations extends Component {
                 className="vmargin"
                 isMulti
                 placeholder="Add Model"
-                options={this.props.models}
+                options={this.state.model_options}
                 onChange={this.handleModelChange}
               />
             </div>
@@ -89,11 +101,9 @@ Conversations.getInitialProps = async function() {
   const evalsetRequest = await fetch('https://api.chateval.org/api/evaluationdatasets');
   const modelData = await modelRequest.json();
   const evalsetData = await evalsetRequest.json();
-
-  console.log(modelData);
  
   modelData.models.forEach(model => {
-    models.push({ 'value': model.model_id, 'label': model.name})
+    models.push({ 'value': model.id, 'label': model.name, 'evalsets': model.evalsets})
   });
 
   evalsetData.evaluationdatasets.forEach(evalset => {

@@ -47,7 +47,7 @@ class Models extends Component {
                 <br />
                 <div className="card">
                   <div class="card-header">
-                  <h3 class="card-title vmargin"><a href={"/model?id=" + model.model.model_id}>{model.model.name}</a></h3>
+                  <h3 class="card-title vmargin">{model.model.name}</h3>
                   </div>
                   <div class="card-body">
                     {model.evaluations.map(evaluation => 
@@ -55,6 +55,7 @@ class Models extends Component {
                         <AutomaticEvaluationTable evaluation={evaluation} /> 
                       </div>
                     )} 
+                  <a style={{paddingLeft: "0.8rem"}} href={"/model?id=" + model.model.model_id}>View Model</a>
                   </div>
                 </div>
               </div>
@@ -72,9 +73,9 @@ Models.getInitialProps = async function() {
 
   const modelRequest = await fetch('https://api.chateval.org/api/models');
   const modelData = await modelRequest.json();
-  
+
   modelData.models.forEach(model => {
-    models.push({ 'value': model.model_id, 'label': model.name})
+    models.push({ 'value': model.id, 'label': model.name})
   });
 
   return { options: models };

@@ -5,6 +5,7 @@ import TurnList from '../components/TurnList';
 import AutomaticEvaluationTable from '../components/AutomaticEvaluationTable';
 import fetch from 'isomorphic-unfetch';
 import Select from 'react-select';
+import Chart from 'react-google-charts';
 
 class Model extends Component {
   constructor(props) {
@@ -41,6 +42,36 @@ class Model extends Component {
           <div class="row">
             {this.props.evaluations.map(evaluation => <AutomaticEvaluationTable evaluation={evaluation}/>)}
           </div>
+          <hr />
+          <h2 class="font-weight-bold">Human Evaluations</h2>
+          <Chart
+            width={'800px'}
+            height={'300px'}
+            chartType="BarChart"
+            loader={<div>Loading Chart</div>}
+            data={[
+              ['City', this.props.model.name + "wins", 'Competing Model wins', 'Tie'],
+              ['New York City, NY', 8175000, 8008000, 0],
+              ['Los Angeles, CA', 3792000, 3694000, 0],
+              ['Chicago, IL', 2695000, 2896000, 0],
+              ['Houston, TX', 2099000, 1953000, 0],
+              ['Philadelphia, PA', 1526000, 1517000, 0],
+            ]}
+            options={{
+              title: 'A/B Comparisons',
+              chartArea: { width: '50%' },
+              isStacked: true,
+              hAxis: {
+                title: 'Number of Turns',
+                minValue: 0,
+              },
+              vAxis: {
+                title: 'Competing Model',
+              },
+            }}
+            // For tests
+            rootProps={{ 'data-testid': '3' }}
+          />
           <hr />
           <h2 class="font-weight-bold">Conversations</h2>
           <Select 

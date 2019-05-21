@@ -9,7 +9,7 @@ function getCSVArray(auto_evals) {
 
 const AutomaticEvaluationTable = (props) => (
   <div className="col-md-12">
-    <h3 class="card-title"> {props.evaluation.evalset.long_name} </h3>
+    <p class="font-weight-bold"> {props.evaluation.evalset.long_name} </p>
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -31,7 +31,7 @@ const AutomaticEvaluationTable = (props) => (
       filename={props.evaluation.evalset.name + ".csv"}
     >
       Download CSV
-  </CSVLink>
+    </CSVLink>
   </div>
 );
 

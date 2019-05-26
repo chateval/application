@@ -21,17 +21,13 @@
                 <span class="tag is-success"> {{ evalset }} </span>
                 {% endfor %}
                 <hr />
-                <form method="GET" action="/human">
-                  {% csrf_token %}
-                  <input type="hidden" name="model_id" value="{{ upload.model.model_id }}">
-                  <button type="submit" class="btn btn-primary btn-sm">Run Human Evaluation</button>
-                  {% if upload.model.public != True %}
-                    <a class="btn btn-success btn-sm" href="/model/publish?model_id={{ upload.model.model_id }}">Publish</a>
-                  {% else %}
-                    <a href="/model/delete?model_id={{ upload.model.model_id }}"> <span class="btn btn-sm btn-danger"> Delete </span> </a>
-                  {% endif %}
-                  <a href="https://chateval.org/model?id={{ upload.model.model_id }}" class="btn btn-light btn-sm">View</a>
-                </form>
+                <a href="/human?id={{upload.model.model_id}}" class="btn btn-primary btn-sm">Run Human Evaluation</a>
+                {% if upload.model.public != True %}
+                  <a class="btn btn-success btn-sm" href="/model/publish?model_id={{ upload.model.model_id }}">Publish</a>
+                {% else %}
+                  <a href="/model/delete?model_id={{ upload.model.model_id }}"> <span class="btn btn-sm btn-danger"> Delete </span> </a>
+                {% endif %}
+                <a href="https://chateval.org/model?id={{ upload.model.model_id }}" class="btn btn-light btn-sm">View</a>
               </div>
             </div>
           </div>

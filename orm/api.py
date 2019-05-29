@@ -37,6 +37,8 @@ def model(request):
         "id": model.pk, 
         "name": model.name, 
         "description": model.description, 
+        "repo_location": model.repo_location, 
+        "cp_location": model.cp_location, 
         "evalsets": list(model.evaluationdatasets.all().values())
     }
     return JsonResponse({'model': serialized})
@@ -103,9 +105,19 @@ def human_evaluations(request):
             else:
                 raise ValueError('THIS SHOULD NEVER HAPPEN.')
         if flipped:
-            result = {'m1win': m2win, 'm2win': m1win, 'model1': target_model_name, 'model2': other_model_name}
+            result = {'tie': tie,
+                      'm1win': m2win,
+                      'm2win': m1win,
+                      'model1': target_model_name,
+                      'model2': other_model_name
+                     }
         else:
-            result = {'m1win': m1win, 'm2win': m2win, 'model1': target_model_name, 'model2': other_model_name}
+            result = {'tie': tie,
+                      'm1win': m1win,
+                      'm2win': m2win,
+                      'model1': target_model_name,
+                      'model2': other_model_name
+                     }
 
         results.append(result)
 

@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
 from eval.views import uploads, submit, delete, publish, human, login_view, signup_view
-from orm.api import api, responses, evaluationdatasets, prompts, models, automatic_evaluations, baselines, metrics, model as api_model
+from orm.api import api, responses, evaluationdatasets, prompts, models, automatic_evaluations, human_evaluations, baselines, metrics, model as api_model
 
 
 urlpatterns = [
@@ -13,6 +13,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     # API ROUTES
     path('api/automatic_evaluations', automatic_evaluations, name='automatic_evaluations'),
+    path('api/human_evaluations', human_evaluations, name='human_evaluations'),
     path('api/models', models, name='models'),
     path('api/model', api_model, name='model'),
     path('api/baselines', baselines, name='baselines'),

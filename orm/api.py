@@ -32,8 +32,14 @@ def models(request):
     return JsonResponse({'models': list(serialized)})
 
 def model(request):
-    model = Model.objects.filter(pk=request.GET['id']).values()[0]
-    return JsonResponse({'model': model})
+    model = Model.objects.get(pk=request.GET['id'])
+    serialized = { 
+        "id": model.pk, 
+        "name": model.name, 
+        "description": model.description, 
+        "evalsets": list(model.evaluationdatasets.all().values())
+    }
+    return JsonResponse({'model': serialized})
 
 def evaluationdatasets(request):
     evaluationdatasets = EvaluationDataset.objects.all().values()

@@ -5,19 +5,7 @@
     <br />
         <h1 class="title"> Human Evaluation </h1>
         <p>Launch Amazon Mechanical Turk for human evaluation directly from ChatEval's portal.</p>
-        <h2 class="subtitle"><strong>Evaluation Dataset</strong></h2>
-        <label class="checkbox"> 
-            <input type="checkbox" />
-            NCM
-        </label> <br />
-        <label class="checkbox"> 
-            <input type="checkbox" />
-            DBDC
-        </label> <br />
-        <label class="checkbox"> 
-            <input type="checkbox" />
-            OS
-        </label> <br /> <br />
+
         <h2 class="subtitle"> Baseline Comparison </h2>
 
     <div class="row">
@@ -25,12 +13,12 @@
         <div class="col-md-4" >
             <div class="card">
                 <div class="card-body">
-                    
                     <strong> {{baseline.name}} </strong> <br>
-                    <small> {{baseline.description}} </small>
-                    <br/> <br />
-                    <a class="btn btn-primary" href=""> Compare </a>
-                    
+                    Dataset: <span class="badge badge-primary">{{baseline.dataset.name}}</span>
+                    <br />
+                    <small > {{baseline.description}} </small>
+                    <br/> 
+                    <a style="margin-top: 0.5rem" class="btn btn-primary" href="/compare?model1={{model_id}}&model2={{baseline.id}}&evalset={{baseline.dataset.pk}}"> Compare </a>
                 </div>
             </article>
             </div>

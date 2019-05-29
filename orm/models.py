@@ -11,6 +11,9 @@ class EvaluationDataset(models.Model):
     description = models.TextField()
     baselines = models.ManyToManyField('Model', blank=True)
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         db_table = 'EvaluationDataset'
 
@@ -46,6 +49,9 @@ class Model(models.Model):
     public = models.BooleanField(default=False)
     archived = models.BooleanField(default=False)
     is_baseline = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         db_table = 'Model'

@@ -24,11 +24,13 @@ def uploads(request):
 
 
 def human(request):
+    model = Model.objects.get(pk=request.GET['id'])
     datasets = EvaluationDataset.objects.all()
     baselines = list()
-    for dataset in datasets:
-        baselines += get_baselines(dataset.pk)
-    return render(request, 'human.html', {'baselines': baselines})
+    for dataset in model.evaluationdatasets.all():
+        for baseline in dataset.baselines.all():
+            baselines.append({"id": baseline.pk, "name": baseline.name, "description": baseline.description, "dataset": dataset})
+    return render(request, 'human.html', {'model_id': model.pk, 'baselines': baselines})
 
 
 def delete(request):

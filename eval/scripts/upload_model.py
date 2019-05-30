@@ -4,6 +4,8 @@ import os
 import datetime
 import requests
 import boto3
+import smtplib
+from email.message import EmailMessage
 from json import dumps
 from boto3 import session
 from django.shortcuts import redirect
@@ -77,3 +79,20 @@ def save_evaluations(evaluations, dataset, model, submission, is_baseline):
         auto_evaluations.append(AutomaticEvaluation(metric=Metric.objects.get(metric_id=5), model=model, evaluationdataset=dataset, value=evaluations['extrema_score'], model_submission=submission))
     
     AutomaticEvaluation.objects.bulk_create(auto_evaluations)
+
+def send_email(to, subject, content):
+    # Construct email.
+    message = EmailMessage()
+    message['From'] = "chatevalteam@gmail.com"
+    message['To'] = to
+    message['Subject'] = subject
+    message.set_content(content)
+
+    # Open up SMPTP server and send email notification.
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.ehlo()
+    server.starttls()
+    server.ehlo()
+    server.login("chatevalteam", os.environ['EMAIL_PASSWORD'])
+    server.send_message(message)
+    server.quit()

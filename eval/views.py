@@ -7,7 +7,7 @@ from orm.models import Author, Model, EvaluationDataset, Metric, ModelResponse, 
 from orm.scripts import get_messages, get_baselines
 from eval.scripts.human.launch_hit import launch_hits
 from eval.scripts.human.retrieve_responses import retrieve
-from eval.scripts.upload_model import handle_submit
+from eval.scripts.upload_model import handle_submit, send_email
 from eval.forms import UploadModelForm, SignUpForm, LogInForm
 
 def uploads(request):
@@ -107,13 +107,7 @@ def signup_view(request):
     form = SignUpForm()
     return render(request, 'registration/signup.html', {'form' : form})
 
-
-'''def human(request):
-    print("\n\n")
-    print(request.POST['model_id'])
-    model = Model.objects.get(model_id=request.POST['model_id'])
-    baseline_model = Model.objects.filter(name="Human Baseline")[0]
-    evalset = EvaluationDataset.objects.filter(name="NCM")[0]
-    launch_hits(evalset, baseline_model, model)
-    #retrieve() 
-    return redirect('/uploads')'''
+def compare(request):
+    email_body =  "Model1: " + str(request.GET['model1']) + " | Model2: " + str(request.GET['model2']) + " | Dataset: " + str(request.GET['evalset'])
+    send_email("chatevalteam@gmail.com", "System Comparison", email_body)
+    return redirect("/")

@@ -2,57 +2,27 @@
 
 {% block content %}
 <div class="container">
-    <br />
-        <h1 class="title"> Human Evaluation </h1>
-        <p>Launch Amazon Mechanical Turk for human evaluation directly from ChatEval's portal.</p>
-
-        <h2 class="subtitle"> Baseline Comparison </h2>
-
+  <br />
+  <h1 class="title"> <strong>Human Evaluation</strong> </h1>
+  <p>Launch Amazon Mechanical Turk for human evaluation directly from ChatEval's portal.</p>
+  <h2 class="subtitle"> Baseline Comparison </h2>
     <div class="row">
-        {% for baseline in baselines %}
-        <div class="col-md-4" >
-            <div class="card">
-                <div class="card-body">
-                    <strong> {{baseline.name}} </strong> <br>
-                    Dataset: <span class="badge badge-primary">{{baseline.dataset.name}}</span>
-                    <br />
-                    <small > {{baseline.description}} </small>
-                    <br/> 
-                    <a style="margin-top: 0.5rem" class="btn btn-primary" href="/compare?model1={{model_id}}&model2={{baseline.id}}&evalset={{baseline.dataset.pk}}"> Compare </a>
-                </div>
-            </article>
-            </div>
+      {% for baseline in baselines %}
+      <div class="col-md-4" >
+        <div class="card">
+          <div class="card-body">
+            <strong> {{baseline.name}} </strong> <br>
+            Dataset: <span class="badge badge-primary">{{baseline.dataset.name}}</span>
             <br />
+            <small > {{baseline.description}} </small>
+            <br/> 
+            <a style="margin-top: 0.5rem" class="btn btn-primary" href="/compare?model1={{model_id}}&model2={{baseline.id}}&evalset={{baseline.dataset.pk}}"> Compare </a>
+          </div>
         </div>
-        {% endfor %}
+        <br />
+      </div>
+      {% endfor %}
     </div>
-    <hr />
-    <div class="row">
-        <div class="col-md-4">
-            <form action="your-server-side-code" method="POST">
-                <script
-                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                    data-key="pk_test_TYooMQauvdEDq54NiTphI7jx"
-                    data-amount="999"
-                    data-name="ChatEval"
-                    data-description="Human Evaluation"
-                    data-image="https://github.com/chateval/chateval.github.io/blob/master/assets/images/logo2.png?raw=true"
-                    data-locale="auto"
-                    data-zip-code="true">
-                </script>
-            </form>
-            <br />
-            <p>or use a coupon, if available: </p>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon1">Coupon Code</span>
-                </div>
-                <input type="text" class="form-control" placeholder="e.g. axv8f" aria-label="Username" aria-describedby="basic-addon1" />
-                <br /> <br />
-                <input type="submit" class="btn btn-success" value="Done" />
-              </div>
-        </div>
-    </div>
-    
+  </div>
 </div>
 {% endblock %}

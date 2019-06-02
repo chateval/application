@@ -35,6 +35,7 @@ export DB_PORT=
 export AWS_ACCESS_KEY_ID=
 export AWS_SECRET_ACCESS_KEY=
 export AWS_STORAGE_BUCKET_NAME=
+export EMAIL_PASSWORD=
 export EVAL_LOCATION=
 ```
 5. Run server using `python manage.py runserver`

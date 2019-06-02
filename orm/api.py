@@ -33,11 +33,14 @@ def models(request):
 
 def model(request):
     model = Model.objects.get(pk=request.GET['id'])
+    institution = model.author.institution
+ 
     serialized = { 
         "id": model.pk, 
         "name": model.name, 
         "description": model.description, 
         "repo_location": model.repo_location, 
+        "institution": institution,
         "cp_location": model.cp_location, 
         "evalsets": list(model.evaluationdatasets.all().values())
     }

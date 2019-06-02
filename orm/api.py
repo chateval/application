@@ -34,12 +34,25 @@ def models(request):
 def model(request):
     model = Model.objects.get(pk=request.GET['id'])
     institution = model.author.institution
- 
+
+    is_baseline = int(model.is_baseline)
+    if is_baseline == 1:
+      is_baseline_text = 'Human responses extracted from source text'
+    elif is_baseline == 2:
+      is_baseline_text = 'Human responses created by ChatEval team'
+    elif is_baseline == 3:
+      is_baseline_text = 'ChatEval official baseline'
+    elif is_baseline == 4:
+      is_baseline_text = 'User submitted'
+    else:
+      is_baseline_text = 'Unknown origin'
+       
     serialized = { 
         "id": model.pk, 
         "name": model.name, 
         "description": model.description, 
         "repo_location": model.repo_location, 
+        "is_baseline": is_baseline_text, 
         "institution": institution,
         "cp_location": model.cp_location, 
         "evalsets": list(model.evaluationdatasets.all().values())

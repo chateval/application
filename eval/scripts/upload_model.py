@@ -93,6 +93,7 @@ def send_email(to, subject, content):
     server.ehlo()
     server.starttls()
     server.ehlo()
-    server.login("chatevalteam", os.environ['EMAIL_PASSWORD'])
+    print(os.environ['EMAIL_PASSWORD'])
+    server.login("chatevalteam", str(os.environ['EMAIL_PASSWORD']))
     server.send_message(message)
     server.quit()

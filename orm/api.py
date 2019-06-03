@@ -45,7 +45,7 @@ def model(request):
     elif is_baseline == 4:
       is_baseline_text = 'User submitted'
     else:
-      is_baseline_text = 'Unknown origin'
+      is_baseline_text = 'ChatEval-team submitted'
        
     serialized = { 
         "id": model.pk, 

@@ -26,7 +26,7 @@ function parseData(voteData, dataset, targetModel) {
   output.push(['Model',
     targetModel  + ' wins',
     {type: 'string', role: 'annotation'},
-    'Compteting model wins',
+    'Competing model wins',
     {type: 'string', role: 'annotation'},
     'Tie',
     {type: 'string', role: 'annotation'}])

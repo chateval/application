@@ -48,8 +48,9 @@ def handle_submit(model, datasets, response_files, is_baseline):
     for i in range(len(datasets)):
         save_responses(responses[i], datasets[i], model, submission)
         save_evaluations(evaluations[i], datasets[i], model, submission, is_baseline)
-    for response_file in response_files:
-        upload_file('models/' + str(submission.submission_id) + '-' + response_file.name, response_file)
+    # NOTE: (JCS 2020-01-14) S3 bucket is not accessible. 
+    # for response_file in response_files:
+    #     upload_file('models/' + str(submission.submission_id) + '-' + response_file.name, response_file)
     
     return True
 

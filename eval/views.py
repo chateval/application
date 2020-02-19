@@ -2,7 +2,8 @@ import datetime
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.models import User
+from django.contrib.auth.models import 
+from django.utils.encoding import smart_str
 from orm.models import Author, Model, EvaluationDataset, Metric, ModelResponse, ModelSubmission
 from orm.scripts import get_messages, get_baselines
 from eval.scripts.human.launch_hit import launch_hits
@@ -117,4 +118,13 @@ def dbdc5downlad(request):
         return redirect('/accounts/login')
     current_author = Author.objects.get(author_id=request.user)
     send_email("chatevalteam@gmail.com", "Data Request", str(request.user))
+
+    # from https://stackoverflow.com/questions/1156246/having-django-serve-downloadable-files
+    #response = HttpResponse(mimetype='application/force-download') # mimetype is replaced by content_type for django 1.7
+    #response['Content-Disposition'] = 'attachment; filename=%s' % smart_str(file_name)
+    #response['X-Sendfile'] = smart_str(path_to_file)
+    ## It's usually a good idea to set the 'Content-Length' header too.
+    ## You can also set any other required headers: Cache-Control, etc.
+    #return response
+
     return redirect("/")

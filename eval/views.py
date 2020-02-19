@@ -111,3 +111,10 @@ def compare(request):
     email_body =  "Model1: " + str(request.GET['model1']) + " | Model2: " + str(request.GET['model2']) + " | Dataset: " + str(request.GET['evalset'])
     send_email("chatevalteam@gmail.com", "System Comparison", email_body)
     return redirect("/")
+
+def dbdc5downlad(request):
+    if not request.user.is_authenticated:
+        return redirect('/accounts/login')
+    current_author = Author.objects.get(author_id=request.user)
+    send_email("chatevalteam@gmail.com", "Data Request", str(request.user))
+    return redirect("/")

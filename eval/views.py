@@ -2,7 +2,7 @@ import datetime
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.models import 
+from django.contrib.auth.models import User
 from django.utils.encoding import smart_str
 from orm.models import Author, Model, EvaluationDataset, Metric, ModelResponse, ModelSubmission
 from orm.scripts import get_messages, get_baselines

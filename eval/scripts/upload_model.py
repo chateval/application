@@ -58,6 +58,11 @@ def upload_file(path, body):
     session = boto3.session.Session(aws_access_key_id=AWS_ACCESS_KEY, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
     s3 = session.resource('s3')
     s3.Bucket(AWS_STORAGE_BUCKET_NAME).put_object(Key=path, Body=body)
+    
+def download_file(path, body):
+    session = boto3.session.Session(aws_access_key_id=AWS_ACCESS_KEY, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+    s3 = session.resource('s3')
+    s3.Bucket(AWS_STORAGE_BUCKET_NAME).download_object(Key=path, Body=body)
 
 def save_responses(responses, dataset, model, submission):
     prompts = EvaluationDatasetText.objects.filter(evaluationdataset=dataset)

@@ -8,7 +8,7 @@ from orm.models import Author, Model, EvaluationDataset, Metric, ModelResponse, 
 from orm.scripts import get_messages, get_baselines
 from eval.scripts.human.launch_hit import launch_hits
 from eval.scripts.human.retrieve_responses import retrieve
-from eval.scripts.upload_model import handle_submit, send_email
+from eval.scripts.upload_model import handle_submit, send_email, download_file
 from eval.forms import UploadModelForm, SignUpForm, LogInForm
 
 def uploads(request):
@@ -113,18 +113,13 @@ def compare(request):
     send_email("chatevalteam@gmail.com", "System Comparison", email_body)
     return redirect("/")
 
-def dbdc5downlad(request):
+def dbdc5download(request):
     if not request.user.is_authenticated:
         return redirect('/accounts/login')
     current_author = Author.objects.get(author_id=request.user)
     send_email("chatevalteam@gmail.com", "Data Request", str(request.user))
 
+    file_url = download_file('release-v3-distrib.zip')
     # from https://stackoverflow.com/questions/1156246/having-django-serve-downloadable-files
-    #response = HttpResponse(mimetype='application/force-download') # mimetype is replaced by content_type for django 1.7
-    #response['Content-Disposition'] = 'attachment; filename=%s' % smart_str(file_name)
-    #response['X-Sendfile'] = smart_str(path_to_file)
-    ## It's usually a good idea to set the 'Content-Length' header too.
-    ## You can also set any other required headers: Cache-Control, etc.
-    #return response
-
-    return redirect("/")
+    return file_url
+    #return redirect("/")

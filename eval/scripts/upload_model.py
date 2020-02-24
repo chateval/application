@@ -9,6 +9,7 @@ from email.message import EmailMessage
 from json import dumps
 from boto3 import session
 from django.shortcuts import redirect
+from django.http import HttpResponseRedirect
 from orm.models import Model, EvaluationDatasetText, ModelResponse, ModelSubmission, EvaluationDataset, AutomaticEvaluation, Metric
 from orm.scripts import get_latest_baseline, get_messages
 from chateval.settings import (AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY, AWS_STORAGE_BUCKET_NAME, AWS_STORAGE_BUCKET_LOCATION)
@@ -48,9 +49,9 @@ def handle_submit(model, datasets, response_files, is_baseline):
     for i in range(len(datasets)):
         save_responses(responses[i], datasets[i], model, submission)
         save_evaluations(evaluations[i], datasets[i], model, submission, is_baseline)
-    # NOTE: (JCS 2020-01-14) S3 bucket is not accessible. 
-    # for response_file in response_files:
-    #     upload_file('models/' + str(submission.submission_id) + '-' + response_file.name, response_file)
+
+    for response_file in response_files:
+        upload_file('models/' + str(submission.submission_id) + '-' + response_file.name, response_file)
     
     return True
 
@@ -59,10 +60,13 @@ def upload_file(path, body):
     s3 = session.resource('s3')
     s3.Bucket(AWS_STORAGE_BUCKET_NAME).put_object(Key=path, Body=body)
     
-def download_file(path, body):
+def download_file(filename):
     session = boto3.session.Session(aws_access_key_id=AWS_ACCESS_KEY, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
-    s3 = session.resource('s3')
-    s3.Bucket(AWS_STORAGE_BUCKET_NAME).download_object(Key=path, Body=body)
+    s3 = session.client('s3')
+    url = s3.generate_presigned_url(ClientMethod='get_object', Params={'Bucket': AWS_STORAGE_BUCKET_NAME, 'Key': filename}, ExpiresIn=600)
+
+    return HttpResponseRedirect(url)
+
 
 def save_responses(responses, dataset, model, submission):
     prompts = EvaluationDatasetText.objects.filter(evaluationdataset=dataset)

@@ -24,6 +24,11 @@ class ModelList(generics.ListCreateAPIView):
     serializer_class = ModelSerializer
 
 
+class ModelDetail(generics.RetrieveAPIView):
+    queryset = Model.objects.all()
+    serializer_class = ModelSerializer
+
+
 class BaselineList(generics.ListCreateAPIView):
     queryset = Model.objects.filter(is_baseline=True)
     serializer_class = ModelSerializer

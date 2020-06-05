@@ -1,4 +1,4 @@
-from orm.models import Author, Model, EvaluationDataset
+from orm.models import Author, Model, EvaluationDataset, AutomaticEvaluation, ModelSubmission
 from rest_framework import serializers
 
 
@@ -38,4 +38,30 @@ class ModelSerializer(serializers.ModelSerializer):
             'public',
             'archived',
             'is_baseline'
+        ]
+
+
+class ModelSubmissionSerializer(serializers.ModelSerializer):
+    model = ModelSerializer()
+    evaluationdatasets = EvaluationDatasetSerializer(many=True)
+
+    class Meta:
+        model = ModelSubmission
+        fields = ['submission_id', 'date', 'model', 'evaluationdatasets']
+
+
+class AutomaticEvaluationSerializer(serializers.ModelSerializer):
+    model = ModelSerializer()
+    evaluationdataset = EvaluationDatasetSerializer()
+    model_submission = ModelSubmissionSerializer()
+
+    class Meta:
+        model = AutomaticEvaluation
+        fields = [
+            'id',
+            'model',
+            'metric',
+            'evaluationdataset',
+            'value',
+            'model_submission'
         ]

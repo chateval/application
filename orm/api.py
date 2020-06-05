@@ -11,7 +11,7 @@ def api(request):
 
 def baselines(request):
     datasets = EvaluationDataset.objects.all()
-    baselines = list()
+    baselines = []
     for dataset in datasets:
         baselines += get_baselines(dataset.pk).values()
     return JsonResponse({'baselines': list(baselines)})
@@ -26,9 +26,16 @@ def prompts(request):
 
 def models(request):
     models = Model.objects.all()
-    serialized = []
-    for i, model in enumerate(models):
-        serialized.append({"id": model.pk, "name": model.name, "description": model.description, "evalsets": list(model.evaluationdatasets.all().values())})
+    serialized = [
+        {
+            "id": model.pk,
+            "name": model.name,
+            "description": model.description,
+            "evalsets": list(model.evaluationdatasets.all().values()),
+        }
+        for i, model in enumerate(models)
+    ]
+
     return JsonResponse({'models': list(serialized)})
 
 def model(request):
@@ -67,7 +74,7 @@ def automatic_evaluations(request):
     eval_metrics = AutomaticEvaluation.objects.filter(
         evaluationdataset=request.GET.get('evaluationdataset_id'), model=request.GET.get('model_id'))
 
-    auto_evals = list()
+    auto_evals = []
     for eval in eval_metrics:
         auto_evals.append(dict({'id': eval.metric.metric_id,
                                 'name': eval.metric.name,

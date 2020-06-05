@@ -72,13 +72,19 @@ def evaluationdatasets(request):
 
 def automatic_evaluations(request):
     eval_metrics = AutomaticEvaluation.objects.filter(
-        evaluationdataset=request.GET.get('evaluationdataset_id'), model=request.GET.get('model_id'))
+        evaluationdataset=request.GET.get('evaluationdataset_id'), 
+        model=request.GET.get('model_id')
+    )
 
-    auto_evals = []
-    for eval in eval_metrics:
-        auto_evals.append(dict({'id': eval.metric.metric_id,
-                                'name': eval.metric.name,
-                                'value': "{0:.3f}".format(eval.value)}))
+    auto_evals = [
+        {
+            'id': eval.metric.metric_id, 
+            'name': eval.metric.name, 
+            'value': "{0:.3f}".format(eval.value)
+        }
+        for eval in eval_metrics
+    ]
+    
     return JsonResponse({'evaluations': list(auto_evals)})
 
 def human_evaluations(request):

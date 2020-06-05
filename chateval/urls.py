@@ -12,6 +12,7 @@ urlpatterns = [
     path('accounts/signup/', signup_view, name='signup'),
     path('accounts/', include('django.contrib.auth.urls')),
     # API ROUTES
+    path('api/', include('orm.urls')),
     path('api/automatic_evaluations', automatic_evaluations, name='automatic_evaluations'),
     path('api/human_evaluations', human_evaluations, name='human_evaluations'),
     path('api/models', models, name='models'),

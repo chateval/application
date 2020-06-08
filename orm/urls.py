@@ -1,10 +1,13 @@
 from django.urls import path
 from orm.views import (
-    welcome, 
+    welcome,
+    human_evaluation,
     ModelList, 
     ModelDetail, 
-    BaselineList, 
+    BaselineList,
+    ModelResponseList, 
     EvaluationDatasetList,
+    EvaluationDatasetTextList,
     AutomaticEvaluationList
 )
 
@@ -13,7 +16,10 @@ urlpatterns = [
     path('', welcome),
     path('model', ModelList.as_view(), name='model-list'),
     path('model/<int:pk>', ModelDetail.as_view(), name='model-detail'),
+    path('model-response', ModelResponseList.as_view(), name='model-response-list'),
     path('baseline', BaselineList.as_view(), name='baseline-list'),
     path('evaluation-dataset', EvaluationDatasetList.as_view(), name='evaluation-dataset-list'),
+    path('evaluation-dataset-text', EvaluationDatasetTextList.as_view(), name='evaluation-dataset-text-list'),
     path('automatic-evaluation', AutomaticEvaluationList.as_view(), name='automatic-evaluation-list'),
+    path('human-evaluation', human_evaluation)
 ]

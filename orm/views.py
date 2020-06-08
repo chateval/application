@@ -79,6 +79,7 @@ class AutomaticEvaluationList(generics.ListAPIView):
             model=self.request.query_params.get('model_id')
         )
 
+
 @api_view(['GET'])
 def human_evaluation(request, format=None):
     target_model_id = request.GET.get('model_id')

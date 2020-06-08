@@ -13,16 +13,6 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     # API ROUTES
     path('api/', include('orm.urls')),
-    path('api/automatic_evaluations', automatic_evaluations, name='automatic_evaluations'),
-    path('api/human_evaluations', human_evaluations, name='human_evaluations'),
-    path('api/models', models, name='models'),
-    path('api/model', api_model, name='model'),
-    path('api/baselines', baselines, name='baselines'),
-    path('api/evaluationdatasets', evaluationdatasets, name='evaluationdatasets'),
-    path('api/metrics', metrics, name='metrics'),
-    path('api/prompts', prompts, name='prompts'),
-    path('api/responses', responses, name='responses'),
-    path('api/', api, name='api'),
     ### ACTIONS
     path('model/delete/', delete, name='delete'),
     path('model/publish/', publish, name='publish'),

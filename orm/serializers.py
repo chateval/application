@@ -6,8 +6,8 @@ from orm.models import (
     ModelResponse,
     EvaluationDataset,
     EvaluationDatasetText,
-    AutomaticEvaluation,
-    Metric
+    Metric,
+    AutomaticEvaluation
 )
 
 

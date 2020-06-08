@@ -7,6 +7,7 @@ from orm.models import (
     ModelResponse,
     EvaluationDataset, 
     EvaluationDatasetText,
+    Metric,
     AutomaticEvaluation,  
     HumanEvaluations,
     HumanEvaluationsABComparison
@@ -16,6 +17,7 @@ from orm.serializers import (
     ModelResponseSerializer,
     EvaluationDatasetSerializer, 
     EvaluationDatasetTextSerializer,
+    MetricSerializer,
     AutomaticEvaluationSerializer
 )
 
@@ -24,8 +26,11 @@ from orm.serializers import (
 def welcome(request, format=None):
     return Response({
         'model': reverse('model-list', request=request, format=format),
+        'model-response': reverse('model-response-list', request=request, format=format),
         'baseline': reverse('baseline-list', request=request, format=format),
         'evaluation-dataset': reverse('evaluation-dataset-list', request=request, format=format),
+        'evaluation-dataset-text': reverse('evaluation-dataset-text-list', request=request, format=format),
+        'metric': reverse('metric-list', request=request, format=format),
         'automatic-evaluation': reverse('automatic-evaluation-list', request=request, format=format)
     })
 
@@ -68,6 +73,11 @@ class EvaluationDatasetTextList(generics.ListCreateAPIView):
         return EvaluationDatasetText.objects.filter(
             evaluationdataset=self.request.query_params.get('evaluationdataset_id'),
         )
+
+
+class MetricList(generics.ListCreateAPIView):
+    queryset = Metric.objects.all()
+    serializer_class = MetricSerializer
 
 
 class AutomaticEvaluationList(generics.ListAPIView): 

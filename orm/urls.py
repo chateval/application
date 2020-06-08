@@ -8,6 +8,7 @@ from orm.views import (
     ModelResponseList, 
     EvaluationDatasetList,
     EvaluationDatasetTextList,
+    MetricList,
     AutomaticEvaluationList
 )
 
@@ -20,6 +21,7 @@ urlpatterns = [
     path('baseline', BaselineList.as_view(), name='baseline-list'),
     path('evaluation-dataset', EvaluationDatasetList.as_view(), name='evaluation-dataset-list'),
     path('evaluation-dataset-text', EvaluationDatasetTextList.as_view(), name='evaluation-dataset-text-list'),
+    path('metric', MetricList.as_view(), name='metric-list'),
     path('automatic-evaluation', AutomaticEvaluationList.as_view(), name='automatic-evaluation-list'),
     path('human-evaluation', human_evaluation)
 ]

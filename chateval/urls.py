@@ -19,8 +19,8 @@ urlpatterns = [
     path('api/model', api_model, name='model'),
     path('api/baselines', baselines, name='baselines'),
     path('api/evaluationdatasets', evaluationdatasets, name='evaluationdatasets'),
-    path('api/prompts', prompts, name='prompts'),
     path('api/metrics', metrics, name='metrics'),
+    path('api/prompts', prompts, name='prompts'),
     path('api/responses', responses, name='responses'),
     path('api/', api, name='api'),
     ### ACTIONS

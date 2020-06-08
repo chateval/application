@@ -2,9 +2,11 @@ from rest_framework import serializers
 from orm.models import (
     Author,
     Model,
-    EvaluationDataset,
-    AutomaticEvaluation,
     ModelSubmission,
+    ModelResponse,
+    EvaluationDataset,
+    EvaluationDatasetText,
+    AutomaticEvaluation,
     Metric
 )
 
@@ -24,6 +26,16 @@ class EvaluationDatasetSerializer(serializers.ModelSerializer):
             'long_name',
             'source',
             'description',
+        ]
+
+
+class EvaluationDatasetTextSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EvaluationDatasetText
+        fields = [
+            'prompt_id',
+            'prompt_text',
+            'num_turns'
         ]
 
 
@@ -55,6 +67,12 @@ class ModelSubmissionSerializer(serializers.ModelSerializer):
     class Meta:
         model = ModelSubmission
         fields = ['submission_id', 'date', 'model', 'evaluationdatasets']
+
+
+class ModelResponseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ModelResponse
+        fields = ['response_text']
 
 
 class MetricSerializer(serializers.ModelSerializer):

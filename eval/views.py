@@ -16,9 +16,9 @@ def uploads(request):
         return redirect('/accounts/login')
     current_author = Author.objects.get(author_id=request.user)
     models = Model.objects.filter(author=current_author, archived=False)
-    uploads = list()
+    uploads = []
+    evalsets = []
     for model in models:
-        evalsets = []
         uploads.append(dict({'model': model, 'evalsets': evalsets}))
     uploads.reverse()
     return render(request, 'uploads.html', {'uploads': uploads})
@@ -27,7 +27,7 @@ def uploads(request):
 def human(request):
     model = Model.objects.get(pk=request.GET['id'])
     datasets = EvaluationDataset.objects.all()
-    baselines = list()
+    baselines = []
     for dataset in model.evaluationdatasets.all():
         for baseline in dataset.baselines.all():
             baselines.append({"id": baseline.pk, "name": baseline.name, "description": baseline.description, "dataset": dataset})
@@ -119,9 +119,8 @@ def dbdc5download(request):
     current_author = Author.objects.get(author_id=request.user)
     send_email("chatevalteam@gmail.com", "Data Request", str(request.user))
 
-    file_url = download_file('release-v3-distrib.zip')
     # from https://stackoverflow.com/questions/1156246/having-django-serve-downloadable-files
-    return file_url
+    return download_file('release-v3-distrib.zip')
     #return redirect("/")
 
 def dbdc5submit(request):

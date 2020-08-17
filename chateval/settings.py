@@ -39,12 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'eval',
+    'orm',
     'storages',
-    'orm'
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -129,12 +131,14 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
-SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
-STATIC_ROOT = os.path.join(SITE_ROOT, 'static/')
-STATIC_URL = "https://storage.googleapis.com/kirubarajan-site.appspot.com/chateval/"
-STATICFILES_DIRS = [
-    os.path.join(SITE_ROOT, 'assets/'),
-]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'assets'),
+)
+
+# The URL to use when referring to static files (where they will be served from)
+STATIC_URL = '/static/'
 
 
 AWS_ACCESS_KEY = os.environ['AWS_ACCESS_KEY_ID']

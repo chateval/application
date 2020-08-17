@@ -59,6 +59,14 @@ def upload_file(path, body):
     session = boto3.session.Session(aws_access_key_id=AWS_ACCESS_KEY, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
     s3 = session.resource('s3')
     s3.Bucket(AWS_STORAGE_BUCKET_NAME).put_object(Key=path, Body=body)
+
+def upload_dbdc5_file(path, body):
+    session = boto3.session.Session(aws_access_key_id=AWS_ACCESS_KEY, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+    s3 = session.resource('s3')
+    if s3.Bucket(AWS_STORAGE_BUCKET_NAME).put_object(Key=path, Body=body):
+        return True
+    else:
+        return False
     
 def download_file(filename):
     session = boto3.session.Session(aws_access_key_id=AWS_ACCESS_KEY, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)

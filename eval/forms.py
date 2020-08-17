@@ -23,6 +23,15 @@ class UploadModelForm(forms.Form):
                            label=mark_safe('<b>Model weights</b><br/>If you have made your model weights public, give '
                                            ' a download link.'))
 
+class DBDC5Form(forms.Form):
+    name = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class' : 'form-control'}),
+                           label=mark_safe('<b>Name</b><br/>Give a human-readable name for your system.'))
+    submission_info = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class' : 'form-control'}),
+                           label=mark_safe('<b>Submission Number</b>'))
+    submission_track = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class' : 'form-control'}),
+                           label=mark_safe('<b>Submission Track</b>'))
+
+
 class SignUpForm(forms.Form):
     first_name = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class' : 'form-control'}))
     last_name = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class' : 'form-control'}))

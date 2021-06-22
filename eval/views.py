@@ -124,6 +124,16 @@ def dbdc5download(request):
     return file_url
     #return redirect("/")
 
+def dstc10download(request):
+     if not request.user.is_authenticated:
+         return redirect('/accounts/login')
+     current_author = Author.objects.get(author_id=request.user)
+     send_email("chatevalteam@gmail.com", "DSTC10 Data Request", str(request.user))
+
+     # from https://stackoverflow.com/questions/1156246/having-django-serve-downloadable-files
+     return download_file('DSTC_10_Track_5.zip')
+     #return redirect("/")
+
 def dbdc5submit(request):
     if not request.user.is_authenticated:
         return redirect('/accounts/login')

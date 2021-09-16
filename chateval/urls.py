@@ -26,7 +26,7 @@ urlpatterns = [
     path('model/delete/', delete, name='delete'),
     path('model/publish/', publish, name='publish'),
     path('dbdc5_data/', dbdc5download, name='dbdc5download'),
-    path('dstc10_data/', dbdc5download, name='dstc10download'),
+    path('dstc10_data/', dstc10download, name='dstc10download'),
     ## SITE ROUTES
     path('uploads/', uploads, name='uploads'),
     path('upload', submit, name='submit'),

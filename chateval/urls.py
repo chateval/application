@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
-from eval.views import uploads, submit, delete, publish, human, login_view, signup_view, compare, dbdc5download, dbdc5submit
+from eval.views import uploads, submit, delete, publish, human, login_view, signup_view, compare, dbdc5download, dbdc5submit, dstc10submit
 from orm.api import api, responses, evaluationdatasets, prompts, models, automatic_evaluations, human_evaluations, baselines, metrics, model as api_model
 
 
@@ -31,6 +31,8 @@ urlpatterns = [
     path('upload', submit, name='submit'),
     path('dbdc5submit/', dbdc5submit, name='dbdc5submit'),
     path('dbdc5submit', dbdc5submit, name='dbdc5submit'),
+    path('dstc10submit/', dstc10submit, name='dstc10submit'),
+    path('dstc10submit', dstc10submit, name='dstc10submit'),
     
     # EVALUATION
     path('compare', compare, name="compare"),

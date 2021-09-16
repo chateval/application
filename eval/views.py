@@ -8,8 +8,8 @@ from orm.models import Author, Model, EvaluationDataset, Metric, ModelResponse, 
 from orm.scripts import get_messages, get_baselines
 from eval.scripts.human.launch_hit import launch_hits
 from eval.scripts.human.retrieve_responses import retrieve
-from eval.scripts.upload_model import handle_submit, send_email, download_file, upload_dbdc5_file
-from eval.forms import UploadModelForm, DBDC5Form, SignUpForm, LogInForm
+from eval.scripts.upload_model import handle_submit, send_email, download_file, upload_dbdc5_file, upload_dstc10_file
+from eval.forms import UploadModelForm, DBDC5Form, DSTC10Form, SignUpForm, LogInForm
 
 def uploads(request):
     if not request.user.is_authenticated:
@@ -142,4 +142,23 @@ def dbdc5submit(request):
     form = DBDC5Form()
     error = "error" in request.GET
     return render(request, 'dbdc5submit.html', {'form': form, 'error': error})
-    
+
+def dstc10submit(request):
+    if not request.user.is_authenticated:
+        return redirect('/accounts/login')
+
+
+    if request.method == "POST":
+        name = request.POST['name']
+        submission_info = request.POST['submission_info']
+        submission_track =  request.POST['submission_track']
+
+        if upload_dstc10_file('dstc10_submissions/' + str(request.user) + '_' + name + '_' + submission_info + '_' + submission_track, request.FILES['dstc10file']):
+            send_email("chatevalteam@gmail.com", "DSTC10 submission", str(request.user))
+            send_email(str(request.user.email), "DSTC10 submission received", "Thank you for your submission")
+            return HttpResponseRedirect('https://chateval.org/dstc10')
+
+    form = DSTC10Form()
+    error = "error" in request.GET
+    return render(request, 'dstc10submit.html', {'form': form, 'error': error})
+

@@ -72,8 +72,9 @@ def upload_dbdc5_file(path, body):
 def upload_dstc10_file(path, body):
     session = boto3.session.Session(aws_access_key_id=AWS_ACCESS_KEY, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
     s3 = session.resource('s3')
-    fileobj = gzip.GzipFile(fileobj=body, mode='rb')
-    path = path + ".gz"
+    # NOTE: this doesn't work :(
+    #fileobj = gzip.GzipFile(fileobj=body, mode='rb')
+    #path = path + ".gz"
     if s3.Bucket(AWS_STORAGE_BUCKET_NAME).upload_fileobj(Fileobj=fileobj, Key=path):
         return True
     else:

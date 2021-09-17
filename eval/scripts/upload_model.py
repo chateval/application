@@ -75,7 +75,7 @@ def upload_dstc10_file(path, body):
     # NOTE: this doesn't work :(
     #fileobj = gzip.GzipFile(fileobj=body, mode='rb')
     #path = path + ".gz"
-    if s3.Bucket(AWS_STORAGE_BUCKET_NAME).upload_fileobj(Fileobj=fileobj, Key=path):
+    if s3.Bucket(AWS_STORAGE_BUCKET_NAME).put_object(Key=path, Body=body):
         return True
     else:
         return False

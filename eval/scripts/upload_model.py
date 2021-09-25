@@ -79,11 +79,14 @@ def upload_dstc10_file(path, body):
     # NOTE: this doesn't work :(
     #fileobj = gzip.GzipFile(fileobj=body, mode='rb')
     #path = path + ".gz"
-    if s3.Bucket(AWS_STORAGE_BUCKET_NAME).put_object(Key=path, Body=body):
+    try:
+        s3.Bucket(AWS_STORAGE_BUCKET_NAME).upload_file(body, path)
         return True
-    else:
-        return False
-
+    except:
+        if s3.Bucket(AWS_STORAGE_BUCKET_NAME).put_object(Key=path, Body=body):
+            return True
+        else:
+            return False
     
 def download_file(filename):
     session = boto3.session.Session(aws_access_key_id=AWS_ACCESS_KEY, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)

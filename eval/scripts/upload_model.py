@@ -75,7 +75,6 @@ def upload_dbdc5_file(path, body):
             return False
 
 def upload_dstc10_file(path, body):
-    1/0
     transfer_config = TransferConfig(multipart_chunksize=1024*1024*100, use_threads=False)
     session = boto3.session.Session(aws_access_key_id=AWS_ACCESS_KEY, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
     s3 = session.resource('s3')

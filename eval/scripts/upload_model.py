@@ -3,6 +3,7 @@
 import os
 import datetime
 import requests
+import error
 import gzip
 import boto3
 import smtplib
@@ -77,6 +78,7 @@ def upload_dstc10_file(path, body):
     session = boto3.session.Session(aws_access_key_id=AWS_ACCESS_KEY, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
     s3 = session.client('s3')
     s3.upload_fileobj(body, Bucket=AWS_STORAGE_BUCKET_NAME, Key=path)
+    raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), path)
     return True
 
     

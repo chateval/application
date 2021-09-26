@@ -9,6 +9,7 @@ import smtplib
 from email.message import EmailMessage
 from json import dumps
 from boto3 import session
+from boto3.s3.transfer import TransferConfig
 from django.shortcuts import redirect
 from django.http import HttpResponseRedirect
 from orm.models import Model, EvaluationDatasetText, ModelResponse, ModelSubmission, EvaluationDataset, AutomaticEvaluation, Metric
@@ -74,9 +75,10 @@ def upload_dbdc5_file(path, body):
             return False
 
 def upload_dstc10_file(path, body):
+    transfer_config = TransferConfig(multipart_chunksize=1024*1024*100, use_threads=False)
     session = boto3.session.Session(aws_access_key_id=AWS_ACCESS_KEY, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
     s3 = session.resource('s3')
-    s3.meta.client.upload_fileobj(body, Bucket=AWS_STORAGE_BUCKET_NAME, Key=path)
+    s3.meta.client.upload_fileobj(body, Bucket=AWS_STORAGE_BUCKET_NAME, Key=path, Config=transfer_config)
     return True
 
     

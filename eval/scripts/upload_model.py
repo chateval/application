@@ -120,12 +120,15 @@ def send_email(to, subject, content):
     message['Subject'] = subject
     message.set_content(content)
 
-    # Open up SMPTP server and send email notification.
-    server = smtplib.SMTP('smtp.gmail.com', 587)
-    server.ehlo()
-    server.starttls()
-    server.ehlo()
-    print(os.environ['EMAIL_PASSWORD'])
-    server.login("chatevalteam", str(os.environ['EMAIL_PASSWORD']))
-    server.send_message(message)
-    server.quit()
+    try:
+        # Open up SMPTP server and send email notification.
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.ehlo()
+        server.starttls()
+        server.ehlo()
+        print(os.environ['EMAIL_PASSWORD'])
+        server.login("chatevalteam", str(os.environ['EMAIL_PASSWORD']))
+        server.send_message(message)
+        server.quit()
+    except:
+        print(content)

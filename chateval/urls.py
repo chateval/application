@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
-from eval.views import uploads, submit, delete, publish, human, login_view, signup_view, compare, dbdc5download, dbdc5submit
+from eval.views import uploads, submit, delete, publish, human, login_view, signup_view, compare, dbdc5download, dbdc5submit, dstc10download, dstc11download
 # from orm.api import api, responses, evaluationdatasets, prompts, models, automatic_evaluations, human_evaluations, baselines, metrics, model as api_model
 
 
@@ -17,6 +17,8 @@ urlpatterns = [
     path('model/delete/', delete, name='delete'),
     path('model/publish/', publish, name='publish'),
     path('dbdc5_data/', dbdc5download, name='dbdc5download'),
+    path('dstc10_data/', dstc10download, name='dstc10download'),
+    path('dstc11_data/', dstc11download, name='dstc11download'),
     ## SITE ROUTES
     path('uploads/', uploads, name='uploads'),
     path('upload', submit, name='submit'),

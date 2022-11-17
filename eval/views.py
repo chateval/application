@@ -117,7 +117,7 @@ def dbdc5download(request):
     if not request.user.is_authenticated:
         return redirect('/accounts/login')
     current_author = Author.objects.get(author_id=request.user)
-    send_email("chatevalteam@gmail.com", "Data Request", str(request.user))
+    send_email("teamchateval@gmail.com", "Data Request", str(request.user))
 
     # from https://stackoverflow.com/questions/1156246/having-django-serve-downloadable-files
     return download_file('release-v3-distrib.zip')
@@ -127,12 +127,22 @@ def dstc10download(request):
     if not request.user.is_authenticated:
         return redirect('/accounts/login')
     current_author = Author.objects.get(author_id=request.user)
-    send_email("chatevalteam@gmail.com", "DSTC10 Data Request", str(request.user))
+    send_email("teamchateval@gmail.com", "DSTC10 Data Request", str(request.user))
 
     file_url = download_file('DSTC_10_Track_5.zip')
     # from https://stackoverflow.com/questions/1156246/having-django-serve-downloadable-files
     return file_url
     #return redirect("/")
+
+def dstc11download(request):
+    if not request.user.is_authenticated:
+        return redirect('/accounts/login')
+    current_author = Author.objects.get(author_id=request.user)
+    send_email("teamchateval@gmail.com", "DSTC11 Data Request", str(request.user))
+
+    file_url = download_file('DSTC11/DSTC_11_Track_4.zip')
+    # from https://stackoverflow.com/questions/1156246/having-django-serve-downloadable-files
+    return file_url
 
     
 def dbdc5submit(request):
@@ -146,7 +156,7 @@ def dbdc5submit(request):
         submission_track =  request.POST['submission_track']
 
         if upload_dbdc5_file('dbdc_submissions/' + str(request.user) + '_' + name + '_' + submission_info + '_' + submission_track, request.FILES['dbdc5file']):
-            send_email("chatevalteam@gmail.com", "DBDC5 submission", str(request.user))
+            send_email("teamchateval@gmail.com", "DBDC5 submission", str(request.user))
             send_email(str(request.user.email), "DBDC5 submission received", "Thank you for your submission")
             return HttpResponseRedirect('https://chateval.org/shared_task')
 
@@ -165,7 +175,7 @@ def dstc10submit(request):
         submission_track =  request.POST['submission_track']
 
         if upload_dstc10_file('dstc10_submissions/' + str(request.user) + '_' + name + '_' + submission_info + '_' + submission_track, request.FILES['dstc10file']):
-            send_email("chatevalteam@gmail.com", "DSTC10 submission", str(request.user))
+            send_email("teamchateval@gmail.com", "DSTC10 submission", str(request.user))
             send_email(str(request.user.email), "DSTC10 submission received", "Thank you for your submission")
             return HttpResponseRedirect('https://chateval.org/dstc10')
 

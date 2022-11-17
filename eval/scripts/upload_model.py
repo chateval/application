@@ -115,7 +115,7 @@ def save_evaluations(evaluations, dataset, model, submission, is_baseline):
 def send_email(to, subject, content):
     # Construct email.
     message = EmailMessage()
-    message['From'] = "chatevalteam@gmail.com"
+    message['From'] = "teamchateval@gmail.com"
     message['To'] = to
     message['Subject'] = subject
     message.set_content(content)
@@ -127,7 +127,7 @@ def send_email(to, subject, content):
         server.starttls()
         server.ehlo()
         print(os.environ['EMAIL_PASSWORD'])
-        server.login("chatevalteam", str(os.environ['EMAIL_PASSWORD']))
+        server.login("teamchateval", str(os.environ['EMAIL_PASSWORD']))
         server.send_message(message)
         server.quit()
     except:

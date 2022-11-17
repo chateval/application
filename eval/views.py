@@ -183,3 +183,23 @@ def dstc10submit(request):
     error = "error" in request.GET
     return render(request, 'dstc10submit.html', {'form': form, 'error': error})
 
+
+def dstc11submit(request):
+    if not request.user.is_authenticated:
+        return redirect('/accounts/login')
+
+
+    if request.method == "POST":
+        name = request.POST['name']
+        submission_info = request.POST['submission_info']
+        submission_track =  request.POST['submission_track']
+
+        if upload_dstc10_file('dstc10_submissions/' + str(request.user) + '_' + name + '_' + submission_info + '_' + submission_track, request.FILES['dstc10file']):
+            send_email("teamchateval@gmail.com", "DSTC10 submission", str(request.user))
+            send_email(str(request.user.email), "DSTC10 submission received", "Thank you for your submission")
+            return HttpResponseRedirect('https://chateval.org/dstc11')
+
+    form = DSTC10Form()
+    error = "error" in request.GET
+    return render(request, 'dstc10submit.html', {'form': form, 'error': error})
+

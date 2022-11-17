@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
 from eval.views import uploads, submit, delete, publish, human, login_view, signup_view, compare, dbdc5download, dstc10download, dbdc5submit, dstc10submit, dstc11submit
-from orm.api import api, responses, evaluationdatasets, prompts, models, automatic_evaluations, human_evaluations, baselines, metrics, model as api_model
+#from orm.api import api, responses, evaluationdatasets, prompts, models, automatic_evaluations, human_evaluations, baselines, metrics, model as api_model
 
 
 urlpatterns = [

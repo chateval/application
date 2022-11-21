@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <br>
+      {% if error %}
+        <div class="alert alert-danger" role="alert">
+          There was an error with your upload! Confirm your file 
+          is formatted appropriately. Email <a href="mailto:chatevalteam@gmail.com">chatevalteam@gmail.com</a> for help.
+        </div>
+      {% endif %}
+      <h1 class="title">Upload New Shared Task Submission</h1>
+      <form enctype="multipart/form-data" method="POST" action="/dstc10submit">
+        <h2 class=""> Submission Information </h2>
+        {% csrf_token %}
+        {{ form }}
+        <br> <br>
+        <h2 class="">  </h2>
+        <p class="subtitle">Please upload your file <b>(please compress the file with gzip)</b>
+        </p>
+	<p>Only the last 5 submissions will be evaluated</p> 
+        <div class="card" style="margin: 0rem">
+          <div class="card-body">
+            <h3>DSTC11file 
+            </h3>
+            <input class="file" type="file" name="dstc10file" />
+          </div>
+        </div>
+          <br>
+
+        <input type="submit" value="Upload Shared Task Entry" class="btn btn-primary">
+      </form>
+      <br>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</main>
+{% endblock %}

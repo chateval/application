@@ -39,6 +39,14 @@ class DSTC10Form(forms.Form):
     submission_track = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class' : 'form-control'}),
                            label=mark_safe('<b>Submission Track</b>'))
 
+class DSTC11Form(forms.Form):
+    name = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class' : 'form-control'}),
+                           label=mark_safe('<b>Name</b><br/>Give a human-readable name for your submission.'))
+    submission_info = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class' : 'form-control'}),
+                           label=mark_safe('<b>Submission Number</b>'))
+    submission_track = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class' : 'form-control'}),
+                           label=mark_safe('<b>Submission Track</b>'))
+
 
 class SignUpForm(forms.Form):
     first_name = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class' : 'form-control'}))

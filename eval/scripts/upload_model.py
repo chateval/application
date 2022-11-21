@@ -81,6 +81,13 @@ def upload_dstc10_file(path, body):
     s3.meta.client.upload_fileobj(body, Bucket=AWS_STORAGE_BUCKET_NAME, Key=path, Config=transfer_config)
     return True
 
+def upload_dstc11_file(path, body):
+    transfer_config = TransferConfig(multipart_chunksize=1024*1024*100, use_threads=False)
+    session = boto3.session.Session(aws_access_key_id=AWS_ACCESS_KEY, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+    s3 = session.resource('s3')
+    s3.meta.client.upload_fileobj(body, Bucket=AWS_STORAGE_BUCKET_NAME, Key=path, Config=transfer_config)
+    return True
+
     
 def download_file(filename):
     session = boto3.session.Session(aws_access_key_id=AWS_ACCESS_KEY, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)

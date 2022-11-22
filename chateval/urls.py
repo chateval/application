@@ -25,7 +25,9 @@ urlpatterns = [
     path('dbdc5submit/', dbdc5submit, name='dbdc5submit'),
     path('dbdc5submit', dbdc5submit, name='dbdc5submit'),
     path('dstc10submit/', dstc10submit, name='dstc10submit'),
-    path('dstc10submit', dstc10submit, name='dstc10submit'),
+    path('dstc10submit', dstc10submit, name='dstc10submit'), 
+    path('dstc11submit/', dstc11submit, name='dstc11submit'),
+    path('dstc11submit', dstc11submit, name='dstc11submit'),   
     
     # EVALUATION
     path('compare', compare, name="compare"),

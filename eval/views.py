@@ -294,7 +294,8 @@ def gemv3submit(request):
                         f = tar.extractfile(member)
                         if f is not None:
                             check_GEM_submissions(fn, f)
-            
+
+            uploaded_file.seek(0)
             if upload_gemv3_file('gemv3_submissions/' +  team_name + '_' + submission_track + '.tar.gz', request.FILES['gemv3file']):
                 send_email("teamchateval@gmail.com", "GEM V3 submission", email)
                 send_email(email, "GEM V3 submission received", "Thank you for your submission")

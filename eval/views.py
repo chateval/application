@@ -9,7 +9,7 @@ from orm.scripts import get_messages, get_baselines
 from eval.scripts.human.launch_hit import launch_hits
 from eval.scripts.human.retrieve_responses import retrieve
 from eval.scripts.upload_model import handle_submit, send_email, download_file, upload_dbdc5_file, upload_dstc10_file, upload_dstc11_file
-from eval.forms import UploadModelForm, DBDC5Form, DSTC10Form, DSTC11Form, GEMSTV3Form, SignUpForm, LogInForm
+from eval.forms import UploadModelForm, DBDC5Form, DSTC10Form, DSTC11Form, GEMV3Form, SignUpForm, LogInForm
 
 def uploads(request):
     if not request.user.is_authenticated:

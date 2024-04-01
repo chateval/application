@@ -52,10 +52,20 @@ class GEMV3Form(forms.Form):
                            label=mark_safe('<b>Team Name</b><br/>Team name for your submission.'))
     email = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class' : 'form-control'}),
                            label=mark_safe('<b>Email</b><br/>Primary email for your submission.'))
-    submission_info = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class' : 'form-control'}),
-                           label=mark_safe('<b>Submission Number</b>'))
-    submission_track = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class' : 'form-control'}),
-                           label=mark_safe('<b>Submission Track</b>'))
+    TASK_CHOICES = [
+        ('D2T-1', 'D2T-1 (3 files expected per language)'),
+        ('D2T-2', 'D2T-2 (3 files expected per language)'),
+        ('Summ-1', 'Summ-1'),
+        ('Summ-2', 'Summ-2'),
+        ('Summ-3', 'Summ-3'),
+    ]
+    # submission_track = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class' : 'form-control'}),
+    #                       label=mark_safe('<b>Submission Track</b>'))
+    submission_track = forms.MultipleChoiceField(
+        choices=TASK_CHOICES,
+        widget=forms.CheckboxSelectMultiple,
+        label=mark_safe('<b>Submission Track</b>'),
+    )
 
 
 class SignUpForm(forms.Form):

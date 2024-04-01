@@ -8,7 +8,7 @@ from orm.models import Author, Model, EvaluationDataset, Metric, ModelResponse, 
 from orm.scripts import get_messages, get_baselines
 from eval.scripts.human.launch_hit import launch_hits
 from eval.scripts.human.retrieve_responses import retrieve
-from eval.scripts.upload_model import handle_submit, send_email, download_file, upload_dbdc5_file, upload_dstc10_file, upload_dstc11_file
+from eval.scripts.upload_model import handle_submit, send_email, download_file, upload_dbdc5_file, upload_dstc10_file, upload_dstc11_file, upload_gemv3_file
 from eval.forms import UploadModelForm, DBDC5Form, DSTC10Form, DSTC11Form, GEMV3Form, SignUpForm, LogInForm
 
 def uploads(request):
@@ -212,7 +212,7 @@ def gemv3submit(request):
         submission_info = request.POST['submission_info']
         submission_track =  request.POST['submission_track']
 
-        if upload_gemv3_file('gemv3_submissions/' + str(request.user) + '_' + name + '_' + submission_info + '_' + submission_track, request.FILES['dstc11file']):
+        if upload_gemv3_file('gemv3_submissions/' + str(request.user) + '_' + name + '_' + submission_info + '_' + submission_track, request.FILES['gemv3file']):
             send_email("teamchateval@gmail.com", "GEM V3 submission", str(request.user))
             send_email(str(request.user.email), "GEM V3 submission received", "Thank you for your submission")
             return HttpResponseRedirect('https://gem-benchmark.com/shared_task')

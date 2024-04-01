@@ -13,7 +13,7 @@
         </div>
       {% endif %}
       <h1 class="title">Upload GEM V3 Shared Task Submission</h1>
-      <form enctype="multipart/form-data" method="POST" action="/dstc10submit">
+      <form enctype="multipart/form-data" method="POST" action="/gemv3submit">
         <h2 class=""> Submission Information </h2>
         {% csrf_token %}
         {{ form }}

@@ -89,7 +89,7 @@ def upload_dstc11_file(path, body):
     return True
 
 
-def upload_gem_file(path, body):
+def upload_gemv3_file(path, body):
     transfer_config = TransferConfig(multipart_chunksize=1024*1024*100, use_threads=False)
     session = boto3.session.Session(aws_access_key_id=AWS_ACCESS_KEY, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
     s3 = session.resource('s3')

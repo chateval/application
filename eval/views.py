@@ -1,4 +1,7 @@
 import datetime
+import traceback
+from io import BytesIO
+import tarfile
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
@@ -10,6 +13,7 @@ from eval.scripts.human.launch_hit import launch_hits
 from eval.scripts.human.retrieve_responses import retrieve
 from eval.scripts.upload_model import handle_submit, send_email, download_file, upload_dbdc5_file, upload_dstc10_file, upload_dstc11_file, upload_gemv3_file
 from eval.forms import UploadModelForm, DBDC5Form, DSTC10Form, DSTC11Form, GEMV3Form, SignUpForm, LogInForm
+
 
 def uploads(request):
     if not request.user.is_authenticated:
@@ -204,17 +208,92 @@ def dstc11submit(request):
     return render(request, 'dstc11submit.html', {'form': form, 'error': error})
 
 
+def check_GEM_submissions(filename, file_content):
+    # Check name
+    task_suffixes = ('_D2T-1-FA', '_D2T-1-FI', '_D2T-1-CFA', '_D2T-2-FA', '_D2T-2-FI', '_D2T-2-CFA', '_Summ-1', '_Summ-2', '_Summ-3')
+    d2t1_IDs = ['D2T-1-FA', 'D2T-1-FI', 'D2T-1-CFA']
+    d2t2_IDs = ['D2T-2-FA', 'D2T-2-FI', 'D2T-2-CFA']
+    summ_IDs = ['Summ-1', 'Summ-2', 'Summ-3']
+    languages = ('_en', '_zh', '_de', '_ru', '_es', '_ko', '_hi', '_sw', '_ar')
+    extensions = ('.txt', '.jsonl')
+
+
+    # Check extension
+    if filename.endswith(extensions):
+        filename_noExt = filename.rsplit('.', 1)[0]
+        extension = filename.rsplit('.', 1)[1]
+        # Check language ID
+        if filename_noExt.endswith(languages):
+            filename_noExt_noLang = filename_noExt.rsplit('_', 1)[0]
+            # Check task identifier
+            if filename_noExt_noLang.endswith(task_suffixes):
+                filename_noExt_noLang_noTask = filename_noExt_noLang.rsplit('_', 1)[0]
+                task_ID = filename_noExt_noLang.rsplit('_', 1)[1]
+                # If there is a system name, open the files and check inside
+                if len(filename_noExt_noLang_noTask) > 0:
+                    # txt files are for the D2T task; D2T-1 should have 1,779 lines, D2T-2 should have 1,800 lines.
+                    if extension == 'txt':
+                        file_lines = content.readlines()
+                        # Check line numbers in D2T-1 data
+                        if task_ID in d2t1_IDs and not len(file_lines) == 1779:
+                            raise Exception(f'  Error line numbers!\n\t{filename} should have 1,779 lines (found {len(file_lines)}).')
+                        # Check line numbers in D2T-2 data
+                    elif task_ID in d2t2_IDs and not len(file_lines) == 1800:
+                        raise Exception(f'  Error line numbers!\n\t{filename} should have 1,800 lines (found {len(file_lines)}).')
+                    else:
+                        pass
+                        #print('  OK!')
+                # json files are for the summ task; check well-formedness
+                elif extension == 'json':
+                    try:
+                        json.loads(content)
+                    except:
+                        raise Exception(f'  Error json formatting! Check {filename_noExt}.')
+                    # There should additional be code to check the number of outputs in the submitted files
+                else:
+                    raise Exception(f'  Error filename system name!\n\t{filename_noExt} should have a name before the task suffix.')
+            else:
+                raise Exception(f'  Error filename task suffix!\n\t{filename_noExt} should contain one of these task suffixes: {task_suffixes}.')
+        else:
+            raise Exception(f'  Error filename language suffix!\n\t{filename_noExt} should end with one of these language suffixes: {languages}.')
+    else:
+        raise Exception(f'  Error filename extension!\n\t{filename} should have one of these extensions (according to task): {extensions}.')
+
 def gemv3submit(request):
 
     if request.method == "POST":
         team_name = request.POST['name']
+        
         email = request.POST['email']
-        submission_track =  request.POST['submission_track']
+        submission_track =  "Tracks_" + '_'.join(request.POST.getlist('submission_track'))
 
-        if upload_gemv3_file('gemv3_submissions/' +  team_name + '_' + submission_track, request.FILES['gemv3file']):
-            send_email("teamchateval@gmail.com", "GEM V3 submission", email)
-            send_email(email, "GEM V3 submission received", "Thank you for your submission")
-            return HttpResponseRedirect('https://gem-benchmark.com/shared_task')
+        try:
+            uploaded_file = request.FILES['gemv3file']
+            with tarfile.open(fileobj=file_in_memory, mode="r:gz") as tar:
+                required_files = ['file1.txt', 'file2.txt']
+                extracted_files = tar.getnames()
+                # CODE: Add checking code to make sure that required files are present
+                for fn, member in zip(tar.getnames(), tar.getmembers()):
+                    if 1:#member.name in required_files:
+                        # Extract file content from tar
+                        f = tar.extractfile(member)
+                        if f is not None:
+                            check_GEM_submissions(fn, f)
+            
+            if upload_gemv3_file('gemv3_submissions/' +  team_name + '_' + submission_track + '.tar.gz', request.FILES['gemv3file']):
+                send_email("teamchateval@gmail.com", "GEM V3 submission", email)
+                send_email(email, "GEM V3 submission received", "Thank you for your submission")
+                return HttpResponseRedirect('https://gem-benchmark.com/shared_task')
+        except Exception as e:
+            # Catching the exception and retrieving its traceback
+            error_traceback = traceback.format_exc()
+            # Constructing the error message
+            error_message = str(e)
+            # Concatenating the error message with the traceback
+            error = f"Error Message: {error_message}\nTraceback:\n{error_traceback}"
+            form = GEMV3Form()
+            
+            return render(request, 'gemv3submit.html', {'form': form, 'error': error})
 
     form = GEMV3Form()
     error = "error" in request.GET

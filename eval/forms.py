@@ -47,7 +47,7 @@ class DSTC11Form(forms.Form):
     submission_track = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class' : 'form-control'}),
                            label=mark_safe('<b>Submission Track</b>'))
 
-class GEMSTV3Form(forms.Form):
+class GEMV3Form(forms.Form):
     name = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class' : 'form-control'}),
                            label=mark_safe('<b>Team Name</b><br/>Team name for your submission.'))
     email = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class' : 'form-control'}),

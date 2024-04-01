@@ -28,8 +28,8 @@ urlpatterns = [
     path('dstc10submit', dstc10submit, name='dstc10submit'), 
     path('dstc11submit/', dstc11submit, name='dstc11submit'),
     path('dstc11submit', dstc11submit, name='dstc11submit'),   
-    path('gemv3submit/', dstc11submit, name='gemv3submit'),
-    path('gemv3submit', dstc11submit, name='gemv3submit'),   
+    path('gemv3submit/', gemv3submit, name='gemv3submit'),
+    path('gemv3submit', gemv3submit, name='gemv3submit'),   
     
     # EVALUATION
     path('compare', compare, name="compare"),

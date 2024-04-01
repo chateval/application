@@ -9,7 +9,11 @@
       {% if error %}
         <div class="alert alert-danger" role="alert">
           There was an error with your upload! Confirm your file 
-          is formatted appropriately. Email <a href="mailto:chatevalteam@gmail.com">chatevalteam@gmail.com</a> for help.
+          is formatted appropriately.
+	  <br>
+	  {error}
+	  <br>
+	  Email <a href="mailto:chatevalteam@gmail.com">chatevalteam@gmail.com</a> for help.
         </div>
       {% endif %}
       <h1 class="title">Upload GEM V3 Shared Task Submission</h1>
@@ -21,7 +25,7 @@
         <h2 class="">  </h2>
         <p class="subtitle">Please upload your file <b>(please compress the file with gzip)</b>
         </p>
-	<p>Only the last 5 submissions will be evaluated</p> 
+	<p>Only the last submissions will be evaluated</p> 
         <div class="card" style="margin: 0rem">
           <div class="card-body">
             <h3>GEM V3 Submission file 

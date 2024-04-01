@@ -203,3 +203,20 @@ def dstc11submit(request):
     error = "error" in request.GET
     return render(request, 'dstc11submit.html', {'form': form, 'error': error})
 
+
+def gemv3submit(request):
+
+    if request.method == "POST":
+        team_name = request.POST['name']
+        email = request.POST['email']
+        submission_info = request.POST['submission_info']
+        submission_track =  request.POST['submission_track']
+
+        if upload_gemv3_file('gemv3_submissions/' + str(request.user) + '_' + name + '_' + submission_info + '_' + submission_track, request.FILES['dstc11file']):
+            send_email("teamchateval@gmail.com", "GEM V3 submission", str(request.user))
+            send_email(str(request.user.email), "GEM V3 submission received", "Thank you for your submission")
+            return HttpResponseRedirect('https://gem-benchmark.com/shared_task')
+
+    form = GEMSTV3Form()
+    error = "error" in request.GET
+    return render(request, 'gemv3submit.html', {'form': form, 'error': error})

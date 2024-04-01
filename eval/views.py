@@ -217,6 +217,6 @@ def gemv3submit(request):
             send_email(str(request.user.email), "GEM V3 submission received", "Thank you for your submission")
             return HttpResponseRedirect('https://gem-benchmark.com/shared_task')
 
-    form = GEMSTV3Form()
+    form = GEMV3Form()
     error = "error" in request.GET
     return render(request, 'gemv3submit.html', {'form': form, 'error': error})

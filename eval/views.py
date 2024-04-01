@@ -2,6 +2,8 @@ import datetime
 import traceback
 from io import BytesIO
 import tarfile
+import re
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
@@ -275,8 +277,18 @@ def gemv3submit(request):
             with tarfile.open(fileobj=file_in_memory, mode="r:gz") as tar:
                 required_files = ['file1.txt', 'file2.txt']
                 extracted_files = tar.getnames()
+
+                pattern = r'^(?!.*\/\._).*\.(txt|jsonl)$'
+        
+                if len([filename for filename in tar.getnames() if re.match(pattern, filename)]) == 0:
+                    raise Exception('No valid files present.')
+
+                
                 # CODE: Add checking code to make sure that required files are present
                 for fn, member in zip(tar.getnames(), tar.getmembers()):
+                    if not re.match(pattern, fn):
+                        continue
+
                     if 1:#member.name in required_files:
                         # Extract file content from tar
                         f = tar.extractfile(member)

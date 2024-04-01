@@ -63,7 +63,7 @@ class GEMV3Form(forms.Form):
     #                       label=mark_safe('<b>Submission Track</b>'))
     submission_track = forms.MultipleChoiceField(
         choices=TASK_CHOICES,
-        widget=forms.CheckboxSelectMultiple,
+        widget=forms.SelectMultiple(attrs={'class': 'form-control'}),
         label=mark_safe('<b>Submission Track</b>'),
     )
 

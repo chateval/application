@@ -269,6 +269,9 @@ def gemv3submit(request):
 
         try:
             uploaded_file = request.FILES['gemv3file']
+            
+            file_in_memory = BytesIO(uploaded_file.read())
+
             with tarfile.open(fileobj=file_in_memory, mode="r:gz") as tar:
                 required_files = ['file1.txt', 'file2.txt']
                 extracted_files = tar.getnames()

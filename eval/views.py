@@ -211,7 +211,7 @@ def gemv3submit(request):
         email = request.POST['email']
         submission_track =  request.POST['submission_track']
 
-        if upload_gemv3_file('gemv3_submissions/' + str(request.user) + '_' + name + '_' + submission_track, request.FILES['gemv3file']):
+        if upload_gemv3_file('gemv3_submissions/' +  team_name + '_' + submission_track, request.FILES['gemv3file']):
             send_email("teamchateval@gmail.com", "GEM V3 submission", email)
             send_email(str(request.user.email), "GEM V3 submission received", "Thank you for your submission")
             return HttpResponseRedirect('https://gem-benchmark.com/shared_task')
